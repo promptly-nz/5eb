@@ -296,124 +296,99 @@ section{position:relative}
 .toast b{display:block;font-weight:400;border-bottom:2px solid #1c2b1c;margin-bottom:6px;padding-bottom:4px}
 .toast span{display:block;text-align:right;margin-top:8px;text-decoration:underline}
 
-/* ---------- MERCH: 3AM MARKET STALL ---------- */
-#shop{position:relative;background:#070605;border-top:6px solid var(--o);padding-bottom:200px;overflow-x:clip;--card:#b58f5c;--cardd:#8d6b3d}
-#shop .mbg{position:absolute;inset:0;background:url(img/shop.jpg) center 30%/cover;filter:grayscale(1) contrast(1.4) brightness(.35);opacity:.55;pointer-events:none}
-#shop .mbg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(240,112,0,.35),transparent 55%),linear-gradient(#070605,transparent 25%,#070605)}
-.lights{position:relative;height:150px;pointer-events:none}
-.lights svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.bulb{animation:flick 3s infinite steps(1)}
-@keyframes flick{0%,100%{opacity:1}43%{opacity:1}44%{opacity:.35}46%{opacity:1}78%{opacity:.7}80%{opacity:1}}
-#shop .hd{position:relative;padding-top:10px}
-#shop .hd h2{font-family:"Permanent Marker";text-transform:none;font-size:clamp(60px,9vw,150px);color:var(--c);transform:rotate(-2deg);text-shadow:5px 5px 0 var(--o);line-height:1}
-.mkt{position:relative;display:grid;grid-template-columns:1fr 360px;gap:4vw;padding:20px 4vw 0;align-items:start}
-.lbl2{font:400 28px "Permanent Marker";color:var(--o);margin:6px 0 10px;transform:rotate(-1.5deg);text-shadow:2px 2px 0 #000}
-/* clothes rail */
-.rail{position:relative;padding-top:40px;margin-bottom:60px}
-.rail::before{content:"";position:absolute;left:-2vw;right:-2vw;top:30px;height:10px;background:linear-gradient(#e9e9e9,#6a6a6a 50%,#2a2a2a);border-radius:5px;box-shadow:0 8px 14px rgba(0,0,0,.6)}
-.rail::after{content:"";position:absolute;left:0;top:30px;width:12px;height:300px;background:linear-gradient(90deg,#444,#999,#444);z-index:-1}
-.hangs{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
-.hang{position:relative;transform-origin:50% 0;animation:sway 5s ease-in-out infinite alternate;animation-delay:var(--dl,0s);padding-top:42px}
-.hang:hover{animation:sway2 .8s ease-in-out infinite alternate}
-@keyframes sway{from{transform:rotate(-1.4deg)}to{transform:rotate(1.4deg)}}
-@keyframes sway2{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
-.hook{position:absolute;left:50%;top:-6px;width:30px;height:46px;margin-left:-15px}
-.hook::before{content:"";position:absolute;left:8px;top:0;width:14px;height:20px;border:4px solid #aaa;border-bottom:0;border-radius:14px 14px 0 0}
-.hook::after{content:"";position:absolute;left:0;top:22px;width:30px;height:20px;background:#aaa;clip-path:polygon(50% 0,100% 100%,0 100%)}
-.gar{position:relative;display:block;width:88%;margin:0 auto;filter:drop-shadow(0 12px 8px rgba(0,0,0,.6))}
-.gar svg{width:100%;display:block}
-.ptag{position:relative;margin:-6px auto 0;width:78%;background:var(--card);color:#1a1208;padding:10px 12px 8px;border:2px solid #000;transform:rotate(var(--rot,2deg));box-shadow:4px 5px 0 rgba(0,0,0,.7);background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 2px,transparent 2px 6px)}
-.ptag::before{content:"";position:absolute;left:50%;top:-30px;width:2px;height:30px;background:#ddd;transform:rotate(-8deg)}
-.ptag::after{content:"";position:absolute;left:50%;top:6px;margin-left:-5px;width:10px;height:10px;border-radius:50%;background:#070605;border:2px solid #000}
-.ptag h3{font:400 27px "Permanent Marker";text-transform:none;line-height:1;margin-top:12px}
-.ptag .pr2{display:flex;align-items:baseline;gap:8px;margin:4px 0}
-.ptag .now{font:400 44px "Permanent Marker";color:#b00;line-height:1}
-.ptag .was{font:400 24px "Permanent Marker";color:#333;text-decoration:line-through;text-decoration-thickness:3px}
-.ptag .ono{font:400 16px "Permanent Marker";margin-left:auto;transform:rotate(-6deg)}
-.ptag p{font:700 15px "Archivo Narrow";line-height:1.15;margin-bottom:8px}
-.sz{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
-.sz button{min-width:34px;padding:2px 6px;background:transparent;border:2px solid #1a1208;font:400 17px "Permanent Marker";color:#1a1208}
-.sz button.on{background:#1a1208;color:var(--o)}
-.acts{display:flex;gap:6px}
-.btn2{flex:1;background:#111;color:var(--o);border:2px solid #000;font:400 19px Anton;letter-spacing:.06em;text-transform:uppercase;padding:7px 4px;box-shadow:3px 3px 0 rgba(0,0,0,.5);transition:.1s}
-.btn2:hover:not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 #000;background:var(--o);color:#000}
-.btn2:disabled{opacity:.45}
-.hang.out .gar{filter:grayscale(1) brightness(.6) drop-shadow(0 12px 8px rgba(0,0,0,.6))}
-.hang.out .ptag::after{background:var(--r)}
-.sold{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-12deg);font:400 38px "Permanent Marker";color:#fff;background:var(--r);border:3px solid #000;padding:2px 14px;z-index:2;white-space:nowrap}
-/* crate */
-.crate{position:relative;background:#16120e;border:6px solid #000;border-radius:6px;padding:20px 16px 24px;box-shadow:inset 0 0 0 4px #2a2118,8px 8px 0 var(--o);background-image:repeating-linear-gradient(0deg,transparent 0 38px,#000 38px 44px),repeating-linear-gradient(90deg,transparent 0 58px,#000 58px 64px)}
-.crate::before{content:"MILK CRATE · DIG DEEP";position:absolute;left:14px;top:-18px;background:var(--o);color:#000;font:400 17px Anton;letter-spacing:.14em;padding:2px 12px;transform:rotate(-2deg)}
-.slv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px}
-.sl{position:relative;background:var(--c);color:#000;border:3px solid #000;padding:8px;transform:rotate(var(--rot,0deg)) translateY(var(--ty,0));transition:.18s;box-shadow:5px 5px 0 #000}
-.sl:hover{transform:rotate(0) translateY(-22px);z-index:3;box-shadow:8px 14px 0 #000}
-.sl .pic{aspect-ratio:1;background:var(--bg);border:2px solid #000;display:grid;place-items:center;position:relative;overflow:hidden}
-.sl .pic svg{width:84%}
-.sl h3{font:400 21px "Permanent Marker";text-transform:none;margin:8px 0 0;line-height:1}
-.sl .pr2{display:flex;align-items:baseline;gap:6px;margin:2px 0 6px}
-.sl .now{font:400 32px "Permanent Marker";color:#b00}.sl .was{font:400 18px "Permanent Marker";text-decoration:line-through;color:#444}
-.sl .acts{margin-top:4px}
-.sl.out{filter:grayscale(1)}.sl.out .sold{top:36%;font-size:30px}
-.sl .bd{position:absolute;right:-8px;top:-10px;background:#000;color:var(--o);font:400 14px Anton;letter-spacing:.1em;padding:2px 8px;transform:rotate(7deg);z-index:2}
-/* bag panel */
-.bagp{position:sticky;top:122px;padding-top:70px;transform:rotate(1deg)}
-.peek{position:absolute;left:0;right:0;top:0;height:120px;display:flex;justify-content:center;align-items:flex-end;z-index:2;pointer-events:none}
-.pk{position:relative;width:92px;height:92px;margin:0 -14px;transform:rotate(var(--r)) translateY(var(--y));filter:drop-shadow(3px 4px 0 rgba(0,0,0,.6));animation:pkin .5s cubic-bezier(.2,1.6,.4,1) both}
-.pk svg{width:100%;height:100%}
-.pk b{position:absolute;right:-2px;top:-6px;min-width:26px;height:26px;border-radius:13px;background:var(--r2,#f07000);border:2px solid #000;color:#000;font:400 16px Anton;display:grid;place-items:center;padding:0 5px}
-@keyframes pkin{from{transform:translateY(-70px) rotate(40deg) scale(.5);opacity:0}}
-.paper{position:relative;background:#b8935f;color:#16100a;padding:46px 18px 20px;border:3px solid #000;box-shadow:9px 9px 0 #000;
- background-image:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.22),transparent 40%),radial-gradient(ellipse at 85% 70%,rgba(0,0,0,.2),transparent 45%),repeating-linear-gradient(97deg,rgba(0,0,0,.07) 0 2px,transparent 2px 9px),repeating-linear-gradient(8deg,rgba(255,255,255,.06) 0 1px,transparent 1px 7px);
- clip-path:polygon(0 0,100% 0,100% 100%,96% 99.2%,92% 100%,88% 99.3%,84% 100%,80% 99.2%,76% 100%,72% 99.4%,68% 100%,64% 99.2%,60% 100%,56% 99.4%,52% 100%,48% 99.2%,44% 100%,40% 99.4%,36% 100%,32% 99.2%,28% 100%,24% 99.4%,20% 100%,16% 99.2%,12% 100%,8% 99.4%,4% 100%,0 99.2%)}
-.paper .fold{position:absolute;left:0;right:0;top:0;height:34px;background:linear-gradient(#cba878,#a07e4c);border-bottom:3px solid #000;box-shadow:0 6px 0 rgba(0,0,0,.18)}
-.paper .fold::before,.paper .fold::after{content:"";position:absolute;top:12px;width:34px;height:7px;background:#999;border:1px solid #000;border-radius:2px;transform:rotate(-3deg)}
-.paper .fold::before{left:18%}.paper .fold::after{right:18%;transform:rotate(2deg)}
-.paper h4{font:400 40px "Permanent Marker";text-transform:none;line-height:1;transform:rotate(-2deg)}
-.paper h4 small{font:400 20px "Permanent Marker";background:#16100a;color:#f4e2b4;border-radius:50%;padding:2px 9px;vertical-align:middle;margin-left:6px}
-.bl{position:relative;padding:8px 0 6px;font:400 24px/1.05 "Permanent Marker";transform:rotate(var(--lr,0deg));border:0}
-.bl .row{display:flex;align-items:baseline;gap:6px}
-.bl .nm{white-space:nowrap}
-.bl .dots{flex:1;border-bottom:3px dotted rgba(22,16,10,.5);transform:translateY(-5px)}
-.bl .pp{font-size:26px}
-.bl .row2{display:flex;align-items:center;gap:8px;margin-top:2px}
-.tally{display:flex;gap:3px;align-items:center;height:26px}
-.tally .g{position:relative;display:flex;gap:4px}
-.tally i{display:block;width:3px;height:24px;background:#16100a;border-radius:2px;transform:rotate(var(--t,0deg));animation:tin .25s ease-out both}
-.tally u{position:absolute;left:-4px;right:-4px;top:11px;height:3px;background:#16100a;border-radius:2px;transform:rotate(-24deg);animation:tin .25s ease-out both}
-@keyframes tin{from{transform:scaleY(0)}}
-.bl .qb{background:#16100a;color:#f4e2b4;border:0;width:24px;height:24px;font:400 18px Anton;border-radius:50%}
-.bl .qb:hover{background:var(--o);color:#000}
-.bl .x{margin-left:auto;background:none;border:0;font:400 15px "Permanent Marker";color:#7a1111;text-decoration:underline}
-.bl .x:hover{color:#000}
-.bl.scrap::after{content:"";position:absolute;left:-4px;top:46%;height:5px;background:#b00;border-radius:3px;transform:rotate(-2deg);animation:scr .3s ease-out both}
-@keyframes scr{from{width:0}to{width:104%}}
-.bl.scrap{opacity:.6}
-.paper .emp{font:400 25px/1.1 "Permanent Marker";text-align:center;padding:16px 0;color:#4a3820;transform:rotate(-1.5deg)}
-.sumline{height:0;border-top:4px solid #16100a;margin:12px 0 6px;transform:rotate(-.6deg);border-radius:2px}
-.paper .tt{display:flex;justify-content:space-between;align-items:baseline;font:400 22px "Permanent Marker";margin-top:4px;transform:rotate(.6deg)}
-.paper .tt.big{align-items:center;margin-top:6px}
-.paper .tt.big>span:first-child{font-size:26px}
-.circ{position:relative;display:inline-block;padding:4px 18px}
-.circ b{font:400 52px "Permanent Marker";color:#a00;line-height:1;position:relative}
-.circ svg{position:absolute;inset:-6px -8px;width:calc(100% + 16px);height:calc(100% + 12px);overflow:visible}
-.circ ellipse{fill:none;stroke:#16100a;stroke-width:4;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:420;transform-origin:center;transform:rotate(-8deg)}
-.circ.draw ellipse{animation:circ .7s ease-out forwards}
-@keyframes circ{to{stroke-dashoffset:0}}
-.paper .fr{font:400 18px "Permanent Marker";text-align:center;min-height:1.2em;margin-top:6px;color:#4a3820;transform:rotate(-1deg)}
-.stampb{display:block;width:100%;margin-top:12px;padding:12px 8px;background:transparent;color:#a00;border:5px double #a00;border-radius:6px;font:400 34px Anton;letter-spacing:.14em;text-transform:uppercase;transform:rotate(-2.5deg);mix-blend-mode:multiply;opacity:.92;transition:transform .08s}
-.stampb:hover:not(:disabled){background:rgba(170,0,0,.12)}
-.stampb:active:not(:disabled){transform:rotate(-2.5deg) scale(.94)}
-.stampb:disabled{opacity:.35}
-.paper .demo{font:700 13px "Archivo Narrow";text-align:center;margin-top:10px;color:#3a2a14}
-/* nokia sms checkout */
-.sms2{display:none;margin-top:14px;background:#9db596;color:#16240f;border:5px solid #3b3e3a;border-radius:14px 14px 40px 40px;padding:10px 12px 16px;font:400 23px/1.05 VT323,monospace;box-shadow:inset 0 0 0 2px #16240f55,4px 4px 0 #000;min-height:150px}
-.sms2.on{display:block}
-.sms2 .to{border-bottom:2px solid #16240f;margin-bottom:6px;padding-bottom:2px;display:flex;justify-content:space-between}
-.sms2 .cur::after{content:"_";animation:blink 1s steps(1) infinite}
-.sms2 .st{margin-top:8px;text-align:center;letter-spacing:.1em}
-.sms2 .rep{margin-top:8px;padding-top:6px;border-top:2px dashed #16240f}
+/* ---------- MERCH: LATE-NIGHT SHOP (menu board + order counter) ---------- */
+#shop{position:relative;background:#060504;border-top:6px solid var(--o);padding:70px 4vw 200px;overflow-x:clip}
+#shop::before{content:"";position:absolute;inset:0;background:url(img/high-road.jpg) center 60%/cover;filter:grayscale(1) contrast(1.4) brightness(.3);opacity:.5;pointer-events:none}
+#shop::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0,rgba(240,112,0,.4),transparent 60%),linear-gradient(#060504,transparent 20%,transparent 80%,#060504);pointer-events:none}
+.shopfront{position:relative;z-index:1;max-width:1320px;margin:0 auto}
+.fascia{position:relative;padding:34px 20px 22px;background:linear-gradient(#ff9a2e,#f07000 60%,#d85f00);border:8px solid #111;border-radius:16px 16px 0 0;box-shadow:0 0 70px rgba(240,112,0,.6),inset 0 0 50px rgba(255,255,255,.4);text-align:center;overflow:hidden}
+.fascia::before,.fascia::after{content:"";position:absolute;left:0;right:0;height:14px;background:radial-gradient(circle,#fff6c9 36%,transparent 42%) 0 0/36px 14px repeat-x}
+.fascia::before{top:8px;animation:chase 1s steps(1) infinite}
+.fascia::after{bottom:6px;animation:chase 1s steps(1) infinite reverse}
+@keyframes chase{0%{background-position:0 0}50%{background-position:18px 0}}
+.fascia h2{font:400 clamp(80px,15vw,230px) Anton;color:#111;text-transform:uppercase;line-height:.82;letter-spacing:.01em;text-shadow:4px 4px 0 rgba(255,255,255,.4)}
+.fascia h2 i{font-style:normal;display:inline-block;animation:bzz 6s infinite steps(1)}
+@keyframes bzz{0%,100%{opacity:1}30%{opacity:1}31%{opacity:.15}32%{opacity:1}33%{opacity:.2}34%{opacity:1}70%{opacity:1}71%{opacity:.4}72%{opacity:1}}
+.fascia p{font:400 clamp(20px,2.6vw,34px) Anton;letter-spacing:.2em;color:#111;margin-top:10px;text-transform:uppercase}
+.open{position:absolute;right:3%;top:30px;padding:6px 18px;background:#19050a;border:4px solid #ff2a4d;border-radius:10px;color:#ff2a4d;font:400 clamp(26px,3.4vw,46px) Anton;letter-spacing:.14em;text-shadow:0 0 8px #ff2a4d,0 0 22px #ff2a4d;box-shadow:0 0 14px #ff2a4d,inset 0 0 14px rgba(255,42,77,.5);transform:rotate(5deg);animation:bzz 3.4s infinite steps(1)}
+.open small{display:block;font:400 18px "Permanent Marker";letter-spacing:.04em;text-align:center;color:#ffd24a;text-shadow:0 0 8px #ffd24a}
+.steam{position:absolute;bottom:100%;width:60px;height:90px;border-radius:50%;background:rgba(255,255,255,.14);filter:blur(16px);animation:steam 4s ease-out infinite;pointer-events:none}
+@keyframes steam{0%{transform:translateY(40px) scale(.6);opacity:0}30%{opacity:.8}100%{transform:translateY(-120px) scale(1.7);opacity:0}}
+.counter{display:grid;grid-template-columns:1fr 390px;gap:0;align-items:start}
+.board{position:relative;background:linear-gradient(#18140f,#0c0a08);border:10px solid #27231f;border-top:0;padding:26px 26px 30px;box-shadow:inset 0 0 70px #000}
+.board::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.05) 50%,transparent 65%);background-size:300% 100%;animation:sheen 7s linear infinite;pointer-events:none}
+@keyframes sheen{from{background-position:120% 0}to{background-position:-120% 0}}
+.mcols{display:grid;grid-template-columns:1.3fr 1fr;gap:34px}
+.mh{display:flex;align-items:baseline;gap:12px;background:var(--o);color:#111;font:400 38px Anton;letter-spacing:.08em;padding:4px 16px;margin-bottom:6px;transform:rotate(-1deg);box-shadow:5px 5px 0 #000;text-transform:uppercase}
+.mh small{font:400 20px VT323;letter-spacing:.14em;margin-left:auto}
+.it{position:relative;display:grid;grid-template-columns:84px 1fr auto;gap:6px 16px;align-items:center;padding:14px 8px;border-bottom:3px dashed #3a342c;transition:background .15s,box-shadow .15s}
+.it:hover{background:rgba(240,112,0,.13);box-shadow:inset 5px 0 0 var(--o)}
+.it .ic{position:relative;width:84px;height:84px;border-radius:50%;background:var(--bg,#222);border:4px solid #000;box-shadow:0 0 0 3px var(--o);display:grid;place-items:center;overflow:visible}
+.it .ic svg{width:82%;height:82%;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.6));transition:transform .2s}
+.it:hover .ic svg{transform:scale(1.15) rotate(-6deg)}
+.it .no{position:absolute;left:-8px;top:-6px;min-width:30px;height:30px;border-radius:15px;background:#ffd24a;color:#111;border:3px solid #000;font:400 18px/24px Anton;text-align:center;padding:0 5px}
+.it h3{font:400 clamp(24px,2.8vw,34px) Anton;color:#fff;text-transform:uppercase;line-height:1;letter-spacing:.02em}
+.it h3 em{font:400 15px Anton;font-style:normal;background:#ff2a4d;color:#fff;padding:1px 7px;margin-left:8px;vertical-align:middle;letter-spacing:.1em;transform:rotate(-4deg);display:inline-block}
+.it p{font:700 15px/1.15 "Archivo Narrow";color:#a69d8c;margin-top:3px}
+.it .sz{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.it .sz button{min-width:36px;padding:2px 8px;background:transparent;border:2px solid #6b6256;color:#cfc6b4;font:400 18px Anton}
+.it .sz button.on{background:#ffd24a;border-color:#ffd24a;color:#111}
+.it .sz button:hover:not(.on){border-color:var(--o);color:var(--o)}
+.it .rt{text-align:right}
+.it .pr{display:block;font:400 clamp(34px,4vw,52px) Anton;color:#ffd24a;text-shadow:0 0 14px rgba(255,210,74,.55);line-height:1}
+.it .pr sup{font-size:.42em;vertical-align:top;margin-left:2px;opacity:.85}
+.it .was{display:block;font:400 18px Anton;color:#776;text-decoration:line-through}
+.add{margin-top:6px;background:var(--o);color:#111;border:3px solid #000;font:400 22px Anton;letter-spacing:.06em;padding:4px 14px;box-shadow:4px 4px 0 #000;text-transform:uppercase;transition:.1s}
+.add:hover:not(:disabled){transform:translate(2px,2px);box-shadow:2px 2px 0 #000;background:#fff}
+.add:disabled{background:#555;color:#222}
+.it.out .ic,.it.out h3,.it.out p{filter:grayscale(1) brightness(.6)}
+.it.out::after{content:"SOLD OUT · SOLD OUT · SOLD OUT · SOLD OUT";position:absolute;left:-6px;right:-6px;top:42%;padding:3px 0;font:400 22px Anton;letter-spacing:.2em;white-space:nowrap;overflow:hidden;color:#111;background:repeating-linear-gradient(-45deg,#ffd24a 0 18px,#111 18px 36px);transform:rotate(-3deg);text-align:center;pointer-events:none;-webkit-text-stroke:0;text-shadow:0 0 6px #ffd24a,0 0 6px #ffd24a}
+.deal{margin-top:24px;border:4px dashed #ffd24a;color:#ffd24a;padding:12px;font:400 clamp(22px,2.8vw,34px) Anton;letter-spacing:.06em;text-align:center;text-transform:uppercase;animation:dealg 1.6s ease-in-out infinite alternate;transition:.2s}
+.deal small{display:block;font:400 18px VT323;letter-spacing:.14em;color:#c9a94a;margin-top:4px}
+.deal.on{background:#ffd24a;color:#111;border-style:solid;animation:none;box-shadow:0 0 30px #ffd24a}
+.deal.on small{color:#111}
+@keyframes dealg{to{box-shadow:0 0 22px rgba(255,210,74,.5)}}
+/* order counter */
+.hatch{position:sticky;top:90px;max-height:calc(100vh - 100px);overflow-y:auto;scrollbar-width:none;background:#1c1915;border:10px solid #27231f;border-top:0;border-left:0;padding:16px;box-shadow:inset 0 0 40px #000}
+.serving{display:flex;justify-content:space-between;align-items:center;background:#120404;border:4px solid #000;box-shadow:inset 0 0 20px #000,0 0 0 2px #3a3a3a;padding:6px 14px}
+.serving small{color:#ff7a7a;font:400 22px VT323;letter-spacing:.14em;line-height:1}
+.serving b{font:400 72px VT323;color:#ff2a2a;text-shadow:0 0 10px #f22,0 0 26px #f22;letter-spacing:.1em;line-height:.9}
+.serving.pop b{animation:sv .5s steps(2)}
+@keyframes sv{50%{color:#fff}}
+.serving.mine{background:#ffd24a;border-color:#000}.serving.mine small,.serving.mine b{color:#111;text-shadow:none}
+.tray{position:relative;margin-top:16px;background:#c8321e;border:5px solid #8f1f10;border-radius:12px;padding:14px;box-shadow:0 8px 0 #000,inset 0 0 0 3px #e25a43,inset 0 -10px 20px rgba(0,0,0,.25)}
+.tray h4{font:400 30px Anton;color:#fff;letter-spacing:.08em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;text-shadow:2px 2px 0 #8f1f10}
+.tray h4 small{font:400 22px VT323;background:#111;color:#ffd24a;padding:0 8px;border-radius:12px;text-shadow:none}
+.liner{background:#fdfaf1;background-image:repeating-linear-gradient(45deg,transparent 0 16px,rgba(200,50,30,.05) 16px 17px);color:#1a0d09;padding:10px 12px 12px;min-height:120px;box-shadow:inset 0 0 0 2px #eee,0 0 0 3px #8f1f10}
+.tl{padding:6px 0;border-bottom:2px dotted #b99;font:700 18px/1.1 "Archivo Narrow";text-transform:uppercase}
+.tl .r{display:flex;justify-content:space-between;gap:8px}
+.tl .r span:last-child{font:400 22px Anton}
+.tl .q{display:flex;gap:6px;align-items:center;margin-top:4px;font:400 17px Anton}
+.tl .q button{background:#1a0d09;color:#fff;border:0;width:22px;height:22px;font:400 16px Anton}
+.tl .q button:hover{background:#c8321e}
+.tl .q .x{margin-left:auto;width:auto;background:none;color:#a22;font:700 14px "Archivo Narrow";text-decoration:underline;text-transform:lowercase}
+.liner .emp{font:400 26px Anton;text-align:center;color:#a08a80;padding:18px 0;text-transform:uppercase;line-height:1.1}
+.sum{display:flex;justify-content:space-between;font:700 18px "Archivo Narrow";text-transform:uppercase;padding-top:3px}
+.sum.dis{color:#0a7a2a}
+.sum.big{font:400 36px Anton;border-top:3px solid #1a0d09;margin-top:6px;padding-top:4px}
+.order{width:100%;margin-top:14px;background:#ffd24a;color:#111;border:4px solid #000;font:400 34px Anton;letter-spacing:.1em;text-transform:uppercase;padding:10px;box-shadow:6px 6px 0 #000;transition:.1s}
+.order:hover:not(:disabled){background:#fff;transform:translate(3px,3px);box-shadow:3px 3px 0 #000}
+.order:disabled{opacity:.45}
+.tkt{display:none;position:relative;margin-top:16px;background:#fff;color:#111;padding:14px 16px 20px;text-align:center;font:400 20px/1.05 VT323;box-shadow:5px 5px 0 #000;transform:rotate(-1.5deg);
+ clip-path:polygon(0 0,100% 0,100% 100%,96% 97%,92% 100%,88% 97%,84% 100%,80% 97%,76% 100%,72% 97%,68% 100%,64% 97%,60% 100%,56% 97%,52% 100%,48% 97%,44% 100%,40% 97%,36% 100%,32% 97%,28% 100%,24% 97%,20% 100%,16% 97%,12% 100%,8% 97%,4% 100%,0 97%)}
+.tkt.on{display:block;animation:tin .6s cubic-bezier(.2,1.4,.4,1)}
+@keyframes tin{from{transform:translateY(-120px) rotate(-8deg);opacity:0}}
+.tkt .n{font:400 96px Anton;line-height:.9;color:#c8321e}
+.tkt small{display:block;letter-spacing:.2em;font-size:22px}
+.tkt .ls{text-align:left;margin:8px 0;border-top:2px dashed #999;border-bottom:2px dashed #999;padding:6px 0;max-height:130px;overflow:auto;text-transform:uppercase}
+.tkt .st{font:400 26px VT323;letter-spacing:.1em}
+.bagr{display:none;margin-top:14px;text-align:center}
+.bagr.on{display:block;animation:tin .7s cubic-bezier(.2,1.4,.4,1)}
+.bagr svg{width:150px;filter:drop-shadow(4px 5px 0 rgba(0,0,0,.6))}
+.bagr b{display:block;font:400 28px Anton;letter-spacing:.08em;color:#ffd24a;text-transform:uppercase;margin-top:4px}
+.fine{margin-top:12px;font:400 17px VT323;letter-spacing:.1em;color:#8a8070;text-align:center}
 .fly{position:fixed;z-index:990;pointer-events:none;transition:transform .7s cubic-bezier(.5,-0.3,.6,1),opacity .7s}
-@media(max-width:900px){.mkt{grid-template-columns:1fr}.bagp{position:relative;top:0}}
+@media(max-width:1000px){.counter{grid-template-columns:1fr}.mcols{grid-template-columns:1fr}.hatch{position:relative;top:0;max-height:none;overflow:visible;border-left:10px solid #27231f}.open{position:static;display:inline-block;margin-top:14px}}
 
 /* ---------- NO SIGNAL ---------- */
 #end{height:100vh;min-height:640px;display:grid;place-items:center;overflow:hidden;padding-bottom:40px}
@@ -620,31 +595,42 @@ section{position:relative}
   </div>
 </section>
 
-<!-- MERCH: 3AM MARKET STALL -->
+<!-- MERCH: LATE-NIGHT SHOP -->
 <section id="shop">
-  <div class="mbg"></div>
-  <div class="lights" id="lights"></div>
-  <div class="hd"><h2>The Stall</h2><div class="mk">3am · cash only · no refunds</div></div>
-  <div class="mkt">
-    <div>
-      <div class="rail"><div class="hangs" id="hangs"></div></div>
-      <div class="crate"><div class="slv" id="slv"></div></div>
+  <div class="shopfront">
+    <div class="fascia">
+      <div class="steam" style="left:12%;animation-delay:0s"></div><div class="steam" style="left:38%;animation-delay:1.3s"></div><div class="steam" style="left:64%;animation-delay:2.4s"></div>
+      <h2>5<i>E</i>B'S</h2>
+      <p>Open late · No refunds · Cash or card</p>
+      <div class="open">OPEN<small>'til late</small></div>
     </div>
-    <aside class="bagp" id="bag" aria-live="polite">
-      <div class="peek" id="peek"></div>
-      <div class="paper">
-        <div class="fold"></div>
-        <h4>Ya bag <small id="bcount">0</small></h4>
-        <div id="blines"></div>
-        <div class="sumline"></div>
-        <div class="tt"><span>delivery</span><span id="bdel">£0</span></div>
-        <div class="tt big"><span>total</span><span class="circ" id="circ"><b id="btot">£0</b><svg viewBox="0 0 100 60" preserveAspectRatio="none"><ellipse cx="50" cy="30" rx="52" ry="26" vector-effect="non-scaling-stroke"/></svg></span></div>
-        <div class="fr" id="bfree"></div>
-        <button class="stampb" id="bgo" type="button" disabled>Txt it</button>
-        <div class="sms2" id="sms2"><div class="to"><span>To: 80000</span><span id="smsc">160</span></div><div id="smst" class="cur"></div><div class="st" id="smss"></div><div class="rep" id="smsr" hidden></div></div>
-        <div class="demo">*DEMO SHOP · NOTHING IS ACTUALLY SOLD</div>
+    <div class="counter">
+      <div class="board">
+        <div class="mcols">
+          <div><div class="mh">Meals <small>NO.1-3</small></div><div id="meals"></div></div>
+          <div><div class="mh">Sides <small>NO.4-6</small></div><div id="sides"></div></div>
+        </div>
+        <div class="deal" id="deal">★ Meal deal: any tee + CD-R + stickers = £35 ★<small id="dealsub">SAVE £5 · ADD ALL THREE</small></div>
       </div>
-    </aside>
+      <aside class="hatch" id="hatch" aria-live="polite">
+        <div class="serving" id="serving"><small>NOW<br>SERVING</small><b id="snum">031</b></div>
+        <div class="tray">
+          <h4>Ya tray <small id="tcount">0</small></h4>
+          <div class="liner">
+            <div id="tlines"></div>
+            <div class="sum"><span>Subtotal</span><span id="tsub">£0</span></div>
+            <div class="sum dis" id="tdealrow" hidden><span>Meal deal</span><span id="tdis">-£0</span></div>
+            <div class="sum"><span>Delivery</span><span id="tdel">£0</span></div>
+            <div class="sum big"><span>Total</span><span id="ttot">£0</span></div>
+            <div class="sum" id="tfree" style="font-size:15px;color:#7a5a50;justify-content:center"></div>
+          </div>
+          <button class="order" id="order" type="button" disabled>Order up!</button>
+        </div>
+        <div class="tkt" id="tkt"><small>YOUR NUMBER</small><div class="n" id="tn">032</div><div class="ls" id="tls"></div><div class="st" id="tst"></div></div>
+        <div class="bagr" id="bagr"><svg viewBox="0 0 200 230"><path d="M30 60 H170 L186 214 Q186 222 178 222 H22 Q14 222 14 214Z" fill="#f6f1e2" stroke="#000" stroke-width="6" stroke-linejoin="round"/><path d="M30 60 L40 30 H160 L170 60" fill="#e9e2cc" stroke="#000" stroke-width="6" stroke-linejoin="round"/><circle cx="62" cy="130" r="14" fill="#e8d9a6" opacity=".8"/><circle cx="132" cy="170" r="18" fill="#e8d9a6" opacity=".8"/><circle cx="150" cy="110" r="9" fill="#e8d9a6" opacity=".8"/><text x="100" y="118" text-anchor="middle" font-family="Anton" font-size="46" fill="#c8321e">5EB'S</text><text x="100" y="146" text-anchor="middle" font-family="Permanent Marker" font-size="17" fill="#000">open late</text></svg><b id="bagt">Order ready!</b></div>
+        <div class="fine">*DEMO SHOP · NOTHING IS ACTUALLY SOLD</div>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -1079,115 +1065,84 @@ addEventListener('keydown',e=>{
 })();
 
 /* =======================================================
-   MERCH: market stall + text-to-order
+   MERCH: late-night shop (menu board, tray, queue ticket)
 ======================================================= */
 (function shop(){
   const P=[
-   {id:'tee',n:'Estate Tapes Tee',d:'Heavyweight black. Logo on the chest, "N17" on the back.',p:28,was:35,sz:['S','M','L','XL'],t:'tee',c:'#111',row:'rail'},
-   {id:'hood',n:'N17 Hoodie',d:'Oversized, heavy fleece. Proper warm for the night bus.',p:55,was:70,sz:['S','M','L','XL'],t:'hood',c:'#f07000',row:'rail'},
-   {id:'beanie',n:'Roadman Beanie',d:'One size. Pull it down low.',p:18,was:22,t:'beanie',c:'#111',row:'rail'},
-   {id:'cdr',n:'Vol.1 CD-R',d:'',p:8,was:10,t:'cd',c:'#d9d4c4',bg:'#3a3a3a',row:'crate',b:'SIGNED'},
-   {id:'tape',n:'Cassette',d:'',p:12,was:15,t:'tape',c:'#222',bg:'#e9e2d0',row:'crate',out:true,b:'LTD 100'},
-   {id:'stk',n:'Stickers x12',d:'',p:4,was:6,t:'star',c:'#f07000',bg:'#111',row:'crate',b:'FREE DL'}
+   {id:'tee',no:1,n:'Estate Tapes Tee',d:'Heavyweight black. Extra N17 on the back.',p:28,was:35,sz:['S','M','L','XL'],t:'tee',c:'#111',bg:'#f07000',cat:'meals',b:'NEW'},
+   {id:'hood',no:2,n:'N17 Hoodie',d:'Oversized, heavy fleece. Proper warm for the night bus.',p:55,was:70,sz:['S','M','L','XL'],t:'hood',c:'#f07000',bg:'#222',cat:'meals',b:'HOT'},
+   {id:'beanie',no:3,n:'Roadman Beanie',d:'One size. Pull it down low.',p:18,was:22,t:'beanie',c:'#111',bg:'#f07000',cat:'meals'},
+   {id:'cdr',no:4,n:'Vol.1 CD-R',d:'Hand-burnt, scribbled on in marker, signed.',p:8,was:10,t:'cd',c:'#d9d4c4',bg:'#3a3a3a',cat:'sides'},
+   {id:'tape',no:5,n:'Cassette',d:'Numbered of 100.',p:12,was:15,t:'tape',c:'#222',bg:'#e9e2d0',cat:'sides',out:true},
+   {id:'stk',no:6,n:'Stickers x12',d:'Bomb the bus stop. Not our fault.',p:4,was:6,t:'star',c:'#f07000',bg:'#111',cat:'sides'}
   ];
   const ic={
    tee:c=>`<path d="M62 22 L20 52 L40 88 L62 74 L62 182 L138 182 L138 74 L160 88 L180 52 L138 22 Q100 48 62 22Z" fill="${c}" stroke="#000" stroke-width="5" stroke-linejoin="round"/>`,
    hood:c=>`<path d="M60 40 Q100 -5 140 40 L172 62 L186 130 L160 138 L156 182 L44 182 L40 138 L14 130 L28 62Z" fill="${c}" stroke="#000" stroke-width="5" stroke-linejoin="round"/><path d="M70 42 Q100 78 130 42" fill="none" stroke="#000" stroke-width="5"/><path d="M78 140 L122 140 L128 168 L72 168Z" fill="none" stroke="#000" stroke-width="4"/><path d="M92 62 V98 M108 62 V98" stroke="#000" stroke-width="4"/>`,
-   cd:c=>`<circle cx="100" cy="100" r="80" fill="${c}" stroke="#000" stroke-width="5"/><circle cx="100" cy="100" r="30" fill="#f07000" stroke="#000" stroke-width="4"/><circle cx="100" cy="100" r="9" fill="#000"/><path d="M100 28 A72 72 0 0 1 172 100" fill="none" stroke="#fff" stroke-width="6" opacity=".55"/><text x="100" y="158" text-anchor="middle" font-family="Permanent Marker" font-size="15" fill="#000">5EB VOL.1</text>`,
+   cd:c=>`<circle cx="100" cy="100" r="80" fill="${c}" stroke="#000" stroke-width="5"/><circle cx="100" cy="100" r="30" fill="#f07000" stroke="#000" stroke-width="4"/><circle cx="100" cy="100" r="9" fill="#000"/><path d="M100 28 A72 72 0 0 1 172 100" fill="none" stroke="#fff" stroke-width="6" opacity=".55"/>`,
    tape:c=>`<rect x="14" y="42" width="172" height="116" rx="8" fill="${c}" stroke="#000" stroke-width="5"/><rect x="30" y="56" width="140" height="52" fill="#e9e2d0" stroke="#000" stroke-width="3"/><circle cx="68" cy="132" r="14" fill="#fff" stroke="#000" stroke-width="4"/><circle cx="132" cy="132" r="14" fill="#fff" stroke="#000" stroke-width="4"/><rect x="82" y="124" width="36" height="16" fill="#555"/><text x="100" y="90" text-anchor="middle" font-family="Permanent Marker" font-size="26" fill="#000">5EB VOL.1</text>`,
    beanie:c=>`<path d="M26 120 Q26 28 100 28 Q174 28 174 120Z" fill="${c}" stroke="#000" stroke-width="5"/><rect x="20" y="110" width="160" height="42" rx="8" fill="${c}" stroke="#000" stroke-width="5"/><path d="M42 112 V150 M62 112 V150 M82 112 V150 M102 112 V150 M122 112 V150 M142 112 V150 M162 112 V150" stroke="#fff" stroke-width="2" opacity=".2"/><circle cx="100" cy="18" r="14" fill="#f07000" stroke="#000" stroke-width="4"/>`,
    star:c=>{const pts=[];for(let i=0;i<28;i++){const r=i%2?58:90,a=i/28*Math.PI*2;pts.push((100+Math.cos(a)*r).toFixed(1)+','+(100+Math.sin(a)*r).toFixed(1))}return `<polygon points="${pts.join(' ')}" fill="${c}" stroke="#000" stroke-width="5" stroke-linejoin="round"/><text x="100" y="94" text-anchor="middle" font-family="Anton" font-size="34" fill="#000">5EB</text><text x="100" y="124" text-anchor="middle" font-family="Anton" font-size="22" fill="#000">FREE DL</text>`}
   };
   const svg=it=>`<svg viewBox="0 0 200 200" aria-hidden="true">${ic[it.t](it.c)}${(it.t==='tee'||it.t==='hood')?`<image href="img/logo.png" x="${it.t==='tee'?72:74}" y="${it.t==='tee'?72:88}" width="${it.t==='tee'?56:52}" height="${it.t==='tee'?56:52}"/>`:''}</svg>`;
   const money=n=>'£'+(Math.round(n*100)/100).toFixed(2).replace('.00','');
-  const price={};P.forEach(it=>price[it.id]=it.p);
   const sel={};P.forEach(it=>sel[it.id]=it.sz?it.sz[1]:'');
-  const acts=it=>`<div class="acts"><button type="button" class="btn2 add" ${it.out?'disabled':''}>${it.out?'Gone':'Cop it'}</button></div>`;
-  const priceRow=it=>`<div class="pr2"><span class="now">${money(price[it.id])}</span><span class="was">${money(it.was)}</span><span class="ono">ono</span></div>`;
-  function draw(){
-    $('#hangs').innerHTML=P.filter(x=>x.row==='rail').map((it,i)=>`<div class="hang${it.out?' out':''}" style="--dl:${-i*1.7}s" data-id="${it.id}"><div class="hook"></div><div class="gar">${svg(it)}</div>
-      <div class="ptag" style="--rot:${i%2?-2.5:2.2}deg"><h3>${it.n}</h3><div data-pr>${priceRow(it)}</div><p>${it.d}</p>
-      ${it.sz?`<div class="sz">${it.sz.map((z,k)=>`<button type="button" class="${z===sel[it.id]?'on':''}" data-z="${z}">${z}</button>`).join('')}</div>`:''}${acts(it)}</div></div>`).join('');
-    $('#slv').innerHTML=P.filter(x=>x.row==='crate').map((it,i)=>`<article class="sl${it.out?' out':''}" style="--rot:${(i%2?1:-1)*(1+i%3)}deg;--bg:${it.bg}" data-id="${it.id}">
-      ${it.b?`<div class="bd">${it.b}</div>`:''}<div class="pic">${svg(it)}${it.out?'<div class="sold">SOLD</div>':''}</div><h3>${it.n}</h3><div data-pr>${priceRow(it)}</div>${acts(it)}</article>`).join('');
-    $$('#hangs .hang,#slv .sl').forEach(el=>{
-      const it=P.find(x=>x.id===el.dataset.id);
-      el.querySelectorAll('.sz button').forEach(b=>b.onclick=()=>{el.querySelectorAll('.sz button').forEach(x=>x.classList.toggle('on',x===b));sel[it.id]=b.dataset.z;blip(600,.03)});
-      el.querySelector('.add').onclick=()=>{add(it);fly(el.querySelector('.gar,.pic'))};
-    });
-    $$('.hang.out .gar').forEach(g=>g.insertAdjacentHTML('beforeend','<div class="sold">SOLD</div>'));
-    railHover();
-  }
-  function railHover(){
-  /* rail: hovering a hanger freezes the sway and glides it straight + forward so the buttons can be pressed */
-  $$('#hangs .hang').forEach(h=>{
-    let t;
-    const hold=()=>{
-      clearTimeout(t);
-      if(!h.dataset.held){const m=new DOMMatrix(getComputedStyle(h).transform),ang=Math.atan2(m.b,m.a);
-        h.style.animation='none';h.style.transform=`rotate(${ang}rad)`;void h.offsetWidth;h.dataset.held='1'}
-      h.style.transition='transform .45s cubic-bezier(.2,1.5,.4,1)';
-      h.style.transform='rotate(0deg) scale(1.08) translateY(8px)';h.style.zIndex=6;
-    };
-    const free=()=>{
-      h.style.transition='transform .35s ease-out';h.style.transform='rotate(0deg)';h.style.zIndex='';
-      t=setTimeout(()=>{h.style.transition='';h.style.transform='';h.style.animation='';delete h.dataset.held},360);
-    };
-    h.addEventListener('pointerenter',hold);h.addEventListener('pointerleave',free);
-    h.addEventListener('focusin',hold);h.addEventListener('focusout',e=>{if(!h.contains(e.relatedTarget))free()});
+  const row=it=>`<div class="it${it.out?' out':''}" data-id="${it.id}" style="--bg:${it.bg}">
+    <div class="ic"><span class="no">${it.no}</span>${svg(it)}</div>
+    <div><h3>${it.n}${it.b?`<em>${it.b}</em>`:''}</h3><p>${it.d}</p>${it.sz?`<div class="sz">${it.sz.map(z=>`<button type="button" class="${z===sel[it.id]?'on':''}" data-z="${z}">${z}</button>`).join('')}</div>`:''}</div>
+    <div class="rt"><span class="pr">£${it.p}<sup>.00</sup></span><span class="was">${money(it.was)}</span><button type="button" class="add" ${it.out?'disabled':''}>${it.out?'Gone':'+ Add'}</button></div></div>`;
+  $('#meals').innerHTML=P.filter(x=>x.cat==='meals').map(row).join('');
+  $('#sides').innerHTML=P.filter(x=>x.cat==='sides').map(row).join('');
+  $$('#shop .it').forEach(el=>{
+    const it=P.find(x=>x.id===el.dataset.id);
+    el.querySelectorAll('.sz button').forEach(b=>b.onclick=()=>{el.querySelectorAll('.sz button').forEach(x=>x.classList.toggle('on',x===b));sel[it.id]=b.dataset.z;blip(600,.03)});
+    el.querySelector('.add').onclick=()=>{add(it);fly(el.querySelector('.ic'))};
   });
-  }
-  /* ---- bag ---- */
-  const cart=new Map();
-  function add(it){const z=sel[it.id],k=it.id+'|'+z,e=cart.get(k);e?e.q++:cart.set(k,{it,z,q:1});render();blip(900,.05);setTimeout(()=>blip(1300,.04),70)}
-  const tallyHTML=q=>{let h='',g=Math.floor(q/5),r=q%5;for(let k=0;k<g;k++)h+='<span class="g"><i></i><i></i><i></i><i></i><u></u></span>';if(r)h+='<span class="g">'+'<i></i>'.repeat(r)+'</span>';return h};
-  let lastTot=null;
+  /* ---- tray ---- */
+  const cart=new Map();let ordering=false;
+  const qtyOf=id=>[...cart.values()].filter(e=>e.it.id===id).reduce((a,e)=>a+e.q,0);
+  function add(it){if(ordering)return;const z=sel[it.id],k=it.id+'|'+z,e=cart.get(k);e?e.q++:cart.set(k,{it,z,q:1});render();blip(900,.05);setTimeout(()=>blip(1300,.04),70)}
   function render(){
-    let sub=0,cnt=0,h='',pk='',n=0;
-    cart.forEach((e,k)=>{const pp=price[e.it.id];sub+=pp*e.q;cnt+=e.q;
-      h+=`<div class="bl" style="--lr:${(n%2?.8:-.8)}deg" data-k="${k}"><div class="row"><span class="nm">${e.it.n}${e.z?' ('+e.z+')':''}</span><span class="dots"></span><span class="pp">${money(pp*e.q)}</span></div>
-        <div class="row2"><button type="button" class="qb" data-k="${k}" data-d="-1" aria-label="one less">-</button><span class="tally" aria-label="quantity ${e.q}">${tallyHTML(e.q)}</span><button type="button" class="qb" data-k="${k}" data-d="1" aria-label="one more">+</button><button type="button" class="x" data-k="${k}" data-x="1">scrap it</button></div></div>`;
-      if(n<5)pk+=`<span class="pk" style="--r:${(n-2)*9+(n%2?4:-4)}deg;--y:${Math.abs(n-2)*6}px">${svg(e.it)}<b>${e.q}</b></span>`;n++});
-    $('#blines').innerHTML=h||'<div class="emp">nowt in here yet.<br>go on, cop something</div>';
-    $('#peek').innerHTML=pk;
-    const del=sub===0?0:(sub>=50?0:3.99);
-    $('#bdel').textContent=sub&&del===0?'FREE':money(del);$('#btot').textContent=money(sub+del);$('#bcount').textContent=cnt;
-    if(lastTot!==sub+del&&sub){const c=$('#circ');c.classList.remove('draw');void c.offsetWidth;c.classList.add('draw')}else if(!sub)$('#circ').classList.remove('draw');
-    lastTot=sub+del;
-    $('#bfree').textContent=sub===0?'':(sub>=50?'free delivery, you legend':'chuck in '+money(50-sub)+' more for free delivery');
-    $('#bgo').disabled=!cnt;
+    let sub=0,cnt=0,h='';
+    cart.forEach((e,k)=>{sub+=e.it.p*e.q;cnt+=e.q;
+      h+=`<div class="tl"><div class="r"><span>${e.it.no}. ${e.it.n}${e.z?' ('+e.z+')':''}</span><span>${money(e.it.p*e.q)}</span></div><div class="q"><button type="button" data-k="${k}" data-d="-1" aria-label="less">-</button>x${e.q}<button type="button" data-k="${k}" data-d="1" aria-label="more">+</button><button type="button" class="x" data-k="${k}" data-x="1">bin it</button></div></div>`});
+    $('#tlines').innerHTML=h||'<div class="emp">Tray\'s empty.<br>Go on, order something</div>';
+    const sets=Math.min(qtyOf('tee'),qtyOf('cdr'),qtyOf('stk')),dis=sets*5,after=sub-dis,del=sub===0?0:(after>=50?0:3.99);
+    $('#tsub').textContent=money(sub);$('#tdealrow').hidden=!dis;$('#tdis').textContent='-'+money(dis);
+    $('#tdel').textContent=sub&&del===0?'FREE':money(del);$('#ttot').textContent=money(after+del);$('#tcount').textContent=cnt;
+    $('#tfree').textContent=sub===0?'':(after>=50?'FREE DELIVERY, YOU LEGEND':'ADD '+money(50-after)+' MORE FOR FREE DELIVERY');
+    $('#order').disabled=!cnt||ordering;
+    const d=$('#deal');d.classList.toggle('on',sets>0);
+    const have=['tee','cdr','stk'].filter(i=>qtyOf(i)>0).length;
+    $('#dealsub').textContent=sets>0?'DEAL APPLIED · -£'+dis:(have?`${have}/3 IN THE TRAY · ADD THE REST`:'SAVE £5 · ADD ALL THREE');
   }
-  $('#blines').addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(!b)return;const en=cart.get(b.dataset.k);
-    if(b.dataset.x){b.closest('.bl').classList.add('scrap');blip(220,.15);setTimeout(()=>{cart.delete(b.dataset.k);render()},320);return}
-    en.q+=+b.dataset.d;if(en.q<=0)cart.delete(b.dataset.k);render();blip(500,.03)});
+  $('#tlines').addEventListener('click',e=>{if(ordering)return;const b=e.target.closest('button[data-k]');if(!b)return;const en=cart.get(b.dataset.k);
+    if(b.dataset.x)cart.delete(b.dataset.k);else{en.q+=+b.dataset.d;if(en.q<=0)cart.delete(b.dataset.k)}render();blip(500,.03)});
   function fly(src){
-    if(reduce||!src)return;const a=src.getBoundingClientRect(),b=$('#peek').getBoundingClientRect();
-    const f=document.createElement('div');f.className='fly';f.innerHTML=src.innerHTML;
-    f.style.cssText+=`left:${a.left}px;top:${a.top}px;width:${a.width}px;height:${a.height}px;`;document.body.appendChild(f);
-    requestAnimationFrame(()=>{f.style.transform=`translate(${b.left+b.width/2-a.left-a.width/2}px,${b.top+60-a.top-a.height/2}px) scale(.18) rotate(30deg)`;f.style.opacity='.2'});
+    if(reduce||!src)return;const a=src.getBoundingClientRect(),b=document.querySelector('.tray').getBoundingClientRect();
+    const f=document.createElement('div');f.className='fly';f.style.cssText+=`left:${a.left}px;top:${a.top}px;width:${a.width}px;height:${a.height}px;border-radius:50%;background:#f07000;border:4px solid #000;overflow:hidden;display:grid;place-items:center`;f.innerHTML=src.innerHTML;document.body.appendChild(f);
+    requestAnimationFrame(()=>{f.style.transform=`translate(${b.left+b.width/2-a.left-a.width/2}px,${b.top+90-a.top-a.height/2}px) scale(.2) rotate(40deg)`;f.style.opacity='.2'});
     setTimeout(()=>f.remove(),700);
   }
-  /* ---- text-to-order (Nokia SMS) ---- */
-  $('#bgo').onclick=()=>{
-    const parts=[...cart.values()].map(e=>(e.q>1?e.q+'X ':'')+e.it.id.toUpperCase()+(e.z?'-'+e.z:''));
-    const msg='BUY '+parts.join(' ')+' '+$('#btot').textContent;
-    const box=$('#sms2'),t=$('#smst'),st=$('#smss'),rep=$('#smsr');box.classList.add('on');rep.hidden=true;st.textContent='';t.textContent='';
-    let i=0;const iv=setInterval(()=>{t.textContent=msg.slice(0,++i);$('#smsc').textContent=160-i;blip(700+Math.random()*300,.02);
-      if(i>=msg.length){clearInterval(iv);setTimeout(()=>{st.textContent='SENDING...';blip(400,.2);setTimeout(()=>{st.textContent='MESSAGE SENT ✓';rep.hidden=false;rep.textContent='5EB: Ta fam! Order #N17-'+(1000+Math.random()*8999|0)+' confirmed. Allow 3-5 days. (Demo only, nothing was charged.)';blip(1200,.1);
-        setTimeout(()=>{cart.clear();render()},3500)},1400)},500)}},45);
+  /* ---- queue: "now serving" display ---- */
+  let serving=31;const sv=$('#serving'),snum=$('#snum');
+  const showN=n=>{snum.textContent=String(n).padStart(3,'0');sv.classList.remove('pop');void sv.offsetWidth;sv.classList.add('pop')};
+  const ambient=setInterval(()=>{if(ordering)return;serving++;showN(serving);blip(1500,.08)},7000);
+  $('#order').onclick=()=>{
+    if(!cart.size||ordering)return;ordering=true;$('#order').disabled=true;
+    const mine=serving+3+(Math.random()*3|0);
+    $('#tn').textContent=String(mine).padStart(3,'0');
+    $('#tls').innerHTML=[...cart.values()].map(e=>`${e.q}x ${e.it.n}${e.z?' ('+e.z+')':''}`).join('<br>')+`<br>= ${$('#ttot').textContent}`;
+    $('#tst').textContent='PLEASE WAIT...';$('#bagr').classList.remove('on');$('#tkt').classList.add('on');blip(400,.2);burst();setTimeout(()=>$('#hatch').scrollTo({top:$('#hatch').scrollHeight,behavior:'smooth'}),400);
+    const iv=setInterval(()=>{
+      serving++;showN(serving);blip(1500,.1);setTimeout(()=>blip(1100,.1),120);
+      if(serving>=mine){clearInterval(iv);sv.classList.add('mine');$('#tst').textContent='★ ORDER READY ★';
+        $('#bagt').textContent='No.'+String(mine).padStart(3,'0')+' ready!';$('#bagr').classList.add('on');
+        toast('Demo shop','No payment taken. Hook up a real checkout (Shopify, Stripe) to go live.');
+        setTimeout(()=>{cart.clear();ordering=false;sv.classList.remove('mine');render();$('#tkt').classList.remove('on');$('#bagr').classList.remove('on')},6500)}
+    },950);
   };
-  /* ---- string lights ---- */
-  (function lights(){
-    const box=$('#lights');function build(){
-      const w=box.clientWidth,n=Math.max(8,Math.round(w/90)),pts=[];
-      for(let i=0;i<=n;i++){const x=i/n*w,y=20+Math.sin(i/n*Math.PI)*62;pts.push([x,y])}
-      let d=`M ${pts[0][0]} ${pts[0][1]}`;pts.slice(1).forEach(p=>d+=` L ${p[0]} ${p[1]}`);
-      let bl='';pts.forEach((p,i)=>{if(i%1===0)bl+=`<g class="bulb" style="animation-delay:${-Math.random()*3}s"><circle cx="${p[0]}" cy="${p[1]+14}" r="14" fill="#f07000" opacity=".18"/><circle cx="${p[0]}" cy="${p[1]+14}" r="7" fill="${i%3?'#ffb347':'#fff1c9'}"/><rect x="${p[0]-3}" y="${p[1]}" width="6" height="7" fill="#222"/></g>`});
-      box.innerHTML=`<svg viewBox="0 0 ${w} 150" preserveAspectRatio="none"><path d="${d}" fill="none" stroke="#222" stroke-width="3"/>${bl}</svg>`;
-    }
-    build();addEventListener('resize',build);
-  })();
-  draw();render();
+  render();
 })();
 
 if(location.hash==='#skip')start(false);
