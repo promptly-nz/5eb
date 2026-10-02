@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5EB Style Comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:ital,wght@0,500;0,900;1,500&family=IBM+Plex+Mono:wght@400;500&family=Rubik+Dirt&family=Space+Grotesk:wght@300;500;700&family=Archivo+Narrow:wght@700&family=Permanent+Marker&family=VT323&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:#050505;color:#eee;font-family:system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:10px 24px;border-bottom:1px solid #222;font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:#888;background:#0a0a0a}
+.bar h1{font-size:13px;color:#fff;letter-spacing:.3em}
+.grid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);min-height:0}
+.col{position:relative;overflow:auto;padding:28px 28px 36px;display:flex;flex-direction:column;gap:20px;scrollbar-width:none}
+.col::-webkit-scrollbar{display:none}
+.tag{font:500 10px/1 "IBM Plex Mono",monospace;letter-spacing:.25em;text-transform:uppercase;opacity:.7}
+.hero{aspect-ratio:4/3;width:100%;position:relative;flex:none}
+.title{line-height:.85}
+.player{flex:none}
+.track{display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer}
+.track .n{width:22px}
+.track .t{flex:1}
+.bars{display:flex;gap:2px;align-items:flex-end;height:14px;width:20px;visibility:hidden}
+.track.on .bars{visibility:visible}
+.bars i{flex:1;background:currentColor;animation:eq .8s infinite ease-in-out alternate}
+.bars i:nth-child(2){animation-delay:.2s}.bars i:nth-child(3){animation-delay:.4s}
+@keyframes eq{from{height:20%}to{height:100%}}
+.prog{height:3px;position:relative;margin:12px 0 4px}
+.prog b{position:absolute;inset:0 auto 0 0;width:0;transition:width .25s linear}
+.times{display:flex;justify-content:space-between;font-size:10px;opacity:.7}
+.ctrl{display:flex;gap:10px;align-items:center;margin-bottom:6px}
+.ctrl button{cursor:pointer;background:none;border:0;color:inherit;font:inherit}
+button.cta{cursor:pointer;width:100%;flex:none}
+
+/* ===== 1 EDITORIAL ===== */
+.c1{background:#121212;color:#fff;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;border-right:1px solid #333}
+.c1 .tag{color:#aaa}
+.c1 .masthead{display:flex;justify-content:space-between;border-top:1px solid #fff;border-bottom:1px solid #555;padding:8px 0;text-transform:uppercase;font-size:10px;letter-spacing:.25em}
+.c1 .hero{background:#ddd url(img/high-road.jpg) center/cover;border:1px solid #fff;box-shadow:14px 14px 0 rgba(255,255,255,.12),6px 6px 0 #000}
+.c1 .hero::before{content:"";position:absolute;inset:0;background:url(img/high-road.jpg) center/cover;filter:grayscale(1) contrast(1.9) brightness(1.25);box-shadow:inset 0 0 90px rgba(255,255,255,.55)}
+.c1 .hero::after{content:"FIG. 01 — HIGH ROAD, N17, DIRECT FLASH";position:absolute;left:0;bottom:0;background:#121212;color:#fff;padding:5px 10px;font-size:9px;letter-spacing:.2em}
+.c1 .title{font-family:"Bodoni Moda",serif;font-weight:900;font-size:min(13vw,15vh);letter-spacing:-.04em;text-shadow:6px 6px 0 #333}
+.c1 .title em{font-weight:500}
+.c1 .sub{text-transform:uppercase;font-size:10px;letter-spacing:.35em;color:#aaa;border-top:1px solid #555;padding-top:10px;display:flex;justify-content:space-between}
+.c1 .player{border:1px solid #fff;padding:14px;box-shadow:8px 8px 0 #000,9px 9px 0 #555;background:#181818}
+.c1 .track{border-bottom:1px solid #333}
+.c1 .track.on{color:#fff;background:#222;margin:0 -14px;padding:10px 14px}
+.c1 .track:not(.on){color:#999}
+.c1 .prog{background:#444}.c1 .prog b{background:#fff}
+.c1 .cta{background:#fff;color:#121212;border:1px solid #fff;padding:16px;font:500 12px "IBM Plex Mono",monospace;letter-spacing:.3em;box-shadow:8px 8px 0 #444;transition:.15s}
+.c1 .cta:hover{background:#121212;color:#fff;box-shadow:2px 2px 0 #fff}
+
+/* ===== 2 GRUNGY ===== */
+.c2{background:#1A1A1A;color:#e7dcc3;font-family:"Archivo Narrow",sans-serif;
+ background-image:radial-gradient(rgba(0,0,0,.5) 1px,transparent 1.5px),repeating-linear-gradient(98deg,transparent 0 7px,rgba(255,255,255,.015) 7px 8px);background-size:5px 5px,auto;
+ cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><rect width='20' height='20' fill='%23C4151C'/><rect x='4' y='4' width='12' height='12' fill='%231A1A1A'/></svg>") 10 10,crosshair}
+.c2 button,.c2 .track{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28'><rect width='28' height='28' fill='%23C4151C'/><rect x='5' y='5' width='18' height='18' fill='%23e7dcc3'/></svg>") 14 14,pointer}
+.c2 .tag{font-family:"Archivo Narrow";color:#C4151C;letter-spacing:.2em;font-size:12px;opacity:1}
+.c2 .strip{background:#C4151C;color:#000;font:700 13px "Archivo Narrow";letter-spacing:.15em;padding:6px 10px;transform:rotate(-1.2deg);margin:0 -34px;white-space:nowrap;overflow:hidden;text-transform:uppercase}
+.c2 .hero{background:#8a7650 url(img/graffiti.jpg) center/cover;border:6px solid #e7dcc3;transform:rotate(1deg);box-shadow:10px 10px 0 #C4151C}
+.c2 .hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(0,0,0,.22) 0 2px,transparent 2px 6px),rgba(138,118,80,.35);mix-blend-mode:multiply}
+.c2 .hero::after{content:"HAND-STITCHED / NO. 5";position:absolute;right:-6px;bottom:-14px;background:#1A1A1A;color:#e7dcc3;font:700 11px "Archivo Narrow";padding:5px 10px;letter-spacing:.15em;transform:rotate(-2deg)}
+.c2 .title{font-family:Anton,Impact,sans-serif;font-size:min(14vw,16vh);color:#C4151C;text-transform:uppercase;line-height:.8;transform:rotate(-2deg);text-shadow:5px 5px 0 #000;-webkit-text-stroke:2px #000;margin-left:-4px}
+.c2 .player{background:#6f5f3d;border:5px solid #000;padding:14px;box-shadow:8px 8px 0 #000;transform:rotate(-.6deg);background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.12) 0 1px,transparent 1px 4px)}
+.c2 .track{border-bottom:3px dashed #000;font-size:16px;text-transform:uppercase;letter-spacing:.06em;color:#1A1A1A}
+.c2 .track.on{background:#1A1A1A;color:#e7dcc3;margin:0 -14px;padding:10px 14px}
+.c2 .prog{height:12px;background:#000;border:2px solid #000}.c2 .prog b{background:#C4151C}
+.c2 .times{color:#1A1A1A;font-weight:700}
+.c2 .cta{background:#C4151C;color:#fff;font:400 26px Anton;letter-spacing:.06em;text-transform:uppercase;padding:16px;border:5px solid #000;border-width:4px 9px 9px 4px;box-shadow:6px 6px 0 #e7dcc3;transform:rotate(.8deg);transition:.1s}
+.c2 .cta:hover{transform:rotate(-.8deg) translate(3px,3px);box-shadow:2px 2px 0 #e7dcc3;background:#e7dcc3;color:#C4151C}
+
+/* ===== 3 2000s UK UNDERGROUND (mixtape / pirate radio) ===== */
+.c3{background:#d9d4c4;color:#111;font-family:Impact,Anton,sans-serif;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .35 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>")}
+.c3 .tag{font-family:"Permanent Marker",cursive;font-size:14px;letter-spacing:.02em;opacity:1;color:#111;text-transform:none}
+.c3 .masthead{display:flex;justify-content:space-between;background:#111;color:#f2e600;padding:6px 10px;font:400 14px/1 "VT323",monospace;letter-spacing:.12em;text-transform:uppercase}
+.c3 .hero{background:#999;border:3px solid #111;box-shadow:6px 6px 0 #111;overflow:visible}
+.c3 .hero .ph{position:absolute;inset:0;background:url(img/tower.jpg) center/cover;filter:grayscale(1) contrast(1.7) brightness(1.05)}
+.c3 .hero .ph::after{content:"";position:absolute;inset:0;background:radial-gradient(#000 28%,transparent 30%) 0 0/5px 5px;mix-blend-mode:multiply;opacity:.35}
+.c3 .hero::before{content:"";position:absolute;inset:0;background:#f2e600;mix-blend-mode:multiply;opacity:.55;z-index:1}
+.c3 .hero::after{content:"";}
+.c3 .pol{position:absolute;width:34%;background:#fff;padding:5px 5px 18px;box-shadow:3px 4px 0 rgba(0,0,0,.6);z-index:2}
+.c3 .pol img{width:100%;aspect-ratio:1;object-fit:cover;display:block;filter:grayscale(1) contrast(1.4)}
+.c3 .pol::before{content:"";position:absolute;top:-9px;left:50%;width:46px;height:16px;background:rgba(240,230,160,.85);transform:translateX(-50%) rotate(-3deg)}
+.c3 .pol.a{right:-10px;top:-18px;transform:rotate(5deg)}
+.c3 .pol.b{left:-12px;bottom:-22px;transform:rotate(-6deg)}
+.c3 .sticker{position:absolute;z-index:3;right:12px;bottom:12px;width:86px;height:86px;border-radius:50%;background:#f2e600;color:#111;border:3px solid #111;display:grid;place-items:center;text-align:center;font:400 15px/1 Anton;transform:rotate(-12deg);text-transform:uppercase}
+.c3 .titlebox{position:relative;margin-top:14px}
+.c3 .title{font-family:Impact,Anton,sans-serif;font-size:min(14vw,16vh);line-height:.82;color:#f2e600;-webkit-text-stroke:3px #111;text-shadow:6px 6px 0 #111;transform:skew(-4deg);letter-spacing:-.01em}
+.c3 .scrawl{position:absolute;right:0;top:4px;font:400 22px "Permanent Marker";color:#d11;transform:rotate(-8deg);line-height:1.05;text-align:right}
+.c3 .strip{background:#111;color:#fff;font:400 13px Anton;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;display:flex;justify-content:space-between}
+.c3 .player{background:linear-gradient(#5a5e66,#2b2d33);border:2px solid #111;border-top-color:#9aa;border-left-color:#9aa;padding:10px;color:#6cff6c;font-family:VT323,monospace;box-shadow:5px 5px 0 #111}
+.c3 .player .ctrl{font-size:20px}
+.c3 .player .ctrl button{background:linear-gradient(#888,#444);border:1px solid #000;border-radius:2px;width:30px;height:24px;color:#eee;font-size:12px}
+.c3 .player .ctrl .tag{color:#9a9;font-family:VT323;font-size:16px;letter-spacing:.1em}
+.c3 .list{background:#000;border:2px inset #555;padding:4px 8px;margin:6px 0}
+.c3 .track{font-size:20px;padding:2px 0;color:#2fa82f;letter-spacing:.04em}
+.c3 .track.on{color:#fff;background:#0a1d8a;margin:0 -8px;padding:2px 8px}
+.c3 .track.on .bars{color:#6cff6c}
+.c3 .prog{background:#000;border:1px inset #555;height:10px;margin:6px 0 2px}
+.c3 .prog b{background:repeating-linear-gradient(90deg,#6cff6c 0 4px,transparent 4px 6px)}
+.c3 .times{font-size:17px;color:#6cff6c;opacity:1}
+.c3 .cta{background:#f2e600;color:#111;font:400 28px Anton;letter-spacing:.04em;text-transform:uppercase;padding:14px;border:4px solid #111;box-shadow:7px 7px 0 #111;transform:rotate(-1deg);transition:.1s}
+.c3 .cta:hover{background:#111;color:#f2e600;box-shadow:2px 2px 0 #f2e600;transform:rotate(1deg) translate(3px,3px)}
+
+@media(max-width:1000px){body{overflow:auto}.grid{grid-template-columns:1fr}.col{overflow:visible}}
+</style>
+</head>
+<body>
+<div class="bar"><h1>5EB Style Comparison</h1><span>3 directions · N. London · 2026</span></div>
+<main class="grid">
+
+<section class="col c1">
+  <div class="tag">01 / Editorial Direct-Flash</div>
+  <div class="masthead"><span>Issue No. 5</span><span>Haringey / N17</span><span>Free</span></div>
+  <div class="hero"></div>
+  <h2 class="title">5<em>EB</em></h2>
+  <div class="sub"><span>Artist Profile</span><span>New single out now</span></div>
+  <div class="player" data-player></div>
+  <button class="cta" data-cta>STREAM 'DUCATTI' NOW</button>
+</section>
+
+<section class="col c2">
+  <div class="tag">02 / Grungy Streetwear DIY</div>
+  <div class="strip">★ FREE 5EB ★ NO LABEL ★ NORTH LDN ★ FREE 5EB ★ NO LABEL ★ NORTH LDN ★</div>
+  <div class="hero"></div>
+  <h2 class="title">5EB</h2>
+  <div class="player" data-player></div>
+  <button class="cta" data-cta>STREAM 'DUCATTI' NOW</button>
+</section>
+
+<section class="col c3">
+  <div class="tag">03 / 2000s UK Underground</div>
+  <div class="masthead"><span>● Rinse FM 94.0 — N. London</span><span>Vol.1 · Free</span></div>
+  <div class="hero">
+    <div class="ph"></div>
+    <div class="pol a"><img src="img/boombox.jpg" alt="boombox"></div>
+    <div class="pol b"><img src="img/decks.jpg" alt="decks"></div>
+    <div class="sticker">Out now<br>Free<br>DL</div>
+  </div>
+  <div class="titlebox"><h2 class="title">5EB</h2><div class="scrawl">the mixtape<br>(burnt it myself)</div></div>
+  <div class="strip"><span>Bare Bars</span><span>No Hooks</span><span>Estate Tapes</span></div>
+  <div class="player" data-player></div>
+  <button class="cta" data-cta>STREAM 'DUCATTI' NOW</button>
+</section>
+
+</main>
+<script>
+const tracks=[["Ducatti","2:48"],["Night Bus","3:05"],["Flash","2:31"],["Seven Sisters","3:22"]];
+const secs=t=>{const[m,s]=t.split(":");return+m*60+ +s};
+const fmt=s=>Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
+document.querySelectorAll("[data-player]").forEach(el=>{
+  let cur=0,pos=0,playing=false;
+  el.innerHTML=`<div class="ctrl"><button data-prev>⏮</button><button data-play>▶</button><button data-next>⏭</button><span class="tag" style="margin-left:auto">NOW PLAYING</span></div>
+  <div class="list">${tracks.map((t,i)=>`<div class="track" data-i="${i}"><span class="n">0${i+1}</span><span class="t">${t[0]}</span><span class="bars"><i></i><i></i><i></i></span><span>${t[1]}</span></div>`).join("")}</div>
+  <div class="prog"><b></b></div><div class="times"><span class="a">0:00</span><span class="b"></span></div>`;
+  const rows=[...el.querySelectorAll(".track")],bar=el.querySelector(".prog b"),a=el.querySelector(".a"),b=el.querySelector(".b"),pb=el.querySelector("[data-play]");
+  const render=()=>{rows.forEach((r,i)=>r.classList.toggle("on",i===cur));const d=secs(tracks[cur][1]);bar.style.width=pos/d*100+"%";a.textContent=fmt(pos);b.textContent=tracks[cur][1];pb.textContent=playing?"⏸":"▶"};
+  const go=i=>{cur=(i+tracks.length)%tracks.length;pos=0;render()};
+  rows.forEach(r=>r.onclick=()=>{go(+r.dataset.i);playing=true;render()});
+  el.querySelector("[data-prev]").onclick=()=>go(cur-1);
+  el.querySelector("[data-next]").onclick=()=>go(cur+1);
+  pb.onclick=()=>{playing=!playing;render()};
+  setInterval(()=>{if(!playing)return;pos++;if(pos>=secs(tracks[cur][1]))go(cur+1);else render()},1000);
+  render();
+});
+</script>
+</body>
+</html>
