@@ -296,67 +296,111 @@ section{position:relative}
 .toast b{display:block;font-weight:400;border-bottom:2px solid #1c2b1c;margin-bottom:6px;padding-bottom:4px}
 .toast span{display:block;text-align:right;margin-top:8px;text-decoration:underline}
 
-/* ---------- MERCH STALL ---------- */
-#shop{background:#0d0b09;border-top:6px solid var(--o);padding-bottom:170px;overflow-x:clip}
-.shutterw{position:relative;height:clamp(220px,38vh,340px);overflow:hidden;display:flex;align-items:flex-end;background:#0d0b09}
-.shutter{position:relative;width:100%;height:clamp(220px,38vh,340px);flex:none;background:repeating-linear-gradient(0deg,#7a7f84 0 13px,#4d5156 13px 16px);border-bottom:12px solid #2a2c2e;box-shadow:inset 0 -30px 40px rgba(0,0,0,.45)}
-.shutter span{position:absolute;font:400 clamp(26px,5vw,66px) "Permanent Marker";text-shadow:3px 3px 0 #000}
-.shutter .t1{left:6%;top:14%;color:var(--o);transform:rotate(-5deg)}
-.shutter .t2{right:8%;top:38%;color:#fff;transform:rotate(4deg)}
-.shutter .t3{left:34%;bottom:10%;color:var(--r);transform:rotate(-2deg);font-size:clamp(20px,3vw,40px)}
-.shutter .lock{position:absolute;left:50%;bottom:-8px;width:44px;height:36px;margin-left:-22px;background:#c9a227;border:3px solid #000;border-radius:6px}
-.awning{height:46px;background:repeating-linear-gradient(90deg,var(--o) 0 48px,var(--c) 48px 96px);position:relative;box-shadow:0 4px 0 #000}
-.awning::after{content:"";position:absolute;left:0;right:0;top:100%;height:20px;background:repeating-linear-gradient(90deg,var(--o) 0 48px,var(--c) 48px 96px);-webkit-mask:radial-gradient(circle at 24px 0,#000 23px,transparent 24px) 0 0/48px 100%;mask:radial-gradient(circle at 24px 0,#000 23px,transparent 24px) 0 0/48px 100%}
-#shop .hd{padding-top:70px;position:relative}
-.shopg{display:grid;grid-template-columns:1fr 340px;gap:4vw;padding:20px 4vw 0;align-items:start}
-.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:34px 26px;padding-top:12px}
-.pr{position:relative;background:var(--c);color:#000;border:4px solid #000;box-shadow:7px 7px 0 var(--o);padding:12px 12px 14px;transform:rotate(var(--rot,0deg));transition:transform .15s,box-shadow .15s}
-.pr:hover{transform:rotate(0) translate(-3px,-3px);box-shadow:11px 11px 0 var(--o)}
-.pr::before{content:"";position:absolute;top:-13px;left:50%;width:62px;height:20px;background:rgba(240,226,150,.85);transform:translateX(-50%) rotate(-3deg)}
-.pr .pic{position:relative;aspect-ratio:1;border:3px solid #000;background:var(--bg,#222);display:grid;place-items:center;overflow:hidden}
-.pr .pic::after{content:"";position:absolute;inset:0;background:radial-gradient(#000 28%,transparent 30%) 0 0/8px 8px;opacity:.14;pointer-events:none}
-.pr .pic svg{width:80%;height:80%;filter:drop-shadow(4px 5px 0 rgba(0,0,0,.55));transition:transform .2s}
-.pr:hover .pic svg{transform:scale(1.07) rotate(-3deg)}
-.pr .pt{position:absolute;right:-14px;top:-16px;z-index:2;background:var(--r);color:#fff;font:400 26px Anton;padding:4px 12px;border:3px solid #000;transform:rotate(8deg);box-shadow:3px 3px 0 #000}
-.pr .bdg{position:absolute;left:-10px;top:14px;z-index:2;background:#000;color:var(--o);font:400 15px Anton;letter-spacing:.1em;padding:2px 10px;transform:rotate(-6deg)}
-.pr h3{font-size:26px;margin:12px 0 2px;color:#000}
-.pr p{font:700 15px "Archivo Narrow";color:#444;margin-bottom:10px;line-height:1.2}
-.sz{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
-.sz button{min-width:38px;padding:4px 6px;background:#fff;border:3px solid #000;font:400 17px Anton;color:#000}
-.sz button.on{background:#000;color:var(--o)}
-.sz button:hover:not(.on){background:var(--o)}
-.addb{width:100%;background:#000;color:var(--o);border:3px solid #000;font:400 22px Anton;letter-spacing:.06em;text-transform:uppercase;padding:9px;box-shadow:4px 4px 0 var(--o);transition:.1s}
-.addb:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--o)}
-.addb:disabled{background:#999;color:#444;box-shadow:none;transform:none}
-.pr.out .pic{filter:grayscale(1) brightness(.7)}
-.pr.out::after{content:"SOLD OUT";position:absolute;left:50%;top:34%;transform:translate(-50%,-50%) rotate(-14deg);font:400 44px Anton;color:var(--r);border:5px solid var(--r);padding:0 14px;background:rgba(233,226,208,.85);letter-spacing:.06em;pointer-events:none}
-.rcpt{position:sticky;top:122px;background:#f4f1e8;color:#222;font:400 21px/1.15 VT323,monospace;padding:20px 18px 34px;transform:rotate(1.2deg);box-shadow:8px 8px 0 #000;-webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%;background-image:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.025) 3px 4px)}
-.rcpt h4{font:400 30px Anton;text-align:center;letter-spacing:.06em;text-transform:uppercase;line-height:1}
-.rcpt .c{text-align:center;color:#555;font-size:17px}
-.rcpt hr{border:0;border-top:2px dashed #888;margin:10px 0}
-.rl{display:grid;grid-template-columns:1fr auto;gap:2px 10px;animation:print .35s ease-out}
-@keyframes print{from{opacity:0;transform:translateY(-12px)}}
-.rl .nm{text-transform:uppercase}
-.rl .qc{grid-column:1/-1;display:flex;gap:8px;align-items:center;color:#666;font-size:18px;margin-bottom:6px}
-.rl .qc button{background:#222;color:#f4f1e8;border:0;width:22px;height:22px;font:400 18px VT323;line-height:1}
-.rl .qc button:hover{background:var(--o);color:#000}
-.rcpt .tot{display:flex;justify-content:space-between}
-.rcpt .tot.big{font-size:30px;font-family:Anton;letter-spacing:.04em;margin-top:4px}
-.rcpt .emp{text-align:center;color:#777;padding:14px 0;font-size:20px}
-.rcpt .barcode2{height:42px;margin-top:12px;background:repeating-linear-gradient(90deg,#222 0 2px,transparent 2px 4px,#222 4px 5px,transparent 5px 9px,#222 9px 12px,transparent 12px 14px)}
-.rcpt .go{display:block;width:100%;margin-top:14px;background:#111;color:var(--o);border:0;font:400 24px Anton;letter-spacing:.08em;text-transform:uppercase;padding:11px}
-.rcpt .go:hover:not(:disabled){background:var(--o);color:#000}
-.rcpt .go:disabled{opacity:.4}
-.rcpt .stamp{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-16deg) scale(2);opacity:0;font:400 40px Anton;color:#c11;border:6px solid #c11;padding:2px 14px;text-align:center;line-height:1;pointer-events:none;letter-spacing:.06em}
-.rcpt .stamp small{display:block;font:400 17px VT323;letter-spacing:.1em}
-.rcpt.paid .stamp{animation:stamp .5s cubic-bezier(.2,2,.4,1) forwards}
-@keyframes stamp{to{opacity:.9;transform:translate(-50%,-50%) rotate(-16deg) scale(1)}}
-.fly{position:fixed;z-index:990;pointer-events:none;transition:transform .7s cubic-bezier(.5,-0.3,.6,1),opacity .7s;border:3px solid #000;background:var(--o);display:grid;place-items:center}
+/* ---------- MERCH: 3AM MARKET STALL ---------- */
+#shop{position:relative;background:#070605;border-top:6px solid var(--o);padding-bottom:200px;overflow-x:clip;--card:#b58f5c;--cardd:#8d6b3d}
+#shop .mbg{position:absolute;inset:0;background:url(img/shop.jpg) center 30%/cover;filter:grayscale(1) contrast(1.4) brightness(.35);opacity:.55;pointer-events:none}
+#shop .mbg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(240,112,0,.35),transparent 55%),linear-gradient(#070605,transparent 25%,#070605)}
+.lights{position:relative;height:150px;pointer-events:none}
+.lights svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.bulb{animation:flick 3s infinite steps(1)}
+@keyframes flick{0%,100%{opacity:1}43%{opacity:1}44%{opacity:.35}46%{opacity:1}78%{opacity:.7}80%{opacity:1}}
+#shop .hd{position:relative;padding-top:10px}
+#shop .hd h2{font-family:"Permanent Marker";text-transform:none;font-size:clamp(60px,9vw,150px);color:var(--c);transform:rotate(-2deg);text-shadow:5px 5px 0 var(--o);line-height:1}
+.mkt{position:relative;display:grid;grid-template-columns:1fr 360px;gap:4vw;padding:20px 4vw 0;align-items:start}
+.lbl2{font:400 28px "Permanent Marker";color:var(--o);margin:6px 0 10px;transform:rotate(-1.5deg);text-shadow:2px 2px 0 #000}
+/* clothes rail */
+.rail{position:relative;padding-top:40px;margin-bottom:60px}
+.rail::before{content:"";position:absolute;left:-2vw;right:-2vw;top:30px;height:10px;background:linear-gradient(#e9e9e9,#6a6a6a 50%,#2a2a2a);border-radius:5px;box-shadow:0 8px 14px rgba(0,0,0,.6)}
+.rail::after{content:"";position:absolute;left:0;top:30px;width:12px;height:300px;background:linear-gradient(90deg,#444,#999,#444);z-index:-1}
+.hangs{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.hang{position:relative;transform-origin:50% 0;animation:sway 5s ease-in-out infinite alternate;animation-delay:var(--dl,0s);padding-top:42px}
+.hang:hover{animation:sway2 .8s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-1.4deg)}to{transform:rotate(1.4deg)}}
+@keyframes sway2{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+.hook{position:absolute;left:50%;top:-6px;width:30px;height:46px;margin-left:-15px}
+.hook::before{content:"";position:absolute;left:8px;top:0;width:14px;height:20px;border:4px solid #aaa;border-bottom:0;border-radius:14px 14px 0 0}
+.hook::after{content:"";position:absolute;left:0;top:22px;width:30px;height:20px;background:#aaa;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.gar{position:relative;display:block;width:88%;margin:0 auto;filter:drop-shadow(0 12px 8px rgba(0,0,0,.6))}
+.gar svg{width:100%;display:block}
+.ptag{position:relative;margin:-6px auto 0;width:78%;background:var(--card);color:#1a1208;padding:10px 12px 8px;border:2px solid #000;transform:rotate(var(--rot,2deg));box-shadow:4px 5px 0 rgba(0,0,0,.7);background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 2px,transparent 2px 6px)}
+.ptag::before{content:"";position:absolute;left:50%;top:-30px;width:2px;height:30px;background:#ddd;transform:rotate(-8deg)}
+.ptag::after{content:"";position:absolute;left:50%;top:6px;margin-left:-5px;width:10px;height:10px;border-radius:50%;background:#070605;border:2px solid #000}
+.ptag h3{font:400 27px "Permanent Marker";text-transform:none;line-height:1;margin-top:12px}
+.ptag .pr2{display:flex;align-items:baseline;gap:8px;margin:4px 0}
+.ptag .now{font:400 44px "Permanent Marker";color:#b00;line-height:1}
+.ptag .was{font:400 24px "Permanent Marker";color:#333;text-decoration:line-through;text-decoration-thickness:3px}
+.ptag .ono{font:400 16px "Permanent Marker";margin-left:auto;transform:rotate(-6deg)}
+.ptag p{font:700 15px "Archivo Narrow";line-height:1.15;margin-bottom:8px}
+.sz{display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap}
+.sz button{min-width:34px;padding:2px 6px;background:transparent;border:2px solid #1a1208;font:400 17px "Permanent Marker";color:#1a1208}
+.sz button.on{background:#1a1208;color:var(--o)}
+.acts{display:flex;gap:6px}
+.btn2{flex:1;background:#111;color:var(--o);border:2px solid #000;font:400 19px Anton;letter-spacing:.06em;text-transform:uppercase;padding:7px 4px;box-shadow:3px 3px 0 rgba(0,0,0,.5);transition:.1s}
+.btn2:hover:not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 #000;background:var(--o);color:#000}
+.btn2.hg{background:#fff;color:#000;flex:.9}
+.btn2:disabled{opacity:.45}
+.hang.out .gar{filter:grayscale(1) brightness(.6) drop-shadow(0 12px 8px rgba(0,0,0,.6))}
+.hang.out .ptag::after{background:var(--r)}
+.sold{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-12deg);font:400 38px "Permanent Marker";color:#fff;background:var(--r);border:3px solid #000;padding:2px 14px;z-index:2;white-space:nowrap}
+/* crate */
+.crate{position:relative;background:#16120e;border:6px solid #000;border-radius:6px;padding:20px 16px 24px;box-shadow:inset 0 0 0 4px #2a2118,8px 8px 0 var(--o);background-image:repeating-linear-gradient(0deg,transparent 0 38px,#000 38px 44px),repeating-linear-gradient(90deg,transparent 0 58px,#000 58px 64px)}
+.crate::before{content:"MILK CRATE · DIG DEEP";position:absolute;left:14px;top:-18px;background:var(--o);color:#000;font:400 17px Anton;letter-spacing:.14em;padding:2px 12px;transform:rotate(-2deg)}
+.slv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px}
+.sl{position:relative;background:var(--c);color:#000;border:3px solid #000;padding:8px;transform:rotate(var(--rot,0deg)) translateY(var(--ty,0));transition:.18s;box-shadow:5px 5px 0 #000}
+.sl:hover{transform:rotate(0) translateY(-22px);z-index:3;box-shadow:8px 14px 0 #000}
+.sl .pic{aspect-ratio:1;background:var(--bg);border:2px solid #000;display:grid;place-items:center;position:relative;overflow:hidden}
+.sl .pic svg{width:84%}
+.sl h3{font:400 21px "Permanent Marker";text-transform:none;margin:8px 0 0;line-height:1}
+.sl .pr2{display:flex;align-items:baseline;gap:6px;margin:2px 0 6px}
+.sl .now{font:400 32px "Permanent Marker";color:#b00}.sl .was{font:400 18px "Permanent Marker";text-decoration:line-through;color:#444}
+.sl .acts{margin-top:4px}
+.sl.out{filter:grayscale(1)}.sl.out .sold{top:36%;font-size:30px}
+.sl .bd{position:absolute;right:-8px;top:-10px;background:#000;color:var(--o);font:400 14px Anton;letter-spacing:.1em;padding:2px 8px;transform:rotate(7deg);z-index:2}
+/* bag panel */
+.bagp{position:sticky;top:122px;background:var(--card);color:#1a1208;border:3px solid #000;padding:16px;transform:rotate(1.2deg);box-shadow:8px 8px 0 #000;background-image:repeating-linear-gradient(90deg,rgba(0,0,0,.06) 0 2px,transparent 2px 7px)}
+.bagp::before{content:"";position:absolute;top:-14px;left:50%;width:70px;height:22px;background:rgba(240,226,150,.85);transform:translateX(-50%) rotate(-2deg)}
+.bagp h4{font:400 34px "Permanent Marker";text-transform:none;line-height:1}
+.bagsvg{position:relative;width:150px;margin:6px auto 0}
+.bagsvg svg{width:100%;display:block;filter:drop-shadow(4px 5px 0 rgba(0,0,0,.5))}
+.bagsvg b{position:absolute;left:50%;top:62%;transform:translate(-50%,-50%);font:400 44px "Permanent Marker";color:#111}
+.bl{display:grid;grid-template-columns:1fr auto;gap:0 10px;font:400 21px "Permanent Marker";line-height:1.1;padding:6px 0;border-bottom:2px dashed rgba(0,0,0,.4)}
+.bl .qc{grid-column:1/-1;font-size:17px;display:flex;gap:6px;align-items:center}
+.bl .qc button{background:#1a1208;color:#f4e2b4;border:0;width:22px;height:22px;font:400 17px Anton}
+.bl .qc button:hover{background:var(--o);color:#000}
+.bagp .emp{font:400 24px "Permanent Marker";text-align:center;padding:12px 0;color:#4a3820}
+.bagp .tt{display:flex;justify-content:space-between;align-items:baseline;font:400 24px "Permanent Marker";margin-top:8px}
+.bagp .tt.big span:last-child{font-size:46px;color:#b00;line-height:1}
+.bagp .fr{font:700 15px "Archivo Narrow";text-align:center;min-height:1.2em;margin-top:4px}
+.bagp .go{width:100%;margin-top:10px;background:#000;color:var(--o);border:0;font:400 24px Anton;letter-spacing:.08em;text-transform:uppercase;padding:12px}
+.bagp .go:hover:not(:disabled){background:var(--o);color:#000}.bagp .go:disabled{opacity:.4}
+/* nokia sms checkout */
+.sms2{display:none;margin-top:14px;background:#9db596;color:#16240f;border:5px solid #3b3e3a;border-radius:14px 14px 40px 40px;padding:10px 12px 16px;font:400 23px/1.05 VT323,monospace;box-shadow:inset 0 0 0 2px #16240f55,4px 4px 0 #000;min-height:150px}
+.sms2.on{display:block}
+.sms2 .to{border-bottom:2px solid #16240f;margin-bottom:6px;padding-bottom:2px;display:flex;justify-content:space-between}
+.sms2 .cur::after{content:"_";animation:blink 1s steps(1) infinite}
+.sms2 .st{margin-top:8px;text-align:center;letter-spacing:.1em}
+.sms2 .rep{margin-top:8px;padding-top:6px;border-top:2px dashed #16240f}
+/* msn haggle window */
+.msn{position:fixed;z-index:975;right:24px;bottom:56px;width:min(360px,92vw);background:#ece9d8;border:3px solid #000;box-shadow:8px 8px 0 #000;font:15px Tahoma,Verdana,sans-serif;color:#000;display:none}
+.msn.on{display:block;animation:msnin .25s ease-out}
+@keyframes msnin{from{transform:translateY(40px);opacity:0}}
+.msn.nudge{animation:nudge .5s linear}
+@keyframes nudge{10%{transform:translate(-18px,6px)}20%{transform:translate(20px,-8px)}30%{transform:translate(-22px,4px)}40%{transform:translate(18px,8px)}50%{transform:translate(-14px,-6px)}60%{transform:translate(12px,4px)}80%{transform:translate(-6px,2px)}}
+.msn .tb2{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(#ff9a40,#f07000 45%,#a84a00);color:#fff;font:700 14px Tahoma,Verdana,sans-serif;padding:5px 8px;text-shadow:1px 1px 0 #000}
+.msn .tb2 button{background:#c33;color:#fff;border:1px solid #fff;width:22px;height:20px;font:700 12px Arial}
+.msn .who{display:flex;gap:10px;align-items:center;padding:8px 10px;border-bottom:1px solid #aca899;background:linear-gradient(#fff,#ece9d8)}
+.msn .who img{width:46px;height:46px;border:2px solid #7a7a7a;background:#000}
+.msn .who b{display:block;font-size:15px}.msn .who small{color:#555}
+.msn .log{height:210px;overflow:auto;background:#fff;border:2px inset #aaa;margin:8px;padding:8px;font-size:14px;line-height:1.3}
+.msn .log p{margin-bottom:6px}.msn .log p b{color:#a84a00}.msn .log p.me b{color:#06c}.msn .log p.sys{color:#888;font-style:italic}
+.msn .qr{display:flex;flex-wrap:wrap;gap:6px;padding:0 8px 10px}
+.msn .qr button{background:linear-gradient(#fff,#d6d2c2);border:1px solid #7a7a7a;border-radius:3px;font:13px Tahoma,Verdana,sans-serif;padding:5px 8px;color:#000}
+.msn .qr button:hover:not(:disabled){background:#ffe0b8}.msn .qr button:disabled{opacity:.5}
 .bagb{position:fixed;right:18px;top:82px;z-index:960;background:var(--o);color:#000;border:2px solid #000;font:400 18px VT323;padding:0 10px;letter-spacing:.1em;box-shadow:3px 3px 0 #000}
-.bagb:hover{background:#fff}
-.bagb.bump{animation:bump .4s}
+.bagb:hover{background:#fff}.bagb.bump{animation:bump .4s}
 @keyframes bump{40%{transform:scale(1.3) rotate(-6deg)}}
-@media(max-width:900px){.shopg{grid-template-columns:1fr}.rcpt{position:relative;top:0}}
+.fly{position:fixed;z-index:990;pointer-events:none;transition:transform .7s cubic-bezier(.5,-0.3,.6,1),opacity .7s}
+@media(max-width:900px){.mkt{grid-template-columns:1fr}.bagp{position:relative;top:0}}
 
 /* ---------- NO SIGNAL ---------- */
 #end{height:100vh;min-height:640px;display:grid;place-items:center;overflow:hidden;padding-bottom:40px}
@@ -564,30 +608,33 @@ section{position:relative}
   </div>
 </section>
 
-<!-- MERCH STALL -->
+<!-- MERCH: 3AM MARKET STALL -->
 <section id="shop">
-  <div class="shutterw"><div class="shutter" id="shutter">
-    <span class="t1">OPEN 'TIL LATE</span><span class="t2">5EB WOZ ERE</span><span class="t3">no refunds fam</span><div class="lock"></div>
-  </div></div>
-  <div class="awning"></div>
-  <div class="hd"><h2>The Stall</h2><div class="mk">cash, card, whatever · demo shop</div></div>
-  <div class="shopg">
-    <div class="prods" id="prods"></div>
-    <aside class="rcpt" id="rcpt" aria-live="polite">
-      <h4>5EB Merch</h4>
-      <div class="c">ESTATE TAPES STALL · N17<br>TILL 01 · <span id="rdate"></span></div>
-      <hr>
-      <div id="rlines"></div>
-      <hr>
-      <div class="tot"><span>SUBTOTAL</span><span id="rsub">£0.00</span></div>
-      <div class="tot"><span>DELIVERY</span><span id="rdel">£0.00</span></div>
-      <div class="tot big"><span>TOTAL</span><span id="rtot">£0.00</span></div>
-      <div class="c" id="rfree" style="margin-top:6px"></div>
-      <div class="barcode2"></div>
-      <button class="go" id="rgo" type="button" disabled>Checkout</button>
-      <div class="c" style="margin-top:8px">*DEMO SHOP: NO PAYMENTS TAKEN</div>
-      <div class="stamp">DEMO<small>NOT CHARGED</small></div>
+  <div class="mbg"></div>
+  <div class="lights" id="lights"></div>
+  <div class="hd"><h2>The Stall</h2><div class="mk">3am · cash only · haggle me</div></div>
+  <div class="mkt">
+    <div>
+      <div class="rail"><div class="hangs" id="hangs"></div></div>
+      <div class="crate"><div class="slv" id="slv"></div></div>
+    </div>
+    <aside class="bagp" id="bag" aria-live="polite">
+      <h4>Ya bag</h4>
+      <div class="bagsvg"><svg viewBox="0 0 200 220"><path d="M62 70 Q62 14 100 14 Q138 14 138 70" fill="none" stroke="#000" stroke-width="7"/><path d="M30 70 H170 L182 206 Q182 214 174 214 H26 Q18 214 18 206Z" fill="#f4f1e8" stroke="#000" stroke-width="6" stroke-linejoin="round"/><path d="M40 90 H160" stroke="#f07000" stroke-width="12" opacity=".9"/><text x="100" y="196" text-anchor="middle" font-family="Permanent Marker" font-size="22" fill="#000">thank you</text></svg><b id="bcount">0</b></div>
+      <div id="blines"></div>
+      <div class="tt"><span>delivery</span><span id="bdel">£0</span></div>
+      <div class="tt big"><span>total</span><span id="btot">£0</span></div>
+      <div class="fr" id="bfree"></div>
+      <button class="go" id="bgo" type="button" disabled>Text my order</button>
+      <div class="sms2" id="sms2"><div class="to"><span>To: 80000</span><span id="smsc">160</span></div><div id="smst" class="cur"></div><div class="st" id="smss"></div><div class="rep" id="smsr" hidden></div></div>
+      <div class="fr" style="margin-top:8px">*DEMO SHOP: NOTHING IS ACTUALLY SOLD</div>
     </aside>
+  </div>
+  <div class="msn" id="msn" role="dialog" aria-label="Haggle chat">
+    <div class="tb2"><span>5EB Messenger</span><button type="button" id="msnx" aria-label="Close">✕</button></div>
+    <div class="who"><img src="img/logo.png" alt=""><div><b>5EB <small>(Busy - on the stall)</small></b><small id="msnitem">~ haggle me ~</small></div></div>
+    <div class="log" id="mlog"></div>
+    <div class="qr" id="mqr"></div>
   </div>
 </section>
 
@@ -1022,69 +1069,122 @@ addEventListener('keydown',e=>{
 })();
 
 /* =======================================================
-   MERCH STALL
+   MERCH: market stall + haggle chat + text-to-order
 ======================================================= */
 (function shop(){
   const P=[
-   {id:'tee',n:'Estate Tapes Tee',d:'Heavyweight black. Logo on the chest, "N17" on the back.',p:28,sz:['S','M','L','XL'],t:'tee',c:'#111',bg:'#f07000',b:'NEW'},
-   {id:'hood',n:'N17 Hoodie',d:'Oversized, heavy fleece, hand-finished print.',p:55,sz:['S','M','L','XL'],t:'hood',c:'#f07000',bg:'#222',b:'LTD 100'},
-   {id:'cdr',n:'Vol.1 CD-R',d:'Hand-burnt, scribbled on in marker, signed.',p:8,t:'cd',c:'#d9d4c4',bg:'#3a3a3a'},
-   {id:'tape',n:'Cassette Pack',d:'Numbered of 100. Comes with a free Bic and a sore thumb.',p:12,t:'tape',c:'#222',bg:'#e9e2d0',out:true},
-   {id:'beanie',n:'Roadman Beanie',d:'One size, pulled down low. Orange patch.',p:18,t:'beanie',c:'#111',bg:'#f07000'},
-   {id:'stk',n:'Sticker Pack (x12)',d:'Bomb the bus stop. Not our fault if you do.',p:4,t:'star',c:'#f07000',bg:'#111',b:'BARE BARS'}
+   {id:'tee',n:'Estate Tapes Tee',d:'Heavyweight black. Logo on the chest, "N17" on the back.',p:28,was:35,sz:['S','M','L','XL'],t:'tee',c:'#111',row:'rail'},
+   {id:'hood',n:'N17 Hoodie',d:'Oversized, heavy fleece. Proper warm for the night bus.',p:55,was:70,sz:['S','M','L','XL'],t:'hood',c:'#f07000',row:'rail'},
+   {id:'beanie',n:'Roadman Beanie',d:'One size. Pull it down low.',p:18,was:22,t:'beanie',c:'#111',row:'rail'},
+   {id:'cdr',n:'Vol.1 CD-R',d:'',p:8,was:10,t:'cd',c:'#d9d4c4',bg:'#3a3a3a',row:'crate',b:'SIGNED'},
+   {id:'tape',n:'Cassette',d:'',p:12,was:15,t:'tape',c:'#222',bg:'#e9e2d0',row:'crate',out:true,b:'LTD 100'},
+   {id:'stk',n:'Stickers x12',d:'',p:4,was:6,t:'star',c:'#f07000',bg:'#111',row:'crate',b:'FREE DL'}
   ];
   const ic={
    tee:c=>`<path d="M62 22 L20 52 L40 88 L62 74 L62 182 L138 182 L138 74 L160 88 L180 52 L138 22 Q100 48 62 22Z" fill="${c}" stroke="#000" stroke-width="5" stroke-linejoin="round"/>`,
    hood:c=>`<path d="M60 40 Q100 -5 140 40 L172 62 L186 130 L160 138 L156 182 L44 182 L40 138 L14 130 L28 62Z" fill="${c}" stroke="#000" stroke-width="5" stroke-linejoin="round"/><path d="M70 42 Q100 78 130 42" fill="none" stroke="#000" stroke-width="5"/><path d="M78 140 L122 140 L128 168 L72 168Z" fill="none" stroke="#000" stroke-width="4"/><path d="M92 62 V98 M108 62 V98" stroke="#000" stroke-width="4"/>`,
-   cd:c=>`<circle cx="100" cy="100" r="80" fill="${c}" stroke="#000" stroke-width="5"/><circle cx="100" cy="100" r="30" fill="#f07000" stroke="#000" stroke-width="4"/><circle cx="100" cy="100" r="9" fill="#000"/><path d="M100 28 A72 72 0 0 1 172 100" fill="none" stroke="#fff" stroke-width="6" opacity=".55"/>`,
+   cd:c=>`<circle cx="100" cy="100" r="80" fill="${c}" stroke="#000" stroke-width="5"/><circle cx="100" cy="100" r="30" fill="#f07000" stroke="#000" stroke-width="4"/><circle cx="100" cy="100" r="9" fill="#000"/><path d="M100 28 A72 72 0 0 1 172 100" fill="none" stroke="#fff" stroke-width="6" opacity=".55"/><text x="100" y="158" text-anchor="middle" font-family="Permanent Marker" font-size="15" fill="#000">5EB VOL.1</text>`,
    tape:c=>`<rect x="14" y="42" width="172" height="116" rx="8" fill="${c}" stroke="#000" stroke-width="5"/><rect x="30" y="56" width="140" height="52" fill="#e9e2d0" stroke="#000" stroke-width="3"/><circle cx="68" cy="132" r="14" fill="#fff" stroke="#000" stroke-width="4"/><circle cx="132" cy="132" r="14" fill="#fff" stroke="#000" stroke-width="4"/><rect x="82" y="124" width="36" height="16" fill="#555"/><text x="100" y="90" text-anchor="middle" font-family="Permanent Marker" font-size="26" fill="#000">5EB VOL.1</text>`,
    beanie:c=>`<path d="M26 120 Q26 28 100 28 Q174 28 174 120Z" fill="${c}" stroke="#000" stroke-width="5"/><rect x="20" y="110" width="160" height="42" rx="8" fill="${c}" stroke="#000" stroke-width="5"/><path d="M42 112 V150 M62 112 V150 M82 112 V150 M102 112 V150 M122 112 V150 M142 112 V150 M162 112 V150" stroke="#fff" stroke-width="2" opacity=".2"/><circle cx="100" cy="18" r="14" fill="#f07000" stroke="#000" stroke-width="4"/>`,
    star:c=>{const pts=[];for(let i=0;i<28;i++){const r=i%2?58:90,a=i/28*Math.PI*2;pts.push((100+Math.cos(a)*r).toFixed(1)+','+(100+Math.sin(a)*r).toFixed(1))}return `<polygon points="${pts.join(' ')}" fill="${c}" stroke="#000" stroke-width="5" stroke-linejoin="round"/><text x="100" y="94" text-anchor="middle" font-family="Anton" font-size="34" fill="#000">5EB</text><text x="100" y="124" text-anchor="middle" font-family="Anton" font-size="22" fill="#000">FREE DL</text>`}
   };
   const svg=it=>`<svg viewBox="0 0 200 200" aria-hidden="true">${ic[it.t](it.c)}${(it.t==='tee'||it.t==='hood')?`<image href="img/logo.png" x="${it.t==='tee'?72:74}" y="${it.t==='tee'?72:88}" width="${it.t==='tee'?56:52}" height="${it.t==='tee'?56:52}"/>`:''}</svg>`;
-  const fmt=n=>'£'+n.toFixed(2);
-  const sel={};
-  $('#prods').innerHTML=P.map((it,i)=>`<article class="pr${it.out?' out':''}" style="--rot:${(i%2?1:-1)*(.6+i%3*.5)}deg;--bg:${it.bg}" data-id="${it.id}">
-    <div class="pt">£${it.p}</div>${it.b?`<div class="bdg">${it.b}</div>`:''}
-    <div class="pic">${svg(it)}</div>
-    <h3>${it.n}</h3><p>${it.d}</p>
-    ${it.sz?`<div class="sz">${it.sz.map((z,k)=>`<button type="button" class="${k==1?'on':''}" data-z="${z}">${z}</button>`).join('')}</div>`:''}
-    <button type="button" class="addb" ${it.out?'disabled':''}>${it.out?'Sold out':'Add to bag'}</button></article>`).join('');
-  P.forEach(it=>sel[it.id]=it.sz?it.sz[1]:'');
-  $$('#prods .pr').forEach(card=>{
-    const it=P.find(x=>x.id===card.dataset.id);
-    card.querySelectorAll('.sz button').forEach(b=>b.onclick=()=>{card.querySelectorAll('.sz button').forEach(x=>x.classList.toggle('on',x===b));sel[it.id]=b.dataset.z;blip(600,.03)});
-    card.querySelector('.addb').onclick=()=>{add(it,sel[it.id]);fly(card.querySelector('.pic'))};
-  });
-  const cart=new Map();
-  function add(it,z){const k=it.id+'|'+z,e=cart.get(k);e?e.q++:cart.set(k,{it,z,q:1});render();blip(900,.05);setTimeout(()=>blip(1300,.04),70)}
-  function render(){
-    $('#rcpt').classList.remove('paid');
-    let sub=0,cnt=0,h='';
-    cart.forEach((e,k)=>{sub+=e.it.p*e.q;cnt+=e.q;
-      h+=`<div class="rl"><span class="nm">${e.it.n}${e.z?' ('+e.z+')':''}</span><span>${fmt(e.it.p*e.q)}</span><span class="qc"><button type="button" data-k="${k}" data-d="-1" aria-label="less">-</button>x${e.q}<button type="button" data-k="${k}" data-d="1" aria-label="more">+</button></span></div>`});
-    $('#rlines').innerHTML=h||'<div class="emp">BAG EMPTY.<br>GO ON THEN.</div>';
-    const del=sub===0?0:(sub>=50?0:3.99);
-    $('#rsub').textContent=fmt(sub);$('#rdel').textContent=sub&&del===0?'FREE':fmt(del);$('#rtot').textContent=fmt(sub+del);
-    $('#rfree').textContent=sub===0?'':(sub>=50?'* FREE DELIVERY UNLOCKED':'ADD '+fmt(50-sub)+' MORE FOR FREE DELIVERY');
-    $('#rgo').disabled=!cnt;$('#bagb').textContent=`BAG (${cnt}) ${fmt(sub+del).replace('.00','')}`;
+  const money=n=>'£'+(Math.round(n*100)/100).toFixed(2).replace('.00','');
+  const price={};P.forEach(it=>price[it.id]=it.p);
+  const sel={};P.forEach(it=>sel[it.id]=it.sz?it.sz[1]:'');
+  const acts=it=>`<div class="acts"><button type="button" class="btn2 add" ${it.out?'disabled':''}>${it.out?'Gone':'Cop it'}</button><button type="button" class="btn2 hg" ${it.out?'disabled':''}>Haggle</button></div>`;
+  const priceRow=it=>`<div class="pr2"><span class="now">${money(price[it.id])}</span><span class="was">${money(price[it.id]<it.p?it.p:it.was)}</span><span class="ono">${price[it.id]<it.p?'DEAL!':'ono'}</span></div>`;
+  function draw(){
+    $('#hangs').innerHTML=P.filter(x=>x.row==='rail').map((it,i)=>`<div class="hang${it.out?' out':''}" style="--dl:${-i*1.7}s" data-id="${it.id}"><div class="hook"></div><div class="gar">${svg(it)}</div>
+      <div class="ptag" style="--rot:${i%2?-2.5:2.2}deg"><h3>${it.n}</h3><div data-pr>${priceRow(it)}</div><p>${it.d}</p>
+      ${it.sz?`<div class="sz">${it.sz.map((z,k)=>`<button type="button" class="${z===sel[it.id]?'on':''}" data-z="${z}">${z}</button>`).join('')}</div>`:''}${acts(it)}</div></div>`).join('');
+    $('#slv').innerHTML=P.filter(x=>x.row==='crate').map((it,i)=>`<article class="sl${it.out?' out':''}" style="--rot:${(i%2?1:-1)*(1+i%3)}deg;--bg:${it.bg}" data-id="${it.id}">
+      ${it.b?`<div class="bd">${it.b}</div>`:''}<div class="pic">${svg(it)}${it.out?'<div class="sold">SOLD</div>':''}</div><h3>${it.n}</h3><div data-pr>${priceRow(it)}</div>${acts(it)}</article>`).join('');
+    $$('#hangs .hang,#slv .sl').forEach(el=>{
+      const it=P.find(x=>x.id===el.dataset.id);
+      el.querySelectorAll('.sz button').forEach(b=>b.onclick=()=>{el.querySelectorAll('.sz button').forEach(x=>x.classList.toggle('on',x===b));sel[it.id]=b.dataset.z;blip(600,.03)});
+      el.querySelector('.add').onclick=()=>{add(it);fly(el.querySelector('.gar,.pic'))};
+      el.querySelector('.hg').onclick=()=>haggle(it);
+    });
+    $$('.hang.out .gar').forEach(g=>g.insertAdjacentHTML('beforeend','<div class="sold">SOLD</div>'));
   }
-  $('#rlines').addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(!b)return;const en=cart.get(b.dataset.k);en.q+=+b.dataset.d;if(en.q<=0)cart.delete(b.dataset.k);render();blip(500,.03)});
-  $('#rgo').onclick=()=>{$('#rcpt').classList.add('paid');blip(200,.12);toast('Demo shop',"No payment taken. Hook up a real checkout (Shopify, Stripe) to go live.");setTimeout(()=>{cart.clear();render()},3200)};
-  $('#bagb').onclick=()=>$('#rcpt').scrollIntoView({behavior:'smooth',block:'center'});
-  $('#rdate').textContent=new Date().toLocaleDateString('en-GB').replace(/\//g,'.');
-  function fly(pic){
-    if(reduce)return;const a=pic.getBoundingClientRect(),b=$('#rcpt').getBoundingClientRect();
-    const f=document.createElement('div');f.className='fly';f.innerHTML=pic.innerHTML;
+  /* ---- bag ---- */
+  const cart=new Map();
+  function add(it){const z=sel[it.id],k=it.id+'|'+z,e=cart.get(k);e?e.q++:cart.set(k,{it,z,q:1});render();blip(900,.05);setTimeout(()=>blip(1300,.04),70)}
+  function render(){
+    let sub=0,cnt=0,h='';
+    cart.forEach((e,k)=>{const pp=price[e.it.id];sub+=pp*e.q;cnt+=e.q;
+      h+=`<div class="bl"><span>${e.it.n}${e.z?' ('+e.z+')':''}</span><span>${money(pp*e.q)}</span><span class="qc"><button type="button" data-k="${k}" data-d="-1">-</button>x${e.q}<button type="button" data-k="${k}" data-d="1">+</button></span></div>`});
+    $('#blines').innerHTML=h||'<div class="emp">nowt in here yet.<br>go on, cop something</div>';
+    const del=sub===0?0:(sub>=50?0:3.99);
+    $('#bdel').textContent=sub&&del===0?'FREE':money(del);$('#btot').textContent=money(sub+del);$('#bcount').textContent=cnt;
+    $('#bfree').textContent=sub===0?'':(sub>=50?'free delivery, you legend':'spend '+money(50-sub)+' more for free delivery');
+    $('#bgo').disabled=!cnt;$('#bagb').textContent=`BAG (${cnt}) ${money(sub+del)}`;
+  }
+  $('#blines').addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(!b)return;const en=cart.get(b.dataset.k);en.q+=+b.dataset.d;if(en.q<=0)cart.delete(b.dataset.k);render();blip(500,.03)});
+  $('#bagb').onclick=()=>$('#bag').scrollIntoView({behavior:'smooth',block:'center'});
+  function fly(src){
+    if(reduce||!src)return;const a=src.getBoundingClientRect(),b=$('#bag').getBoundingClientRect();
+    const f=document.createElement('div');f.className='fly';f.innerHTML=src.innerHTML;
     f.style.cssText+=`left:${a.left}px;top:${a.top}px;width:${a.width}px;height:${a.height}px;`;document.body.appendChild(f);
-    requestAnimationFrame(()=>{f.style.transform=`translate(${b.left+b.width/2-a.left-a.width/2}px,${b.top+80-a.top-a.height/2}px) scale(.15) rotate(25deg)`;f.style.opacity='.2'});
+    requestAnimationFrame(()=>{f.style.transform=`translate(${b.left+b.width/2-a.left-a.width/2}px,${b.top+120-a.top-a.height/2}px) scale(.12) rotate(30deg)`;f.style.opacity='.2'});
     setTimeout(()=>{f.remove();const bb=$('#bagb');bb.classList.remove('bump');void bb.offsetWidth;bb.classList.add('bump')},700);
   }
-  render();
-  // shutter rolls up as the section scrolls into view
-  const sw=document.querySelector('.shutterw');const H=()=>sw.scrollHeight||300;
-  function roll(){const r=$('#shop').getBoundingClientRect(),p=clamp((innerHeight*.85-r.top)/(innerHeight*.7),0,1);sw.style.height=(1-p)*document.querySelector('#shutter').offsetHeight+'px'}
-  addEventListener('scroll',roll,{passive:true});addEventListener('resize',roll);roll();
+  /* ---- text-to-order (Nokia SMS) ---- */
+  $('#bgo').onclick=()=>{
+    const parts=[...cart.values()].map(e=>(e.q>1?e.q+'X ':'')+e.it.id.toUpperCase()+(e.z?'-'+e.z:''));
+    const msg='BUY '+parts.join(' ')+' '+$('#btot').textContent;
+    const box=$('#sms2'),t=$('#smst'),st=$('#smss'),rep=$('#smsr');box.classList.add('on');rep.hidden=true;st.textContent='';t.textContent='';
+    let i=0;const iv=setInterval(()=>{t.textContent=msg.slice(0,++i);$('#smsc').textContent=160-i;blip(700+Math.random()*300,.02);
+      if(i>=msg.length){clearInterval(iv);setTimeout(()=>{st.textContent='SENDING...';blip(400,.2);setTimeout(()=>{st.textContent='MESSAGE SENT ✓';rep.hidden=false;rep.textContent='5EB: Ta fam! Order #N17-'+(1000+Math.random()*8999|0)+' confirmed. Allow 3-5 days. (Demo only, nothing was charged.)';blip(1200,.1);
+        setTimeout(()=>{cart.clear();render()},3500)},1400)},500)}},45);
+  };
+  /* ---- haggle (MSN-style chat) ---- */
+  const msn=$('#msn');document.body.appendChild(msn); // fixed overlays must live outside the animated #site wrapper
+  const log=$('#mlog'),qr=$('#mqr');let cur=null,tries=0,nudged=false,done=false;
+  const say=(who,t,cls)=>{log.insertAdjacentHTML('beforeend',cls?`<p class="${cls}">${t}</p>`:`<p class="${who==='me'?'me':''}"><b>${who==='me'?'You':'5EB'} says:</b><br>${t}</p>`);log.scrollTop=log.scrollHeight;blip(who==='me'?800:1100,.05)};
+  function opts(){
+    qr.innerHTML='';
+    const mk=(l,fn)=>{const b=document.createElement('button');b.type='button';b.textContent=l;b.onclick=fn;qr.appendChild(b);return b};
+    if(done){mk('Close',()=>msn.classList.remove('on'));return}
+    mk('10% off?',()=>offer(.10,.75));mk('20% off, go on',()=>offer(.20,.4));mk("I'm a student bruv",()=>offer(.15,.55));
+    mk('💥 Send nudge',nudge);mk('Free? 😂',()=>offer(1,.01));mk('Nah, full price',()=>{say('me','nah ill pay full price');setTimeout(()=>{say('5EB',"Respect. Good man.");done=true;opts()},600)});
+  }
+  function offer(pct,prob){
+    if(done)return;tries++;say('me',pct===1?'can I have it free lol':`any chance of ${Math.round(pct*100)}% off?`);
+    qr.querySelectorAll('button').forEach(b=>b.disabled=true);
+    setTimeout(()=>{
+      const p=prob+(nudged?.2:0)-(tries>2?.2:0);
+      if(Math.random()<p&&pct<1){
+        const np=Math.max(1,Math.round(cur.p*(1-pct)));price[cur.id]=np;
+        say('5EB',`${['Go on then.','Safe, you can have it.','Aight aight.'][Math.random()*3|0]} ${money(np)} and don't tell nobody 🤫`);
+        say('','✔ DEAL DONE — price updated','sys');done=true;draw();render();blip(1500,.1);setTimeout(()=>blip(1900,.1),120);
+      }else{
+        say('5EB',pct===1?'Ha. No. 😂':['Nah bruv, my kids gotta eat.','Not a chance. It cost me more than that.','Come back when you got more cash.'][Math.random()*3|0]);
+        if(tries>=4){say('5EB','Right, I\'m busy. Do one.');done=true}
+      }
+      opts();
+    },700);
+  }
+  function nudge(){say('me','*sends a nudge*',null);msn.classList.remove('nudge');void msn.offsetWidth;msn.classList.add('nudge');document.body.animate([{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'none'}],{duration:260,iterations:2});nudged=true;blip(180,.2);setTimeout(()=>say('5EB','OI! Stop that. 😠 ...fine, ask again.'),700)}
+  function haggle(it){
+    cur=it;tries=0;nudged=false;done=price[it.id]<it.p;log.innerHTML='';$('#msnitem').textContent='~ '+it.n+' · '+money(price[it.id])+' ~';
+    msn.classList.add('on');say('','5EB is online. Say hi 👋','sys');
+    setTimeout(()=>say('5EB',done?`Already sorted you out on that one, ${money(price[it.id])}. Don't push it.`:`Wagwan. ${it.n} is ${money(price[it.id])}. Cash, no refunds. What you saying?`),500);opts();
+  }
+  $('#msnx').onclick=()=>msn.classList.remove('on');
+  /* ---- string lights ---- */
+  (function lights(){
+    const box=$('#lights');function build(){
+      const w=box.clientWidth,n=Math.max(8,Math.round(w/90)),pts=[];
+      for(let i=0;i<=n;i++){const x=i/n*w,y=20+Math.sin(i/n*Math.PI)*62;pts.push([x,y])}
+      let d=`M ${pts[0][0]} ${pts[0][1]}`;pts.slice(1).forEach(p=>d+=` L ${p[0]} ${p[1]}`);
+      let bl='';pts.forEach((p,i)=>{if(i%1===0)bl+=`<g class="bulb" style="animation-delay:${-Math.random()*3}s"><circle cx="${p[0]}" cy="${p[1]+14}" r="14" fill="#f07000" opacity=".18"/><circle cx="${p[0]}" cy="${p[1]+14}" r="7" fill="${i%3?'#ffb347':'#fff1c9'}"/><rect x="${p[0]-3}" y="${p[1]}" width="6" height="7" fill="#222"/></g>`});
+      box.innerHTML=`<svg viewBox="0 0 ${w} 150" preserveAspectRatio="none"><path d="${d}" fill="none" stroke="#222" stroke-width="3"/>${bl}</svg>`;
+    }
+    build();addEventListener('resize',build);
+  })();
+  draw();render();
 })();
 
 if(location.hash==='#skip')start(false);
