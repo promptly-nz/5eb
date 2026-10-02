@@ -337,7 +337,6 @@ section{position:relative}
 .acts{display:flex;gap:6px}
 .btn2{flex:1;background:#111;color:var(--o);border:2px solid #000;font:400 19px Anton;letter-spacing:.06em;text-transform:uppercase;padding:7px 4px;box-shadow:3px 3px 0 rgba(0,0,0,.5);transition:.1s}
 .btn2:hover:not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 #000;background:var(--o);color:#000}
-.btn2.hg{background:#fff;color:#000;flex:.9}
 .btn2:disabled{opacity:.45}
 .hang.out .gar{filter:grayscale(1) brightness(.6) drop-shadow(0 12px 8px rgba(0,0,0,.6))}
 .hang.out .ptag::after{background:var(--r)}
@@ -413,22 +412,6 @@ section{position:relative}
 .sms2 .cur::after{content:"_";animation:blink 1s steps(1) infinite}
 .sms2 .st{margin-top:8px;text-align:center;letter-spacing:.1em}
 .sms2 .rep{margin-top:8px;padding-top:6px;border-top:2px dashed #16240f}
-/* msn haggle window */
-.msn{position:fixed;z-index:975;right:24px;bottom:56px;width:min(360px,92vw);background:#ece9d8;border:3px solid #000;box-shadow:8px 8px 0 #000;font:15px Tahoma,Verdana,sans-serif;color:#000;display:none}
-.msn.on{display:block;animation:msnin .25s ease-out}
-@keyframes msnin{from{transform:translateY(40px);opacity:0}}
-.msn.nudge{animation:nudge .5s linear}
-@keyframes nudge{10%{transform:translate(-18px,6px)}20%{transform:translate(20px,-8px)}30%{transform:translate(-22px,4px)}40%{transform:translate(18px,8px)}50%{transform:translate(-14px,-6px)}60%{transform:translate(12px,4px)}80%{transform:translate(-6px,2px)}}
-.msn .tb2{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(#ff9a40,#f07000 45%,#a84a00);color:#fff;font:700 14px Tahoma,Verdana,sans-serif;padding:5px 8px;text-shadow:1px 1px 0 #000}
-.msn .tb2 button{background:#c33;color:#fff;border:1px solid #fff;width:22px;height:20px;font:700 12px Arial}
-.msn .who{display:flex;gap:10px;align-items:center;padding:8px 10px;border-bottom:1px solid #aca899;background:linear-gradient(#fff,#ece9d8)}
-.msn .who img{width:46px;height:46px;border:2px solid #7a7a7a;background:#000}
-.msn .who b{display:block;font-size:15px}.msn .who small{color:#555}
-.msn .log{height:210px;overflow:auto;background:#fff;border:2px inset #aaa;margin:8px;padding:8px;font-size:14px;line-height:1.3}
-.msn .log p{margin-bottom:6px}.msn .log p b{color:#a84a00}.msn .log p.me b{color:#06c}.msn .log p.sys{color:#888;font-style:italic}
-.msn .qr{display:flex;flex-wrap:wrap;gap:6px;padding:0 8px 10px}
-.msn .qr button{background:linear-gradient(#fff,#d6d2c2);border:1px solid #7a7a7a;border-radius:3px;font:13px Tahoma,Verdana,sans-serif;padding:5px 8px;color:#000}
-.msn .qr button:hover:not(:disabled){background:#ffe0b8}.msn .qr button:disabled{opacity:.5}
 .bagb{position:fixed;right:18px;top:82px;z-index:960;background:var(--o);color:#000;border:2px solid #000;font:400 18px VT323;padding:0 10px;letter-spacing:.1em;box-shadow:3px 3px 0 #000}
 .bagb:hover{background:#fff}.bagb.bump{animation:bump .4s}
 @keyframes bump{40%{transform:scale(1.3) rotate(-6deg)}}
@@ -645,7 +628,7 @@ section{position:relative}
 <section id="shop">
   <div class="mbg"></div>
   <div class="lights" id="lights"></div>
-  <div class="hd"><h2>The Stall</h2><div class="mk">3am · cash only · haggle me</div></div>
+  <div class="hd"><h2>The Stall</h2><div class="mk">3am · cash only · no refunds</div></div>
   <div class="mkt">
     <div>
       <div class="rail"><div class="hangs" id="hangs"></div></div>
@@ -666,12 +649,6 @@ section{position:relative}
         <div class="demo">*DEMO SHOP · NOTHING IS ACTUALLY SOLD</div>
       </div>
     </aside>
-  </div>
-  <div class="msn" id="msn" role="dialog" aria-label="Haggle chat">
-    <div class="tb2"><span>5EB Messenger</span><button type="button" id="msnx" aria-label="Close">✕</button></div>
-    <div class="who"><img src="img/logo.png" alt=""><div><b>5EB <small>(Busy - on the stall)</small></b><small id="msnitem">~ haggle me ~</small></div></div>
-    <div class="log" id="mlog"></div>
-    <div class="qr" id="mqr"></div>
   </div>
 </section>
 
@@ -1106,7 +1083,7 @@ addEventListener('keydown',e=>{
 })();
 
 /* =======================================================
-   MERCH: market stall + haggle chat + text-to-order
+   MERCH: market stall + text-to-order
 ======================================================= */
 (function shop(){
   const P=[
@@ -1129,8 +1106,8 @@ addEventListener('keydown',e=>{
   const money=n=>'£'+(Math.round(n*100)/100).toFixed(2).replace('.00','');
   const price={};P.forEach(it=>price[it.id]=it.p);
   const sel={};P.forEach(it=>sel[it.id]=it.sz?it.sz[1]:'');
-  const acts=it=>`<div class="acts"><button type="button" class="btn2 add" ${it.out?'disabled':''}>${it.out?'Gone':'Cop it'}</button><button type="button" class="btn2 hg" ${it.out?'disabled':''}>Haggle</button></div>`;
-  const priceRow=it=>`<div class="pr2"><span class="now">${money(price[it.id])}</span><span class="was">${money(price[it.id]<it.p?it.p:it.was)}</span><span class="ono">${price[it.id]<it.p?'DEAL!':'ono'}</span></div>`;
+  const acts=it=>`<div class="acts"><button type="button" class="btn2 add" ${it.out?'disabled':''}>${it.out?'Gone':'Cop it'}</button></div>`;
+  const priceRow=it=>`<div class="pr2"><span class="now">${money(price[it.id])}</span><span class="was">${money(it.was)}</span><span class="ono">ono</span></div>`;
   function draw(){
     $('#hangs').innerHTML=P.filter(x=>x.row==='rail').map((it,i)=>`<div class="hang${it.out?' out':''}" style="--dl:${-i*1.7}s" data-id="${it.id}"><div class="hook"></div><div class="gar">${svg(it)}</div>
       <div class="ptag" style="--rot:${i%2?-2.5:2.2}deg"><h3>${it.n}</h3><div data-pr>${priceRow(it)}</div><p>${it.d}</p>
@@ -1141,7 +1118,6 @@ addEventListener('keydown',e=>{
       const it=P.find(x=>x.id===el.dataset.id);
       el.querySelectorAll('.sz button').forEach(b=>b.onclick=()=>{el.querySelectorAll('.sz button').forEach(x=>x.classList.toggle('on',x===b));sel[it.id]=b.dataset.z;blip(600,.03)});
       el.querySelector('.add').onclick=()=>{add(it);fly(el.querySelector('.gar,.pic'))};
-      el.querySelector('.hg').onclick=()=>haggle(it);
     });
     $$('.hang.out .gar').forEach(g=>g.insertAdjacentHTML('beforeend','<div class="sold">SOLD</div>'));
     railHover();
@@ -1205,40 +1181,6 @@ addEventListener('keydown',e=>{
       if(i>=msg.length){clearInterval(iv);setTimeout(()=>{st.textContent='SENDING...';blip(400,.2);setTimeout(()=>{st.textContent='MESSAGE SENT ✓';rep.hidden=false;rep.textContent='5EB: Ta fam! Order #N17-'+(1000+Math.random()*8999|0)+' confirmed. Allow 3-5 days. (Demo only, nothing was charged.)';blip(1200,.1);
         setTimeout(()=>{cart.clear();render()},3500)},1400)},500)}},45);
   };
-  /* ---- haggle (MSN-style chat) ---- */
-  const msn=$('#msn');document.body.appendChild(msn); // fixed overlays must live outside the animated #site wrapper
-  const log=$('#mlog'),qr=$('#mqr');let cur=null,tries=0,nudged=false,done=false;
-  const say=(who,t,cls)=>{log.insertAdjacentHTML('beforeend',cls?`<p class="${cls}">${t}</p>`:`<p class="${who==='me'?'me':''}"><b>${who==='me'?'You':'5EB'} says:</b><br>${t}</p>`);log.scrollTop=log.scrollHeight;blip(who==='me'?800:1100,.05)};
-  function opts(){
-    qr.innerHTML='';
-    const mk=(l,fn)=>{const b=document.createElement('button');b.type='button';b.textContent=l;b.onclick=fn;qr.appendChild(b);return b};
-    if(done){mk('Close',()=>msn.classList.remove('on'));return}
-    mk('10% off?',()=>offer(.10,.75));mk('20% off, go on',()=>offer(.20,.4));mk("I'm a student bruv",()=>offer(.15,.55));
-    mk('💥 Send nudge',nudge);mk('Free? 😂',()=>offer(1,.01));mk('Nah, full price',()=>{say('me','nah ill pay full price');setTimeout(()=>{say('5EB',"Respect. Good man.");done=true;opts()},600)});
-  }
-  function offer(pct,prob){
-    if(done)return;tries++;say('me',pct===1?'can I have it free lol':`any chance of ${Math.round(pct*100)}% off?`);
-    qr.querySelectorAll('button').forEach(b=>b.disabled=true);
-    setTimeout(()=>{
-      const p=prob+(nudged?.2:0)-(tries>2?.2:0);
-      if(Math.random()<p&&pct<1){
-        const np=Math.max(1,Math.round(cur.p*(1-pct)));price[cur.id]=np;
-        say('5EB',`${['Go on then.','Safe, you can have it.','Aight aight.'][Math.random()*3|0]} ${money(np)} and don't tell nobody 🤫`);
-        say('','✔ DEAL DONE — price updated','sys');done=true;draw();render();blip(1500,.1);setTimeout(()=>blip(1900,.1),120);
-      }else{
-        say('5EB',pct===1?'Ha. No. 😂':['Nah bruv, my kids gotta eat.','Not a chance. It cost me more than that.','Come back when you got more cash.'][Math.random()*3|0]);
-        if(tries>=4){say('5EB','Right, I\'m busy. Do one.');done=true}
-      }
-      opts();
-    },700);
-  }
-  function nudge(){say('me','*sends a nudge*',null);msn.classList.remove('nudge');void msn.offsetWidth;msn.classList.add('nudge');document.body.animate([{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'none'}],{duration:260,iterations:2});nudged=true;blip(180,.2);setTimeout(()=>say('5EB','OI! Stop that. 😠 ...fine, ask again.'),700)}
-  function haggle(it){
-    cur=it;tries=0;nudged=false;done=price[it.id]<it.p;log.innerHTML='';$('#msnitem').textContent='~ '+it.n+' · '+money(price[it.id])+' ~';
-    msn.classList.add('on');say('','5EB is online. Say hi 👋','sys');
-    setTimeout(()=>say('5EB',done?`Already sorted you out on that one, ${money(price[it.id])}. Don't push it.`:`Wagwan. ${it.n} is ${money(price[it.id])}. Cash, no refunds. What you saying?`),500);opts();
-  }
-  $('#msnx').onclick=()=>msn.classList.remove('on');
   /* ---- string lights ---- */
   (function lights(){
     const box=$('#lights');function build(){
