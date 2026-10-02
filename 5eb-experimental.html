@@ -296,6 +296,68 @@ section{position:relative}
 .toast b{display:block;font-weight:400;border-bottom:2px solid #1c2b1c;margin-bottom:6px;padding-bottom:4px}
 .toast span{display:block;text-align:right;margin-top:8px;text-decoration:underline}
 
+/* ---------- MERCH STALL ---------- */
+#shop{background:#0d0b09;border-top:6px solid var(--o);padding-bottom:170px;overflow:hidden}
+.shutterw{position:relative;height:clamp(220px,38vh,340px);overflow:hidden;display:flex;align-items:flex-end;background:#0d0b09}
+.shutter{position:relative;width:100%;height:clamp(220px,38vh,340px);flex:none;background:repeating-linear-gradient(0deg,#7a7f84 0 13px,#4d5156 13px 16px);border-bottom:12px solid #2a2c2e;box-shadow:inset 0 -30px 40px rgba(0,0,0,.45)}
+.shutter span{position:absolute;font:400 clamp(26px,5vw,66px) "Permanent Marker";text-shadow:3px 3px 0 #000}
+.shutter .t1{left:6%;top:14%;color:var(--o);transform:rotate(-5deg)}
+.shutter .t2{right:8%;top:38%;color:#fff;transform:rotate(4deg)}
+.shutter .t3{left:34%;bottom:10%;color:var(--r);transform:rotate(-2deg);font-size:clamp(20px,3vw,40px)}
+.shutter .lock{position:absolute;left:50%;bottom:-8px;width:44px;height:36px;margin-left:-22px;background:#c9a227;border:3px solid #000;border-radius:6px}
+.awning{height:46px;background:repeating-linear-gradient(90deg,var(--o) 0 48px,var(--c) 48px 96px);position:relative;box-shadow:0 4px 0 #000}
+.awning::after{content:"";position:absolute;left:0;right:0;top:100%;height:20px;background:repeating-linear-gradient(90deg,var(--o) 0 48px,var(--c) 48px 96px);-webkit-mask:radial-gradient(circle at 24px 0,#000 23px,transparent 24px) 0 0/48px 100%;mask:radial-gradient(circle at 24px 0,#000 23px,transparent 24px) 0 0/48px 100%}
+#shop .hd{padding-top:70px;position:relative}
+.shopg{display:grid;grid-template-columns:1fr 340px;gap:4vw;padding:20px 4vw 0;align-items:start}
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:34px 26px;padding-top:12px}
+.pr{position:relative;background:var(--c);color:#000;border:4px solid #000;box-shadow:7px 7px 0 var(--o);padding:12px 12px 14px;transform:rotate(var(--rot,0deg));transition:transform .15s,box-shadow .15s}
+.pr:hover{transform:rotate(0) translate(-3px,-3px);box-shadow:11px 11px 0 var(--o)}
+.pr::before{content:"";position:absolute;top:-13px;left:50%;width:62px;height:20px;background:rgba(240,226,150,.85);transform:translateX(-50%) rotate(-3deg)}
+.pr .pic{position:relative;aspect-ratio:1;border:3px solid #000;background:var(--bg,#222);display:grid;place-items:center;overflow:hidden}
+.pr .pic::after{content:"";position:absolute;inset:0;background:radial-gradient(#000 28%,transparent 30%) 0 0/8px 8px;opacity:.14;pointer-events:none}
+.pr .pic svg{width:80%;height:80%;filter:drop-shadow(4px 5px 0 rgba(0,0,0,.55));transition:transform .2s}
+.pr:hover .pic svg{transform:scale(1.07) rotate(-3deg)}
+.pr .pt{position:absolute;right:-14px;top:-16px;z-index:2;background:var(--r);color:#fff;font:400 26px Anton;padding:4px 12px;border:3px solid #000;transform:rotate(8deg);box-shadow:3px 3px 0 #000}
+.pr .bdg{position:absolute;left:-10px;top:14px;z-index:2;background:#000;color:var(--o);font:400 15px Anton;letter-spacing:.1em;padding:2px 10px;transform:rotate(-6deg)}
+.pr h3{font-size:26px;margin:12px 0 2px;color:#000}
+.pr p{font:700 15px "Archivo Narrow";color:#444;margin-bottom:10px;line-height:1.2}
+.sz{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.sz button{min-width:38px;padding:4px 6px;background:#fff;border:3px solid #000;font:400 17px Anton;color:#000}
+.sz button.on{background:#000;color:var(--o)}
+.sz button:hover:not(.on){background:var(--o)}
+.addb{width:100%;background:#000;color:var(--o);border:3px solid #000;font:400 22px Anton;letter-spacing:.06em;text-transform:uppercase;padding:9px;box-shadow:4px 4px 0 var(--o);transition:.1s}
+.addb:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--o)}
+.addb:disabled{background:#999;color:#444;box-shadow:none;transform:none}
+.pr.out .pic{filter:grayscale(1) brightness(.7)}
+.pr.out::after{content:"SOLD OUT";position:absolute;left:50%;top:34%;transform:translate(-50%,-50%) rotate(-14deg);font:400 44px Anton;color:var(--r);border:5px solid var(--r);padding:0 14px;background:rgba(233,226,208,.85);letter-spacing:.06em;pointer-events:none}
+.rcpt{position:sticky;top:122px;background:#f4f1e8;color:#222;font:400 21px/1.15 VT323,monospace;padding:20px 18px 34px;transform:rotate(1.2deg);box-shadow:8px 8px 0 #000;-webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%;background-image:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.025) 3px 4px)}
+.rcpt h4{font:400 30px Anton;text-align:center;letter-spacing:.06em;text-transform:uppercase;line-height:1}
+.rcpt .c{text-align:center;color:#555;font-size:17px}
+.rcpt hr{border:0;border-top:2px dashed #888;margin:10px 0}
+.rl{display:grid;grid-template-columns:1fr auto;gap:2px 10px;animation:print .35s ease-out}
+@keyframes print{from{opacity:0;transform:translateY(-12px)}}
+.rl .nm{text-transform:uppercase}
+.rl .qc{grid-column:1/-1;display:flex;gap:8px;align-items:center;color:#666;font-size:18px;margin-bottom:6px}
+.rl .qc button{background:#222;color:#f4f1e8;border:0;width:22px;height:22px;font:400 18px VT323;line-height:1}
+.rl .qc button:hover{background:var(--o);color:#000}
+.rcpt .tot{display:flex;justify-content:space-between}
+.rcpt .tot.big{font-size:30px;font-family:Anton;letter-spacing:.04em;margin-top:4px}
+.rcpt .emp{text-align:center;color:#777;padding:14px 0;font-size:20px}
+.rcpt .barcode2{height:42px;margin-top:12px;background:repeating-linear-gradient(90deg,#222 0 2px,transparent 2px 4px,#222 4px 5px,transparent 5px 9px,#222 9px 12px,transparent 12px 14px)}
+.rcpt .go{display:block;width:100%;margin-top:14px;background:#111;color:var(--o);border:0;font:400 24px Anton;letter-spacing:.08em;text-transform:uppercase;padding:11px}
+.rcpt .go:hover:not(:disabled){background:var(--o);color:#000}
+.rcpt .go:disabled{opacity:.4}
+.rcpt .stamp{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-16deg) scale(2);opacity:0;font:400 40px Anton;color:#c11;border:6px solid #c11;padding:2px 14px;text-align:center;line-height:1;pointer-events:none;letter-spacing:.06em}
+.rcpt .stamp small{display:block;font:400 17px VT323;letter-spacing:.1em}
+.rcpt.paid .stamp{animation:stamp .5s cubic-bezier(.2,2,.4,1) forwards}
+@keyframes stamp{to{opacity:.9;transform:translate(-50%,-50%) rotate(-16deg) scale(1)}}
+.fly{position:fixed;z-index:990;pointer-events:none;transition:transform .7s cubic-bezier(.5,-0.3,.6,1),opacity .7s;border:3px solid #000;background:var(--o);display:grid;place-items:center}
+.bagb{position:fixed;right:18px;top:82px;z-index:960;background:var(--o);color:#000;border:2px solid #000;font:400 18px VT323;padding:0 10px;letter-spacing:.1em;box-shadow:3px 3px 0 #000}
+.bagb:hover{background:#fff}
+.bagb.bump{animation:bump .4s}
+@keyframes bump{40%{transform:scale(1.3) rotate(-6deg)}}
+@media(max-width:900px){.shopg{grid-template-columns:1fr}.rcpt{position:relative;top:0}}
+
 /* ---------- NO SIGNAL ---------- */
 #end{height:100vh;min-height:640px;display:grid;place-items:center;overflow:hidden;padding-bottom:40px}
 #end .bars{position:absolute;inset:0;background:linear-gradient(90deg,#c0c0c0 0 14.28%,#c0c000 0 28.56%,#00c0c0 0 42.84%,#00c000 0 57.12%,#c000c0 0 71.4%,#c00000 0 85.68%,#0000c0 0) top/100% 70% no-repeat,linear-gradient(90deg,#0000c0 0 14.28%,#111 0 28.56%,#c000c0 0 42.84%,#111 0 57.12%,#00c0c0 0 71.4%,#111 0 85.68%,#c0c0c0 0) 0 70%/100% 8% no-repeat,linear-gradient(90deg,#00214c 0 18%,#fff 0 36%,#32006a 0 54%,#111 0 72%,#050505 0) 0 78%/100% 22% no-repeat;filter:saturate(.85) brightness(.85)}
@@ -329,6 +391,7 @@ section{position:relative}
 <img class="bug" src="img/logo.png" alt="5EB">
 <div class="clock" id="clock">00:00</div>
 <button id="snd" type="button">SND: OFF</button>
+<button class="bagb" id="bagb" type="button">BAG (0) £0</button>
 <div class="sms"><div id="smsrun"></div></div>
 <div class="toast" id="toast"></div>
 
@@ -403,7 +466,7 @@ section{position:relative}
 
 <!-- RADIO -->
 <section id="radio">
-  <div class="hd"><h2>Pirate Radio</h2><div class="mk">tune in · don't tell the landlord</div></div>
+  <div class="hd"><h2>Fendi Radio</h2><div class="mk">tune in · don't tell the landlord</div></div>
   <div class="rgrid">
     <div class="rad" id="rad">
       <div class="top">
@@ -423,7 +486,7 @@ section{position:relative}
     </div>
     <div class="rtxt">
       <h3>Find the<br>frequency</h3>
-      <p>Drag the dial. Somewhere between the static, a roof, a coat-hanger aerial and a box room — 5EB is on air. (Turn the sound on, it's a live beat built in your browser.)</p>
+      <p>Drag the dial. Somewhere between the static, a roof, a coat-hanger aerial and a box room — 5EB is on air.</p>
       <button type="button" class="btn" id="seek">▶ Auto-seek 5EB FM</button>
       <div class="rimg">
         <figure class="stk" style="width:200px;height:200px;left:0;top:0;transform:rotate(-5deg)"><img src="img/boombox.jpg" alt=""><figcaption>aerial up</figcaption></figure>
@@ -474,11 +537,11 @@ section{position:relative}
 <!-- NOKIA -->
 <section id="nokia">
   <div class="lcdbg"></div><div class="ghost">SNAKE</div>
-  <div class="hd"><h2>Snake II</h2><div class="mk">the real game of the era</div></div>
+  <div class="hd"><h2>Snake</h2></div>
   <div class="arena">
     <div class="hudscore" id="score">SCORE 000</div>
     <div class="bez" id="bez"><canvas id="snake" width="800" height="480"></canvas></div>
-    <div class="note n1">1 · arrows / WASD to start</div>
+    <div class="note n1">arrows / WASD to start</div>
     <div class="note n2">eat the spinning CD</div>
     <div class="note n3">don't eat yourself</div>
     <div class="star" data-n="12" style="width:130px;height:130px;left:-60px;top:-60px;background:var(--o);transform:rotate(-12deg)"><span>HIGH<br>SCORE<br>WINS</span></div>
@@ -498,6 +561,33 @@ section{position:relative}
       <button class="r" data-dir="right" aria-label="Right">►</button>
       <button class="d" data-dir="down" aria-label="Down">▼</button>
     </div>
+  </div>
+</section>
+
+<!-- MERCH STALL -->
+<section id="shop">
+  <div class="shutterw"><div class="shutter" id="shutter">
+    <span class="t1">OPEN 'TIL LATE</span><span class="t2">5EB WOZ ERE</span><span class="t3">no refunds fam</span><div class="lock"></div>
+  </div></div>
+  <div class="awning"></div>
+  <div class="hd"><h2>The Stall</h2><div class="mk">cash, card, whatever · demo shop</div></div>
+  <div class="shopg">
+    <div class="prods" id="prods"></div>
+    <aside class="rcpt" id="rcpt" aria-live="polite">
+      <h4>5EB Merch</h4>
+      <div class="c">ESTATE TAPES STALL · N17<br>TILL 01 · <span id="rdate"></span></div>
+      <hr>
+      <div id="rlines"></div>
+      <hr>
+      <div class="tot"><span>SUBTOTAL</span><span id="rsub">£0.00</span></div>
+      <div class="tot"><span>DELIVERY</span><span id="rdel">£0.00</span></div>
+      <div class="tot big"><span>TOTAL</span><span id="rtot">£0.00</span></div>
+      <div class="c" id="rfree" style="margin-top:6px"></div>
+      <div class="barcode2"></div>
+      <button class="go" id="rgo" type="button" disabled>Checkout</button>
+      <div class="c" style="margin-top:8px">*DEMO SHOP: NO PAYMENTS TAKEN</div>
+      <div class="stamp">DEMO<small>NOT CHARGED</small></div>
+    </aside>
   </div>
 </section>
 
@@ -914,7 +1004,7 @@ addEventListener('keydown',e=>{
     if(!alive||!started){
       c.fillStyle=`rgb(${BG})`;c.fillRect(150,150,500,180);c.strokeStyle=DK;c.lineWidth=6;c.strokeRect(150,150,500,180);c.strokeRect(160,160,480,160);
       c.fillStyle=DK;c.textAlign='center';c.textBaseline='alphabetic';
-      c.font='84px VT323, monospace';c.fillText(alive?'SNAKE II':'GAME OVER',400,245);
+      c.font='84px VT323, monospace';c.fillText(alive?'SNAKE':'GAME OVER',400,245);
       c.font='36px VT323, monospace';c.fillText(alive?'PRESS AN ARROW KEY':'TAP TO TRY AGAIN',400,295);
     }
     if(shake>0){bez.classList.remove('shake');void bez.offsetWidth;bez.classList.add('shake');shake=0}
@@ -929,6 +1019,72 @@ addEventListener('keydown',e=>{
     setTimeout(tick,Math.max(90,170-score*1.2));
   }
   reset();frame();tick();
+})();
+
+/* =======================================================
+   MERCH STALL
+======================================================= */
+(function shop(){
+  const P=[
+   {id:'tee',n:'Estate Tapes Tee',d:'Heavyweight black. Logo on the chest, "N17" on the back.',p:28,sz:['S','M','L','XL'],t:'tee',c:'#111',bg:'#f07000',b:'NEW'},
+   {id:'hood',n:'N17 Hoodie',d:'Oversized, heavy fleece, hand-finished print.',p:55,sz:['S','M','L','XL'],t:'hood',c:'#f07000',bg:'#222',b:'LTD 100'},
+   {id:'cdr',n:'Vol.1 CD-R',d:'Hand-burnt, scribbled on in marker, signed.',p:8,t:'cd',c:'#d9d4c4',bg:'#3a3a3a'},
+   {id:'tape',n:'Cassette Pack',d:'Numbered of 100. Comes with a free Bic and a sore thumb.',p:12,t:'tape',c:'#222',bg:'#e9e2d0',out:true},
+   {id:'beanie',n:'Roadman Beanie',d:'One size, pulled down low. Orange patch.',p:18,t:'beanie',c:'#111',bg:'#f07000'},
+   {id:'stk',n:'Sticker Pack (x12)',d:'Bomb the bus stop. Not our fault if you do.',p:4,t:'star',c:'#f07000',bg:'#111',b:'BARE BARS'}
+  ];
+  const ic={
+   tee:c=>`<path d="M62 22 L20 52 L40 88 L62 74 L62 182 L138 182 L138 74 L160 88 L180 52 L138 22 Q100 48 62 22Z" fill="${c}" stroke="#000" stroke-width="5" stroke-linejoin="round"/>`,
+   hood:c=>`<path d="M60 40 Q100 -5 140 40 L172 62 L186 130 L160 138 L156 182 L44 182 L40 138 L14 130 L28 62Z" fill="${c}" stroke="#000" stroke-width="5" stroke-linejoin="round"/><path d="M70 42 Q100 78 130 42" fill="none" stroke="#000" stroke-width="5"/><path d="M78 140 L122 140 L128 168 L72 168Z" fill="none" stroke="#000" stroke-width="4"/><path d="M92 62 V98 M108 62 V98" stroke="#000" stroke-width="4"/>`,
+   cd:c=>`<circle cx="100" cy="100" r="80" fill="${c}" stroke="#000" stroke-width="5"/><circle cx="100" cy="100" r="30" fill="#f07000" stroke="#000" stroke-width="4"/><circle cx="100" cy="100" r="9" fill="#000"/><path d="M100 28 A72 72 0 0 1 172 100" fill="none" stroke="#fff" stroke-width="6" opacity=".55"/>`,
+   tape:c=>`<rect x="14" y="42" width="172" height="116" rx="8" fill="${c}" stroke="#000" stroke-width="5"/><rect x="30" y="56" width="140" height="52" fill="#e9e2d0" stroke="#000" stroke-width="3"/><circle cx="68" cy="132" r="14" fill="#fff" stroke="#000" stroke-width="4"/><circle cx="132" cy="132" r="14" fill="#fff" stroke="#000" stroke-width="4"/><rect x="82" y="124" width="36" height="16" fill="#555"/><text x="100" y="90" text-anchor="middle" font-family="Permanent Marker" font-size="26" fill="#000">5EB VOL.1</text>`,
+   beanie:c=>`<path d="M26 120 Q26 28 100 28 Q174 28 174 120Z" fill="${c}" stroke="#000" stroke-width="5"/><rect x="20" y="110" width="160" height="42" rx="8" fill="${c}" stroke="#000" stroke-width="5"/><path d="M42 112 V150 M62 112 V150 M82 112 V150 M102 112 V150 M122 112 V150 M142 112 V150 M162 112 V150" stroke="#fff" stroke-width="2" opacity=".2"/><circle cx="100" cy="18" r="14" fill="#f07000" stroke="#000" stroke-width="4"/>`,
+   star:c=>{const pts=[];for(let i=0;i<28;i++){const r=i%2?58:90,a=i/28*Math.PI*2;pts.push((100+Math.cos(a)*r).toFixed(1)+','+(100+Math.sin(a)*r).toFixed(1))}return `<polygon points="${pts.join(' ')}" fill="${c}" stroke="#000" stroke-width="5" stroke-linejoin="round"/><text x="100" y="94" text-anchor="middle" font-family="Anton" font-size="34" fill="#000">5EB</text><text x="100" y="124" text-anchor="middle" font-family="Anton" font-size="22" fill="#000">FREE DL</text>`}
+  };
+  const svg=it=>`<svg viewBox="0 0 200 200" aria-hidden="true">${ic[it.t](it.c)}${(it.t==='tee'||it.t==='hood')?`<image href="img/logo.png" x="${it.t==='tee'?72:74}" y="${it.t==='tee'?72:88}" width="${it.t==='tee'?56:52}" height="${it.t==='tee'?56:52}"/>`:''}</svg>`;
+  const fmt=n=>'£'+n.toFixed(2);
+  const sel={};
+  $('#prods').innerHTML=P.map((it,i)=>`<article class="pr${it.out?' out':''}" style="--rot:${(i%2?1:-1)*(.6+i%3*.5)}deg;--bg:${it.bg}" data-id="${it.id}">
+    <div class="pt">£${it.p}</div>${it.b?`<div class="bdg">${it.b}</div>`:''}
+    <div class="pic">${svg(it)}</div>
+    <h3>${it.n}</h3><p>${it.d}</p>
+    ${it.sz?`<div class="sz">${it.sz.map((z,k)=>`<button type="button" class="${k==1?'on':''}" data-z="${z}">${z}</button>`).join('')}</div>`:''}
+    <button type="button" class="addb" ${it.out?'disabled':''}>${it.out?'Sold out':'Add to bag'}</button></article>`).join('');
+  P.forEach(it=>sel[it.id]=it.sz?it.sz[1]:'');
+  $$('#prods .pr').forEach(card=>{
+    const it=P.find(x=>x.id===card.dataset.id);
+    card.querySelectorAll('.sz button').forEach(b=>b.onclick=()=>{card.querySelectorAll('.sz button').forEach(x=>x.classList.toggle('on',x===b));sel[it.id]=b.dataset.z;blip(600,.03)});
+    card.querySelector('.addb').onclick=()=>{add(it,sel[it.id]);fly(card.querySelector('.pic'))};
+  });
+  const cart=new Map();
+  function add(it,z){const k=it.id+'|'+z,e=cart.get(k);e?e.q++:cart.set(k,{it,z,q:1});render();blip(900,.05);setTimeout(()=>blip(1300,.04),70)}
+  function render(){
+    $('#rcpt').classList.remove('paid');
+    let sub=0,cnt=0,h='';
+    cart.forEach((e,k)=>{sub+=e.it.p*e.q;cnt+=e.q;
+      h+=`<div class="rl"><span class="nm">${e.it.n}${e.z?' ('+e.z+')':''}</span><span>${fmt(e.it.p*e.q)}</span><span class="qc"><button type="button" data-k="${k}" data-d="-1" aria-label="less">-</button>x${e.q}<button type="button" data-k="${k}" data-d="1" aria-label="more">+</button></span></div>`});
+    $('#rlines').innerHTML=h||'<div class="emp">BAG EMPTY.<br>GO ON THEN.</div>';
+    const del=sub===0?0:(sub>=50?0:3.99);
+    $('#rsub').textContent=fmt(sub);$('#rdel').textContent=sub&&del===0?'FREE':fmt(del);$('#rtot').textContent=fmt(sub+del);
+    $('#rfree').textContent=sub===0?'':(sub>=50?'* FREE DELIVERY UNLOCKED':'ADD '+fmt(50-sub)+' MORE FOR FREE DELIVERY');
+    $('#rgo').disabled=!cnt;$('#bagb').textContent=`BAG (${cnt}) ${fmt(sub+del).replace('.00','')}`;
+  }
+  $('#rlines').addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(!b)return;const en=cart.get(b.dataset.k);en.q+=+b.dataset.d;if(en.q<=0)cart.delete(b.dataset.k);render();blip(500,.03)});
+  $('#rgo').onclick=()=>{$('#rcpt').classList.add('paid');blip(200,.12);toast('Demo shop',"No payment taken. Hook up a real checkout (Shopify, Stripe) to go live.");setTimeout(()=>{cart.clear();render()},3200)};
+  $('#bagb').onclick=()=>$('#rcpt').scrollIntoView({behavior:'smooth',block:'center'});
+  $('#rdate').textContent=new Date().toLocaleDateString('en-GB').replace(/\//g,'.');
+  function fly(pic){
+    if(reduce)return;const a=pic.getBoundingClientRect(),b=$('#rcpt').getBoundingClientRect();
+    const f=document.createElement('div');f.className='fly';f.innerHTML=pic.innerHTML;
+    f.style.cssText+=`left:${a.left}px;top:${a.top}px;width:${a.width}px;height:${a.height}px;`;document.body.appendChild(f);
+    requestAnimationFrame(()=>{f.style.transform=`translate(${b.left+b.width/2-a.left-a.width/2}px,${b.top+80-a.top-a.height/2}px) scale(.15) rotate(25deg)`;f.style.opacity='.2'});
+    setTimeout(()=>{f.remove();const bb=$('#bagb');bb.classList.remove('bump');void bb.offsetWidth;bb.classList.add('bump')},700);
+  }
+  render();
+  // shutter rolls up as the section scrolls into view
+  const sw=document.querySelector('.shutterw');const H=()=>sw.scrollHeight||300;
+  function roll(){const r=$('#shop').getBoundingClientRect(),p=clamp((innerHeight*.85-r.top)/(innerHeight*.7),0,1);sw.style.height=(1-p)*document.querySelector('#shutter').offsetHeight+'px'}
+  addEventListener('scroll',roll,{passive:true});addEventListener('resize',roll);roll();
 })();
 
 if(location.hash==='#skip')start(false);
