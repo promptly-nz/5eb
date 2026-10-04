@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+
+/* ---------- design tokens ---------- */
+@theme {
+  --color-orange: #f07000;
+  --color-ink: #0a0908;
+  --color-cream: #e9e2d0;
+  --color-phos: #9bf06a; /* CRT / LCD phosphor green */
+  --color-rec: #ff2a2a;
+  --color-cyan-fx: #19e6ff;
+
+  --font-anton: Anton, Impact, sans-serif;
+  --font-marker: 'Permanent Marker', cursive;
+  --font-lcd: VT323;
+  --font-narrow: 'Archivo Narrow', Arial, sans-serif;
+
+  /* shared animations; component-specific keyframes live next to their component */
+  --animate-blink: blink 1s steps(1) infinite;
+  --animate-kb: kb 9s ease-in-out infinite alternate;
+  --animate-float: float 6s ease-in-out infinite alternate;
+  --animate-slide-in: slide-in 0.5s ease-out both;
+  --animate-row-in: row-in 0.3s steps(4) both;
+  --animate-marquee: marquee 26s linear infinite;
+
+  @keyframes blink { 50% { opacity: 0 } }
+  @keyframes kb { to { transform: scale(1.16) translate(-1.5%, -1%) } }
+  @keyframes float { to { transform: translateY(-14px) rotate(2deg) } }
+  @keyframes slide-in { from { transform: translateX(-110%) } to { transform: none } }
+  @keyframes row-in { from { opacity: 0; transform: translateX(-14px) } }
+  @keyframes marquee { to { transform: translateX(-100%) } }
+}
+
+/* ---------- base ---------- */
+@layer base {
+  html {
+    background: var(--color-ink);
+    line-height: normal; /* preflight sets 1.5; the design was drawn with `normal` */
+  }
+  body {
+    background: var(--color-ink);
+    color: var(--color-cream);
+    font-family: var(--font-narrow);
+    font-size: 17px;
+    overflow-x: hidden;
+    cursor: none; /* the page draws its own camcorder crosshair */
+  }
+  body.booting { overflow: hidden }
+  a, button { cursor: none; color: inherit }
+  @media (pointer: coarse) {
+    body { cursor: auto }
+    a, button { cursor: pointer }
+  }
+  h1, h2, h3 {
+    font-family: var(--font-anton);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 0.88;
+  }
+  section { position: relative }
+}
+
+/* ---------- shared bits too fiddly to repeat inline ---------- */
+/* scanlines + vignette over a CRT screen (TV, DVD preview) */
+@utility crtfx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.28) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important }
+}
