@@ -1,7 +1,7 @@
 <script lang="ts">
   import Star from '../ui/Star.svelte'
   import Sticker from '../ui/Sticker.svelte'
-  import { LATEST, R } from '../../data/releases'
+  import { LATEST, R, linkOf } from '../../data/releases'
   import { pad, reduce } from '../../lib/util'
 
   let hero: HTMLElement
@@ -46,7 +46,7 @@
 
 <section bind:this={hero} id="hero" class="grid h-[112vh] min-h-[760px] place-items-center overflow-hidden border-b-[6px] border-orange">
   <div
-    class="layer absolute -inset-[6%] animate-[shake_5s_steps(1)_infinite] bg-[url(/img/5eb/2.webp)] bg-cover bg-center will-change-transform [filter:grayscale(1)_contrast(1.5)_brightness(.75)] [transform:scale(1.1)] before:absolute before:inset-0 before:z-[1] before:opacity-[.35] before:mix-blend-multiply before:[background:radial-gradient(#000_30%,transparent_32%)_0_0/6px_6px] before:content-[''] after:absolute after:inset-0 after:bg-orange after:opacity-80 after:mix-blend-multiply after:content-['']"
+    class="layer absolute -inset-[6%] animate-[shake_5s_steps(1)_infinite] bg-[url(/img/5eb/2.webp)] bg-cover bg-no-repeat bg-[position:50%_-120px] will-change-transform [filter:grayscale(1)_contrast(1.5)_brightness(.75)] [transform:scale(1.1)] before:absolute before:inset-0 before:z-[1] before:opacity-[.35] before:mix-blend-multiply before:[background:radial-gradient(#000_30%,transparent_32%)_0_0/6px_6px] before:content-[''] after:absolute after:inset-0 after:bg-orange after:opacity-80 after:mix-blend-multiply after:content-['']"
     data-d="-0.02"
     data-s="0.18"
   ></div>
@@ -59,17 +59,15 @@
   <Star class="layer will-change-transform" n={14} data-d="-0.05" data-s="0.42" style="width:210px;height:210px;right:7vw;top:16vh;background:var(--color-cream)">OUT<br>NOW</Star>
   <Star class="layer will-change-transform" n={11} data-d="0.04" data-s="0.32" style="width:150px;height:150px;left:9vw;bottom:20vh">NEW<br>SINGLE</Star>
 
-  <Sticker class="layer animate-float will-change-transform" col src={R.motionmuzik.img} caption={R.motionmuzik.title} data-d="0.045" data-s="0.5" style="width:23vw;max-width:340px;aspect-ratio:1;left:5vw;top:18vh;transform:rotate(-8deg)" />
-  <Sticker class="layer animate-float will-change-transform" col src={R.fendi5ive.img} caption={R.fendi5ive.title} data-d="-0.04" data-s="0.6" style="width:21vw;max-width:300px;aspect-ratio:1;right:6vw;bottom:14vh;transform:rotate(7deg);animation-delay:-2s" />
-  <Sticker class="layer animate-float will-change-transform" col src={R.highbernation.img} caption={R.highbernation.title} data-d="0.06" data-s="0.4" style="width:15vw;max-width:210px;aspect-ratio:1;right:23vw;top:9vh;transform:rotate(14deg);animation-delay:-4s" />
+  <Sticker class="layer animate-float will-change-transform" col src={R.motionmuzik.img} caption={R.motionmuzik.title} href={linkOf(R.motionmuzik)} data-d="0.045" data-s="0.5" style="width:23vw;max-width:340px;aspect-ratio:1;left:5vw;top:18vh;transform:rotate(-8deg)" />
+  <Sticker class="layer animate-float will-change-transform" col src={R.fendi5ive.img} caption={R.fendi5ive.title} href={linkOf(R.fendi5ive)} data-d="-0.04" data-s="0.6" style="width:21vw;max-width:300px;aspect-ratio:1;right:6vw;bottom:14vh;transform:rotate(7deg);animation-delay:-2s" />
+  <Sticker class="layer animate-float will-change-transform" col src={R.highbernation.img} caption={R.highbernation.title} href={linkOf(R.highbernation)} data-d="0.06" data-s="0.4" style="width:15vw;max-width:210px;aspect-ratio:1;right:23vw;top:9vh;transform:rotate(14deg);animation-delay:-4s" />
 
   <div
     class="layer pointer-events-none absolute bottom-[9vh] left-[34vw] h-[46px] w-[110px] -rotate-6 border-[6px] border-white will-change-transform [background:repeating-linear-gradient(90deg,#000_0_2px,transparent_2px_4px,#000_4px_5px,transparent_5px_9px,#000_9px_12px,transparent_12px_14px),#fff]"
     data-d="0.02"
     data-s="0.2"
   ></div>
-  <div class="layer pointer-events-none absolute top-[14vh] left-[30vw] -rotate-8 font-marker text-[30px] text-orange will-change-transform [text-shadow:2px_2px_0_#000]" data-d="-0.03" data-s="0.3">N17 massive</div>
-  <div class="layer pointer-events-none absolute right-[12vw] bottom-[36vh] rotate-6 font-marker text-[30px] text-cream will-change-transform [text-shadow:2px_2px_0_#000]" data-d="0.03" data-s="0.3">bare bars →</div>
 
   <h1
     class="layer relative z-5 text-center font-anton text-[clamp(190px,40vw,620px)] leading-[.8] tracking-[-.02em] text-cream will-change-transform select-none [text-shadow:12px_12px_0_#000] before:absolute before:top-0 before:left-0 before:w-full before:animate-[gl1_3.1s_steps(1)_infinite] before:text-orange before:mix-blend-screen before:[text-shadow:none] before:[transform:translate(-9px,0)] before:content-[attr(data-t)] after:absolute after:top-0 after:left-0 after:w-full after:animate-[gl2_2.7s_steps(1)_infinite] after:text-cyan-fx after:mix-blend-screen after:[text-shadow:none] after:[transform:translate(9px,0)] after:content-[attr(data-t)]"
@@ -77,7 +75,7 @@
     data-s="0.08"
     data-t="5EB"
   >5EB</h1>
-  <div class="absolute bottom-[18%] left-1/2 z-[9] border-[3px] border-orange bg-black px-4 py-1.5 font-anton text-[clamp(20px,3vw,38px)] tracking-[.14em] whitespace-nowrap text-orange uppercase [transform:translateX(-50%)_rotate(-2deg)]">{LATEST.title} · Out now</div>
+  <a href={linkOf(LATEST)} target="_blank" rel="noopener" class="absolute bottom-[18%] left-1/2 z-[9] border-[3px] border-orange bg-black px-4 py-1.5 font-anton text-[clamp(20px,3vw,38px)] tracking-[.14em] whitespace-nowrap text-orange uppercase [transform:translateX(-50%)_rotate(-2deg)]">{LATEST.title} · Out now</a>
 
   <div class="pointer-events-none absolute inset-0 z-[8] font-lcd text-[28px] text-white [text-shadow:0_0_6px_rgba(0,0,0,.8)]">
     <i class="absolute top-[70px] left-[4vw] size-12 border-[3px] border-r-0 border-b-0 border-white"></i>
