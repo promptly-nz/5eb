@@ -3,9 +3,11 @@
 
   // Taped-on polaroid. Extra attributes (data-*, etc.) fall through to the <figure>.
   // `flow` puts it in normal layout (relative) instead of absolutely positioned.
-  let { src, caption, col = false, flow = false, class: cls = '', ...rest }: {
+  let { src, caption, href, col = false, flow = false, class: cls = '', ...rest }: {
     src: string
     caption: string
+    /** makes the whole print a link (opens in a new tab) */
+    href?: string
     col?: boolean
     flow?: boolean
   } & HTMLAttributes<HTMLElement> = $props()
@@ -20,6 +22,7 @@
   ]}
   {...rest}
 >
+  {#if href}<a class="absolute inset-0 z-10" data-cursor="LISTEN" {href} target="_blank" rel="noopener" aria-label="Listen to {caption}"></a>{/if}
   <img
     src="/img/{src}"
     alt=""
