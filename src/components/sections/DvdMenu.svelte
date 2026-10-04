@@ -3,25 +3,44 @@
   import LowerThird from '../ui/LowerThird.svelte'
   import { TRACKS } from '../../data/content'
   import { blip, burst } from '../../lib/audio.svelte'
+  import { music, playSongs, stopMusic } from '../../lib/music.svelte'
   import { pad } from '../../lib/util'
+  import { untrack } from 'svelte'
 
   let section: HTMLElement
   let sel = $state(0)
-  let playing = $state(false)
   let swap = $state(0) // bumped on every selection so the glitch animation replays
   let flash = $state(false)
 
   const track = $derived(TRACKS[sel])
+  const playing = $derived(music.src === 'dvd' && music.playing && music.song?.id === track[3])
+  const SONGS = TRACKS.map(t => ({ id: t[3], title: t[0] }))
 
-  function pick(i: number, play = false) {
+  // PLAY ALL: when a track ends the next one starts, and the menu follows along
+  $effect(() => {
+    const id = music.src === 'dvd' ? music.song?.id : undefined
+    if (!id) return
+    untrack(() => {
+      const k = TRACKS.findIndex(t => t[3] === id)
+      if (k >= 0 && k !== sel) {
+        sel = k
+        swap++
+      }
+    })
+  })
+
+  function pick(i: number) {
     sel = (i + TRACKS.length) % TRACKS.length
-    playing = play
     swap++
-    blip(play ? 1400 : 700, 0.05)
+    blip(700, 0.05)
   }
 
   function enter(i: number) {
-    pick(i, true)
+    sel = (i + TRACKS.length) % TRACKS.length
+    swap++
+    if (music.src === 'dvd' && music.song?.id === TRACKS[sel][3]) stopMusic('dvd')
+    else playSongs('dvd', SONGS, { index: sel })
+    blip(1400, 0.05)
     flash = true
     burst()
     setTimeout(() => (flash = false), 300)
@@ -32,7 +51,7 @@
     if (!(r.top < innerHeight * 0.6 && r.bottom > innerHeight * 0.3)) return
     if (e.key === 'ArrowDown') { e.preventDefault(); pick(sel + 1) }
     if (e.key === 'ArrowUp') { e.preventDefault(); pick(sel - 1) }
-    if (e.key === 'Enter') pick(sel, true)
+    if (e.key === 'Enter') enter(sel)
   }
 </script>
 
@@ -74,7 +93,7 @@
         {/key}
         <Noise active={flash} />
       </div>
-      <div class="mt-[22px] [font-family:VT323] text-[22px] font-normal tracking-[.12em] text-[#777]">↑ ↓ to select · ENTER to play · or just hover</div>
+      <div class="mt-[22px] [font-family:VT323] text-[22px] font-normal tracking-[.12em] text-[#777]">ENTER play or stop</div>
     </div>
   </div>
 </section>
