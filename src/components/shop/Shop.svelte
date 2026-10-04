@@ -71,7 +71,7 @@
   // arrow keys browse the shelf while it's on screen
   function onkeydown(e: KeyboardEvent) {
     const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key]
-    if (!d || /input|textarea|select/i.test((e.target as HTMLElement).tagName)) return
+    if (!d || /input|textarea|select/i.test((e.target as HTMLElement).tagName) || (e.target as HTMLElement).closest('[data-keys]')) return
     const r = section.getBoundingClientRect()
     if (!(r.top < innerHeight * 0.3 && r.bottom > innerHeight * 0.7)) return
     e.preventDefault()
@@ -83,7 +83,7 @@
 
 <section bind:this={section} id="shop" class="relative overflow-x-clip border-t-[6px] border-orange bg-ink px-[4vw] pt-14 pb-[120px]">
   <SectionHeader title="The Goods" size="md" tag="pick one up · demo shop" class="mb-5 p-0" />
-  <div class="flex gap-2 max-[900px]:flex-col" role="tablist" aria-label="Products">
+  <div class="flex gap-2 max-[900px]:flex-col" role="group" aria-label="Products">
     {#each PRODUCTS as p, i (p.id)}
       {@const on = i === cur}
       <div
@@ -95,9 +95,8 @@
         {#if !on}
           <button
             type="button"
-            role="tab"
-            aria-selected="false"
-            aria-label={p.n}
+            aria-expanded="false"
+            aria-label="Open {p.n}"
             class="group absolute inset-0 z-10 flex flex-col items-center gap-3 px-1.5 pt-2.5 pb-3 text-left max-[900px]:flex-row max-[900px]:gap-4 max-[900px]:px-3 max-[900px]:py-0"
             onclick={() => pick(i)}
           >
@@ -107,7 +106,7 @@
             <span class="mt-auto -rotate-[5deg] bg-cream px-1.5 font-marker text-[17px] leading-tight text-black shadow-[2px_2px_0_#000] max-[900px]:mt-0 max-[900px]:ml-auto">{p.stock ? money(p.p) : 'SOLD'}</span>
           </button>
         {:else}
-          <div role="tabpanel" class="absolute inset-0 grid animate-[card-in_.35s_.2s_both] grid-cols-[1.08fr_1fr] gap-3.5 p-3 max-[900px]:grid-cols-1">
+          <div role="region" aria-label={p.n} class="absolute inset-0 grid animate-[card-in_.35s_.2s_both] grid-cols-[1.08fr_1fr] gap-3.5 p-3 max-[900px]:grid-cols-1">
             {#if p.kind === 'garment'}
               <Garment item={p} index={i} color={p.cols[s.c][1]} size={s.z} />
             {:else if p.kind === 'disc'}

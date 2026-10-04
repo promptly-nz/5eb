@@ -30,12 +30,25 @@
     at = now
   }
 
+  // keyboard: Space/Enter plays or stops, left/right wind the reels
+  function onkeydown(e: KeyboardEvent) {
+    if (e.target !== e.currentTarget) return
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      spin.toggle()
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      e.preventDefault()
+      spin.drag(e.key === 'ArrowLeft' ? -45 : 45, 70)
+      spin.release()
+    }
+  }
+
   $effect(() => () => spin.destroy())
 
   const HUB = 'absolute aspect-square w-[10.2%]'
 </script>
 
-<Stage no={index + 1} stock={item.stock} ratio={item.ratio} hint="DRAG ALONG IT TO WIND · OR PRESS PLAY" class="touch-none" {onpointerdown} {onpointermove} onpointerup={() => spin.release()}>
+<Stage no={index + 1} stock={item.stock} ratio={item.ratio} hint="DRAG ALONG IT TO WIND · OR PRESS PLAY" class="touch-none" tabindex={0} role="group" aria-label="{item.n} photo. Space plays or stops it, left and right arrows wind the reels." data-keys {onkeydown} {onpointerdown} {onpointermove} onpointerup={() => spin.release()}>
   <div class="absolute inset-0 -rotate-3 [filter:drop-shadow(7px_10px_0_rgba(0,0,0,.5))]">
     <img class="size-full" src="/img/shop/cassette.webp" alt="" draggable="false" />
     <img class={HUB} style="left:24.2%;top:37.5%;transform:rotate({spin.angle}deg)" src="/img/shop/hubL.webp" alt="" draggable="false" />

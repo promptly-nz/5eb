@@ -10,7 +10,7 @@
     no: number
     stock: number
     ratio: number
-    hint: string
+    hint?: string
     frame?: HTMLElement
     children: Snippet
     after?: Snippet
@@ -24,7 +24,7 @@
 <div
   bind:this={frame}
   class={[
-    'relative h-[340px] animate-[stage-in_.4s_steps(3)_both] overflow-hidden border-[3px] border-[#2a2622] bg-[radial-gradient(circle_at_50%_38%,#3a2d20,#0b0907_78%)] select-none [container-type:size] min-[901px]:h-full',
+    'relative h-[340px] animate-[stage-in_.4s_steps(3)_both] overflow-hidden border-[3px] border-[#2a2622] bg-[radial-gradient(circle_at_50%_38%,#3a2d20,#0b0907_78%)] select-none [container-type:size] outline-offset-2 focus-visible:outline-[3px] focus-visible:outline-orange min-[901px]:h-full',
     "after:pointer-events-none after:absolute after:inset-0 after:z-[4] after:bg-[repeating-linear-gradient(0deg,rgba(0,0,0,.16)_0_1px,transparent_1px_3px)] after:content-['']",
     cls,
   ]}

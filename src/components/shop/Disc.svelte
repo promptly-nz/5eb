@@ -43,10 +43,23 @@
     at = now
   }
 
+  // keyboard: Space/Enter plays or stops, left/right spin it by hand
+  function onkeydown(e: KeyboardEvent) {
+    if (e.target !== e.currentTarget) return
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      spin.toggle()
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      e.preventDefault()
+      spin.drag(e.key === 'ArrowLeft' ? -45 : 45, 70)
+      spin.release()
+    }
+  }
+
   $effect(() => () => spin.destroy())
 </script>
 
-<Stage bind:frame no={index + 1} stock={item.stock} ratio={item.ratio} hint="DRAG TO SPIN · CATCH THE LIGHT" class="touch-none" {onpointerdown} {onpointermove} onpointerup={() => spin.release()}>
+<Stage bind:frame no={index + 1} stock={item.stock} ratio={item.ratio} hint="DRAG TO SPIN · CATCH THE LIGHT" class="touch-none" tabindex={0} role="group" aria-label="{item.n} photo. Space plays or stops it, left and right arrows spin it." data-keys {onkeydown} {onpointerdown} {onpointermove} onpointerup={() => spin.release()}>
   <div class="absolute inset-0 [filter:drop-shadow(7px_10px_0_rgba(0,0,0,.5))]">
     <div class="absolute inset-0" style="transform:rotate({spin.angle}deg)">
       <img class="size-full" style={black ? 'filter:brightness(.26) contrast(1.5) saturate(.4) hue-rotate(200deg)' : ''} src={url} alt="" draggable="false" />

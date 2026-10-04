@@ -66,10 +66,24 @@
     setTimeout(() => blip(260, 0.05), 60)
   }
 
+  // keyboard: Enter/Space pokes the fabric, arrows tilt it
+  function onkeydown(e: KeyboardEvent) {
+    if (e.target !== e.currentTarget) return
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      onpointerdown()
+      return
+    }
+    const t: Record<string, [number, number]> = { ArrowLeft: [0, -12], ArrowRight: [0, 12], ArrowUp: [12, 0], ArrowDown: [-12, 0] }
+    if (!t[e.key]) return
+    e.preventDefault()
+    ;[rx, ry] = t[e.key]
+  }
+
   $effect(() => () => cancelAnimationFrame(raf))
 </script>
 
-<Stage bind:frame no={index + 1} stock={item.stock} ratio={item.ratio} hint="TILT IT · POKE THE FABRIC" {onpointermove} {onpointerdown} onpointerleave={() => { rx = 0; ry = 0 }}>
+<Stage bind:frame no={index + 1} stock={item.stock} ratio={item.ratio} tabindex={0} role="group" aria-label="{item.n} photo. Enter pokes the fabric, arrow keys tilt it." data-keys {onkeydown} onblur={() => { rx = 0; ry = 0 }} {onpointermove} {onpointerdown} onpointerleave={() => { rx = 0; ry = 0 }}>
   <div
     class="absolute inset-0 [transition:transform_.2s_ease-out]"
     style="transform:perspective(900px) rotateX({rx}deg) rotateY({ry}deg) scale({scale});filter:{cloth ? 'url(#cloth)' : 'none'}"

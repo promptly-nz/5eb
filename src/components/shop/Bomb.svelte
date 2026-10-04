@@ -20,13 +20,24 @@
   let n = 0
 
   function slap(e: MouseEvent) {
-    if (stuck.length >= MAX) return
     const r = box.getBoundingClientRect()
+    place(((e.clientX - r.left) / r.width) * 100, ((e.clientY - r.top) / r.height) * 100)
+  }
+
+  // keyboard: Enter/Space puts one down on a random spot of the bench
+  function onkeydown(e: KeyboardEvent) {
+    if (e.key !== 'Enter' && e.key !== ' ') return
+    e.preventDefault()
+    place(15 + Math.random() * 70, 15 + Math.random() * 70)
+  }
+
+  function place(x: number, y: number) {
+    if (stuck.length >= MAX) return
     const s = PACK[stuck.length]
     stuck.push({
       id: n++,
-      x: ((e.clientX - r.left) / r.width) * 100,
-      y: ((e.clientY - r.top) / r.height) * 100,
+      x,
+      y,
       rot: Math.round((Math.random() - 0.5) * 50),
       src: '/img/' + s.img,
       round: stuck.length % 3 === 1,
@@ -44,7 +55,7 @@
 </script>
 
 <Stage no={index + 1} stock={item.stock} ratio={item.ratio} hint="CLICK THE BENCH TO SLAP ONE ON">
-  <div bind:this={box} class="absolute inset-0 cursor-crosshair overflow-hidden [filter:drop-shadow(7px_10px_0_rgba(0,0,0,.5))]" role="presentation" onclick={slap}>
+  <div bind:this={box} class="absolute inset-0 cursor-crosshair overflow-hidden [filter:drop-shadow(7px_10px_0_rgba(0,0,0,.5))]" role="button" tabindex={0} aria-label="Slap a sticker on the bench" {onkeydown} onclick={slap}>
     <img class="size-full object-cover" src="/img/shop/{item.img}" alt="" draggable="false" />
     {#each stuck as s (s.id)}
       <img
