@@ -1,9 +1,11 @@
 <script lang="ts">
   import Sticker from '../ui/Sticker.svelte'
   import { LATEST, R, linkOf } from '../../data/releases'
+  import { RADIO_QUEUE } from '../../data/music'
   import SectionHeader from '../ui/SectionHeader.svelte'
   import { audio, frequencyData, setRadio, setSound } from '../../lib/audio.svelte'
   import { F0, GARBLE, STATIONS } from '../../data/content'
+  import { music, radioBed } from '../../lib/music.svelte'
   import { clamp } from '../../lib/util'
 
   // [release, left %, top %, tilt deg]
@@ -16,6 +18,7 @@
   let section: HTMLElement
   let viz: HTMLCanvasElement
   let tune = $state(900)
+  let presence = $state(0)
 
   const f = $derived(tune / 10)
   const lock = $derived(Math.pow(clamp(1 - Math.abs(f - F0) / 1.1, 0, 1), 1.4))
@@ -23,18 +26,21 @@
   const locked = $derived(lock > 0.8)
   const status = $derived(
     locked
-      ? audio.on ? `5EB FM — LIVE: "${LATEST.title.toUpperCase()}"` : '5EB FM — LOCKED · TURN SND ON'
+      ? audio.on ? `5EB FM — LIVE: "${(music.song?.title ?? LATEST.title).toUpperCase()}"` : '5EB FM — LOCKED · TURN MUSIC ON'
       : near ? near[1] + ' — NOTHING BUT STATIC' : GARBLE[((f * 10) | 0) % GARBLE.length],
   )
 
   // Mix between static and beat as the dial nears 5EB.
   $effect(() => { setRadio({ lock, near: !!near }) })
+  // a ##MOTIONMUZIK track bleeds through, and fades up over the static as the dial locks on
+  $effect(() => radioBed(lock, presence, RADIO_QUEUE))
 
   // The radio is loudest when it's centred on screen.
   function onscroll() {
     const r = section.getBoundingClientRect()
     const c = r.top + r.height / 2 - innerHeight / 2
-    setRadio({ presence: clamp(1 - Math.abs(c) / (innerHeight * 0.9), 0, 1) })
+    presence = clamp(1 - Math.abs(c) / (innerHeight * 0.9), 0, 1)
+    setRadio({ presence })
   }
 
   function seek() {
@@ -51,19 +57,19 @@
     }, 30)
   }
 
-  // LED-bar spectrum: real FFT when sound is on, a faked wobble otherwise.
+  // LED-bar spectrum: real FFT of the static when sound is on, a faked wobble when a song is playing (YouTube audio can't be analysed).
   $effect(() => {
     const vx = viz.getContext('2d')!
     let raf = 0
     const draw = () => {
       const w = viz.width, h = viz.height, n = 32, bw = w / n
       vx.clearRect(0, 0, w, h)
-      const data = frequencyData()
+      const data = music.playing ? null : frequencyData()
       const t = performance.now() / 1000
       for (let i = 0; i < n; i++) {
         const v = data
           ? data[i] / 255
-          : Math.abs(Math.sin(t * 5 + i * 0.7)) * 0.5 * lock + Math.random() * 0.15 * (1 - lock) + (lock > 0.8 ? Math.abs(Math.sin(t * 9 + i)) * 0.4 : 0)
+          : Math.abs(Math.sin(t * 5 + i * 0.7)) * 0.5 * lock + Math.random() * 0.15 * (1 - lock) + (lock > 0.8 ? Math.abs(Math.sin(t * 9 + i)) * 0.4 : 0) + (music.playing ? 0.12 + 0.28 * Math.abs(Math.sin(t * 7 + i * 0.5)) : 0)
         const segs = Math.floor(Math.max(2, v * h) / 6)
         for (let s = 0; s < segs; s++) {
           vx.fillStyle = s > 9 ? '#ff4a2a' : '#9bf06a'
