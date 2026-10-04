@@ -33,9 +33,9 @@ export const STATIONS: [number, string][] = [
 ]
 export const GARBLE = ['~~khhhh~~', '..shhh..', '[ no signal ]', 'sk-sk-skrrt', '~~~tzzzt~~', '( reception poor )']
 
-/** DVD menu entries: title, year, cover. */
-export type Track = [title: string, year: string, img: string]
-export const TRACKS: Track[] = [R.ducati, R.friedInnaMansion, R.hysteric, R.motionmuzik, R.fendi5ive, R.highbernation, R.wheezy].map(r => [r.title, String(r.year), r.img])
+/** DVD menu entries: title, year, cover, YouTube id. */
+export type Track = [title: string, year: string, img: string, yt: string]
+export const TRACKS: Track[] = [R.ducati, R.friedInnaMansion, R.hysteric, R.motionmuzik, R.fendi5ive, R.highbernation, R.wheezy].map(r => [r.title, String(r.year), r.img, r.yt!])
 
 export const PAINT = [
   ['orange', '#f07000'], ['cream', '#e9e2d0'], ['red', '#ff2a2a'], ['cyan', '#19e6ff'], ['black', '#000'],

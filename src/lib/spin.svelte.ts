@@ -37,6 +37,13 @@ export class Spinner {
     this.kick()
   }
 
+  /** Start or stop playing from outside (e.g. when the music starts or ends). */
+  set(on: boolean) {
+    if (this.playing === on) return
+    this.playing = on
+    this.kick()
+  }
+
   destroy() {
     cancelAnimationFrame(this.raf)
     this.raf = 0
