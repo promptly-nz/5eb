@@ -5,3 +5,7 @@
 
 # Vercel
 .vercel
+
+node_modules
+dist
+*.local
