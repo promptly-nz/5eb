@@ -11,12 +11,12 @@
   import Hero from './components/sections/Hero.svelte'
   import Marquees from './components/sections/Marquees.svelte'
   import NightBus from './components/sections/NightBus.svelte'
+  import NowPlaying from './components/overlays/NowPlaying.svelte'
   import Radio from './components/sections/Radio.svelte'
   import Scanlines from './components/overlays/Scanlines.svelte'
   import Shop from './components/shop/Shop.svelte'
   import Snake from './components/sections/Snake.svelte'
   import SmsTicker from './components/overlays/SmsTicker.svelte'
-  import SoundButton from './components/overlays/SoundButton.svelte'
   import Toast from './components/overlays/Toast.svelte'
   import Wall from './components/sections/Wall.svelte'
   import { F0 } from './data/content'
@@ -48,7 +48,7 @@
   }
 
   onMount(() => {
-    if (location.hash === '#skip') start(false)
+    if (location.hash === '#skip') start(true)
     return trackSections()
   })
 </script>
@@ -59,7 +59,7 @@
 <ClickPops />
 <img class="pointer-events-none fixed top-2 left-3.5 z-[950] size-16 drop-shadow-[2px_2px_0_#000]" src="/img/logo.png" alt="5EB" />
 <Clock />
-<SoundButton />
+<NowPlaying />
 <!-- <SmsTicker /> -->
 <Toast />
 
