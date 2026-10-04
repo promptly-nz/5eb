@@ -1,10 +1,17 @@
 <script lang="ts">
   import Sticker from '../ui/Sticker.svelte'
-  import { LATEST, R } from '../../data/releases'
+  import { LATEST, R, linkOf } from '../../data/releases'
   import SectionHeader from '../ui/SectionHeader.svelte'
   import { audio, frequencyData, setRadio, setSound } from '../../lib/audio.svelte'
   import { F0, GARBLE, STATIONS } from '../../data/content'
   import { clamp } from '../../lib/util'
+
+  // [release, left %, top %, tilt deg]
+  const PRINTS = [
+    [R.friedInnaMansion, 0, 0, -5],
+    [R.ducati, 33, 4, 4],
+    [R.back2backFreestyle, 66, 0, -3],
+  ] as const
 
   let section: HTMLElement
   let viz: HTMLCanvasElement
@@ -75,9 +82,9 @@
 <section
   bind:this={section}
   id="radio"
-  class="overflow-hidden border-y-[6px] border-solid border-black bg-orange px-[4vw] pt-[120px] pb-[140px] text-black before:absolute before:inset-0 before:opacity-[.12] before:content-[''] before:[background:radial-gradient(#000_25%,transparent_27%)_0_0/12px_12px]"
+  class="overflow-hidden border-y-[6px] border-solid border-black bg-orange px-[4vw] pt-[120px] pb-[90px] text-black before:absolute before:inset-0 before:opacity-[.12] before:content-[''] before:[background:radial-gradient(#000_25%,transparent_27%)_0_0/12px_12px]"
 >
-  <SectionHeader class="mb-[30px] px-[4vw]" tone="ink" title="Fendi Radio" tag="tune in · don't tell the landlord" />
+  <SectionHeader class="mb-[30px] px-[4vw]" tone="ink" title="Fendi Radio" />
   <div class="relative grid grid-cols-[1.25fr_1fr] items-center gap-[5vw] max-[900px]:grid-cols-1">
     <div class="relative rounded-[26px] border-[5px] border-solid border-black bg-[linear-gradient(#2c2926,#0f0e0d)] p-[26px] text-cream shadow-[12px_12px_0_#000]">
       <div class="grid grid-cols-[150px_1fr] gap-[22px] max-[900px]:grid-cols-1">
@@ -91,7 +98,7 @@
           >● ON AIR</div>
           <div class="font-lcd text-[clamp(46px,6vw,78px)] leading-[.9] font-normal text-phos [text-shadow:0_0_12px_var(--color-phos)]">{f.toFixed(1)}<small class="ml-2 text-[.4em]">FM</small></div>
           <canvas bind:this={viz} class="block h-[70px] w-full" width="400" height="70"></canvas>
-          <div class="min-h-[1.2em] font-lcd text-[22px] font-normal tracking-[.1em] text-phos">{status}</div>
+          <div class="min-h-[1.2em] font-lcd text-[22px] font-normal tracking-[.1em] text-phos">{#if locked && audio.on}<a class="underline hover:text-white" href={linkOf(LATEST)} target="_blank" rel="noopener">{status}</a>{:else}{status}{/if}</div>
         </div>
       </div>
       <div class="relative mt-[26px] h-[86px]">
@@ -124,9 +131,11 @@
         class="inline-block border-[3px] border-solid border-black bg-black px-[18px] py-[10px] font-anton text-[22px] font-normal tracking-[.06em] text-orange uppercase shadow-[6px_6px_0_var(--color-cream)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-[2px_2px_0_var(--color-cream)]"
         onclick={seek}
       >▶ Auto-seek 5EB FM</button>
-      <div class="relative mt-[30px] h-[260px]">
-        <Sticker col src={R.allsummalong.img} caption={R.allsummalong.title} style="width:200px;height:200px;left:0;top:0;transform:rotate(-5deg)" />
-        <Sticker col src={R.ducati.img} caption={R.ducati.title} style="width:190px;height:190px;left:180px;top:30px;transform:rotate(6deg)" />
+      <!-- the three newest covers, newest first, pinned up like prints -->
+      <div class="relative mt-[30px] aspect-[3.1] max-[900px]:aspect-[2.7]">
+        {#each PRINTS as [r, x, y, rot]}
+          <Sticker col src={r.img} caption={r.title} href={linkOf(r)} class="transition-transform duration-150 hover:z-10 hover:scale-110" style="width:32%;aspect-ratio:1;left:{x}%;top:{y}%;transform:rotate({rot}deg)" />
+        {/each}
       </div>
     </div>
   </div>
