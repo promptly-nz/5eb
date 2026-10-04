@@ -19,8 +19,10 @@
   import SoundButton from './components/overlays/SoundButton.svelte'
   import Toast from './components/overlays/Toast.svelte'
   import Wall from './components/sections/Wall.svelte'
+  import { F0 } from './data/content'
   import { LATEST } from './data/releases'
   import { setSound } from './lib/audio.svelte'
+  import { scrollToHash, trackSections } from './lib/hash'
   import { showToast } from './lib/toast.svelte'
 
   // boot: camcorder boot log -> CRT-off -> site live
@@ -31,13 +33,23 @@
     phase = 'off'
     document.body.classList.remove('booting')
     setSound(sound)
-    setTimeout(() => (phase = 'live'), 800)
+    setTimeout(() => {
+      phase = 'live'
+      scrollToHash()
+    }, 800)
     setTimeout(() => showToast('Bluetooth', `Receiving '${LATEST.title.replace(/\s+/g, '_')}_FINAL_v2.mp3' from 5EB. Accept?`), 14000)
-    setTimeout(() => showToast('1 new message', "Marv: 'ur on dubplate tonite fam, 93.7'"), 32000)
+    setTimeout(
+      () => showToast('1 new message', `Marv: ur on dubplate tonite fam. ${F0} FM, dont be late`, {
+        label: 'TUNE IN ▶',
+        run: () => document.getElementById('radio')?.scrollIntoView({ behavior: 'smooth', block: 'center' }),
+      }),
+      32000,
+    )
   }
 
   onMount(() => {
     if (location.hash === '#skip') start(false)
+    return trackSections()
   })
 </script>
 
@@ -48,7 +60,7 @@
 <img class="pointer-events-none fixed top-2 left-3.5 z-[950] size-16 drop-shadow-[2px_2px_0_#000]" src="/img/logo.png" alt="5EB" />
 <Clock />
 <SoundButton />
-<SmsTicker />
+<!-- <SmsTicker /> -->
 <Toast />
 
 {#if phase !== 'live'}
