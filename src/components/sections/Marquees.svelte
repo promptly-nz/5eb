@@ -5,7 +5,7 @@
   const forward = MARQUEE_IMGS
   const backward = [...MARQUEE_IMGS].reverse()
 
-  const ROW = 'inline-flex items-center gap-10 pl-10 font-anton text-[clamp(44px,6vw,86px)] leading-[1.1] uppercase'
+  const ROW = 'inline-flex items-center gap-10 pr-10 font-anton text-[clamp(44px,6vw,86px)] leading-[1.1] uppercase'
 </script>
 
 {#snippet row(imgs: string[])}
@@ -24,9 +24,16 @@
 
 <div class="mqw relative h-[300px] overflow-hidden bg-ink">
   <div class="absolute top-9 -left-[5%] w-[110%] -rotate-3 overflow-hidden border-y-[5px] border-black bg-orange whitespace-nowrap text-black">
-    <div class={[ROW, 'animate-marquee']}>{@render row(forward)}</div>
+    <div class={[ROW, 'animate-[marquee-half_26s_linear_infinite]']}>{@render row(forward)}</div>
   </div>
   <div class="absolute top-[150px] -left-[5%] w-[110%] rotate-[2.2deg] overflow-hidden border-y-[5px] border-black bg-cream whitespace-nowrap text-black">
-    <div class={[ROW, 'animate-[marquee_26s_linear_infinite_reverse]']}>{@render row(backward)}</div>
+    <div class={[ROW, 'animate-[marquee-half_26s_linear_infinite_reverse]']}>{@render row(backward)}</div>
   </div>
 </div>
+
+<style>
+  /* the track is two identical halves (each ending in a gap), so half its width is exactly one loop */
+  @keyframes -global-marquee-half {
+    to { transform: translateX(-50%) }
+  }
+</style>
