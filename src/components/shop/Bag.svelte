@@ -13,6 +13,7 @@
   } = $props()
 
   let root: HTMLElement
+  let rail: HTMLElement
 
   const QBTN = 'size-5 bg-[#2a2622] font-anton text-[14px] leading-none text-white hover:bg-orange hover:text-black'
 
@@ -51,6 +52,21 @@
     }, 45)
   }
 
+  // a new item scrolls into view at the end of the rail
+  $effect(() => {
+    cart.length
+    rail.scrollTo({ left: rail.scrollWidth, behavior: 'smooth' })
+  })
+
+  // the mouse wheel scrolls the rail sideways while it has room to go that way, else the page scrolls as normal
+  function onwheel(e: WheelEvent) {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return
+    const max = rail.scrollWidth - rail.clientWidth
+    if ((e.deltaY < 0 && rail.scrollLeft <= 0) || (e.deltaY > 0 && rail.scrollLeft >= max - 1) || max <= 0) return
+    e.preventDefault()
+    rail.scrollLeft += e.deltaY
+  }
+
   /** The bag's box, so the shop can fly items towards it. */
   export function el() {
     return root
@@ -59,9 +75,9 @@
 
 <div class="relative mt-2 flex flex-wrap items-center gap-x-5 gap-y-2 border-[3px] border-[#2a2622] bg-[#100e0c] px-3.5 py-2" bind:this={root}>
   <h4 class="font-anton text-[22px] tracking-[.04em] text-white uppercase">Ya bag <small class="ml-1 bg-orange px-1.5 font-lcd text-[18px] tracking-[.1em] text-black">{count}</small></h4>
-  <div class="flex min-w-0 flex-1 flex-wrap gap-2">
+  <div bind:this={rail} {onwheel} role="group" aria-label="Items in your bag" class="flex min-w-0 flex-1 gap-2 overflow-x-auto overscroll-x-contain pb-1 [scrollbar-color:var(--color-orange)_#1a1713] [scrollbar-width:thin]">
     {#each cart as e (e.key)}
-      <div class="grid animate-[row-in_.3s_steps(3)_both] grid-cols-[38px_auto] items-center gap-2 border-2 border-[#2a2622] bg-[#17140f] py-0.5 pr-2 pl-1">
+      <div class="grid shrink-0 animate-[row-in_.3s_steps(3)_both] grid-cols-[38px_auto] items-center gap-2 border-2 border-[#2a2622] bg-[#17140f] py-0.5 pr-2 pl-1">
         <Thumb item={e.item} color={e.item.cols[e.c][1]} size={38} />
         <div class="leading-none">
           <b class="block font-anton text-[15px] font-normal text-white uppercase">{e.item.n}</b>
@@ -74,7 +90,7 @@
         </div>
       </div>
     {:else}
-      <span class="font-lcd text-[19px] tracking-[.1em] text-[#6a6258]">NOTHING IN HERE YET.</span>
+      <span class="font-lcd text-[19px] tracking-[.1em] whitespace-nowrap text-[#6a6258]">NOTHING IN HERE YET.</span>
     {/each}
   </div>
   <div class="flex items-center gap-4">
