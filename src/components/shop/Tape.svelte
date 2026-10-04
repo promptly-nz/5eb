@@ -1,5 +1,8 @@
 <script lang="ts">
   import Stage from './Stage.svelte'
+  import { untrack } from 'svelte'
+  import { TAPE_QUEUE } from '../../data/music'
+  import { music, toggleMusic } from '../../lib/music.svelte'
   import { Spinner } from '../../lib/spin.svelte'
   import { pad } from '../../lib/util'
   import type { Product } from '../../data/products'
@@ -35,13 +38,21 @@
     if (e.target !== e.currentTarget) return
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
-      spin.toggle()
+      toggle()
     } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
       e.preventDefault()
       spin.drag(e.key === 'ArrowLeft' ? -45 : 45, 70)
       spin.release()
     }
   }
+
+  // the real music drives the spin: it plays while the track does
+  const live = $derived(music.src === 'tape' && music.playing)
+  $effect(() => {
+    const on = live
+    untrack(() => spin.set(on))
+  })
+  const toggle = () => toggleMusic('tape', TAPE_QUEUE)
 
   $effect(() => () => spin.destroy())
 
@@ -69,8 +80,9 @@
   </div>
   {#snippet after()}
     <div class="absolute bottom-7 left-2.5 z-[6] flex items-center gap-2">
-      <button type="button" class="border-2 border-black bg-orange px-3 py-0.5 font-anton text-[18px] tracking-[.06em] text-black uppercase hover:bg-white" onclick={() => spin.toggle()}>{spin.playing ? '■ Stop' : '▶ Play'}</button>
+      <button type="button" class="border-2 border-black bg-orange px-3 py-0.5 font-anton text-[18px] tracking-[.06em] text-black uppercase hover:bg-white" onclick={toggle}>{live ? '■ Stop' : '▶ Play'}</button>
       <span class="bg-black px-2 font-lcd text-[19px] tracking-[.1em] text-phos">CTR {counter}</span>
+      {#if music.src === 'tape' && music.song}<span class="max-w-[9em] truncate bg-black px-2 font-lcd text-[19px] tracking-[.06em] text-phos">♪ {music.song.title}</span>{/if}
     </div>
   {/snippet}
 </Stage>
