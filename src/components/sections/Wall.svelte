@@ -97,7 +97,7 @@
 <section
   bind:this={section}
   id="wall"
-  class="h-[92vh] min-h-[620px] overflow-hidden bg-[url(/img/graffiti.jpg)] bg-cover bg-center before:absolute before:inset-0 before:bg-black/[.42] before:backdrop-grayscale-[.7] before:backdrop-contrast-[1.3] before:content-['']"
+  class="h-[92vh] min-h-[620px] overflow-hidden bg-[url(/img/old/graffiti.jpg)] bg-cover bg-center before:absolute before:inset-0 before:bg-black/[.42] before:backdrop-grayscale-[.7] before:backdrop-contrast-[1.3] before:content-['']"
 >
   <canvas bind:this={canvas} id="spray" class="absolute inset-0 z-[2] h-full w-full touch-none"></canvas>
   <SectionHeader class="pointer-events-none absolute inset-x-0 top-[50px] z-[3] m-0 px-[4vw]" title="Tag the Wall" tag="hold &amp; drag · leave your mark" />

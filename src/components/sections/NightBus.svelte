@@ -69,8 +69,8 @@
     <canvas bind:this={canvas} class="block h-auto w-full" width="1200" height="180"></canvas>
   </div>
   <div class="relative mt-[60px] flex flex-wrap items-center justify-around gap-[30px] px-[4vw]">
-    <Sticker flow col src="oyster.jpg" caption="top up before you cuff it" style="width:min(80vw,380px);aspect-ratio:1.45;transform:rotate(-3deg)" />
+    <Sticker flow col src="old/oyster.jpg" caption="top up before you cuff it" style="width:min(80vw,380px);aspect-ratio:1.45;transform:rotate(-3deg)" />
     <p class="max-w-[12em] rotate-[-3deg] font-marker text-[clamp(30px,4vw,56px)] leading-[1.1] font-normal text-orange [text-shadow:3px_3px_0_#000]">Top deck, back seat, one earphone each.</p>
-    <Sticker flow col src="bus.jpg" caption="N41 · no stopping" style="width:min(80vw,340px);aspect-ratio:1.3;transform:rotate(4deg)" />
+    <Sticker flow col src="old/bus.jpg" caption="N41 · no stopping" style="width:min(80vw,340px);aspect-ratio:1.3;transform:rotate(4deg)" />
   </div>
 </section>
