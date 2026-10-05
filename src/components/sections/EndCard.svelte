@@ -16,7 +16,7 @@
     "block border-[3px] border-black bg-orange px-3.5 py-2 font-anton text-[20px] tracking-[.1em] text-black uppercase shadow-[4px_4px_0_var(--color-cream)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0_var(--color-cream)]"
 </script>
 
-<section bind:this={section} id="end" class="grid h-screen min-h-[640px] place-items-center overflow-hidden pb-10">
+<section bind:this={section} id="end" class="grid h-screen h-svh min-h-[640px] place-items-center overflow-hidden pb-10">
   <div
     class="absolute -inset-x-1 inset-y-0 animate-[tv-wobble_.9s_steps(1)_infinite] [background:linear-gradient(90deg,#c0c0c0_0_14.28%,#c0c000_0_28.56%,#00c0c0_0_42.84%,#00c000_0_57.12%,#c000c0_0_71.4%,#c00000_0_85.68%,#0000c0_0)_top/100%_70%_no-repeat,linear-gradient(90deg,#0000c0_0_14.28%,#111_0_28.56%,#c000c0_0_42.84%,#111_0_57.12%,#00c0c0_0_71.4%,#111_0_85.68%,#c0c0c0_0)_0_70%/100%_8%_no-repeat,linear-gradient(90deg,#00214c_0_18%,#fff_0_36%,#32006a_0_54%,#111_0_72%,#050505_0)_0_78%/100%_22%_no-repeat] [filter:saturate(.85)_brightness(.85)] after:absolute after:inset-0 after:bg-[repeating-linear-gradient(0deg,rgba(0,0,0,.2)_0_2px,transparent_2px_4px)] after:content-['']"
   ></div>

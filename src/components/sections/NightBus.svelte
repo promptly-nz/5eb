@@ -2,6 +2,7 @@
   import Sticker from '../ui/Sticker.svelte'
   import { LATEST } from '../../data/releases'
   import SectionHeader from '../ui/SectionHeader.svelte'
+  import { whenVisible } from '../../lib/visible'
 
   let canvas: HTMLCanvasElement
 
@@ -13,7 +14,25 @@
     const off = document.createElement('canvas')
     const ox = off.getContext('2d', { willReadFrequently: true })!
     let px: Uint8ClampedArray | null = null
-    let W = 0, o = 0, raf = 0, dead = false
+    let W = 0, o = 0, raf = 0, last = 0
+
+    // one lit and one unlit dot, drawn once with their glow, then stamped
+    const PAD = 12, S = GAP + PAD * 2
+    const dot = (lit: boolean) => {
+      const s = document.createElement('canvas')
+      s.width = s.height = S
+      const d = s.getContext('2d')!
+      d.beginPath()
+      d.arc(S / 2, S / 2, R, 0, 7)
+      d.fillStyle = lit ? '#ff8a1a' : '#1a1006'
+      if (lit) {
+        d.shadowColor = '#f07000'
+        d.shadowBlur = 10
+      }
+      d.fill()
+      return s
+    }
+    const on = dot(true), offDot = dot(false)
 
     function build() {
       ox.font = '20px VT323'
@@ -29,34 +48,28 @@
     }
     document.fonts.load('22px VT323').then(build, build)
 
-    function draw() {
-      if (dead) return
+    function draw(now: number) {
+      raf = requestAnimationFrame(draw)
+      if (now - last < 33) return // 30fps
+      last = now
       c.clearRect(0, 0, canvas.width, canvas.height)
       if (px) {
-        o = (o + 0.5) % W
+        o = (o + 1) % W
         for (let y = 0; y < ROWS; y++) {
           for (let x = 0; x < cols; x++) {
             const sx = Math.floor(x + o) % W
-            const on = px[(y * W + sx) * 4 + 3] > 110
-            c.beginPath()
-            c.arc(x * GAP + GAP / 2, y * GAP + GAP / 2, R, 0, 7)
-            if (on) {
-              c.fillStyle = '#ff8a1a'
-              c.shadowColor = '#f07000'
-              c.shadowBlur = 10
-            } else {
-              c.fillStyle = '#1a1006'
-              c.shadowBlur = 0
-            }
-            c.fill()
+            c.drawImage(px[(y * W + sx) * 4 + 3] > 110 ? on : offDot, x * GAP - PAD, y * GAP - PAD)
           }
         }
       }
-      raf = requestAnimationFrame(draw)
     }
-    draw()
+    // only while the bus blind is on screen
+    const stop = whenVisible(canvas, v => {
+      cancelAnimationFrame(raf)
+      if (v) raf = requestAnimationFrame(draw)
+    })
     return () => {
-      dead = true
+      stop()
       cancelAnimationFrame(raf)
     }
   })

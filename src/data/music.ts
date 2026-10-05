@@ -1,7 +1,14 @@
 import type { Song } from '../lib/music.svelte'
+import { TRACKS } from './content'
 
-/** The always-on bed: it plays quietly under the page and swells when the radio dial locks on. From ##MOTIONMUZIK. */
-export const RADIO_QUEUE: Song[] = [{ title: 'ROSTER', id: '8Zlx6ucAT1U' }]
+/** Song 05 on the DVD menu (FENDI5IVE). Read from TRACKS so the default always matches that entry. */
+const DEFAULT_TRACK = TRACKS[4]
+
+/**
+ * The always-on bed: it plays quietly under the page and swells when the radio dial locks on.
+ * It's the DVD menu's song 05, on a loop.
+ */
+export const RADIO_QUEUE: Song[] = [{ title: DEFAULT_TRACK[0], id: DEFAULT_TRACK[3] }]
 
 // Queues for the physical merch. All YouTube uploads on 5EB's own channel (or its auto-generated Topic channel).
 

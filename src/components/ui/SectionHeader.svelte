@@ -22,10 +22,10 @@
   const TAG = { light: 'text-orange', ink: 'text-black', lcd: 'text-[#16240f]' }
 </script>
 
-<div class={['flex items-end justify-between gap-5', cls]}>
+<div class={['flex items-end justify-between gap-5 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-1', cls]}>
   <h2 class={[SIZE[size], TITLE[tone]]}>{title}</h2>
   {#if tag}
-    <div class={['-rotate-3 text-right font-marker text-[24px]', TAG[tone]]}>
+    <div class={['-rotate-3 text-right font-marker text-[24px] max-[640px]:rotate-0 max-[640px]:text-left max-[640px]:text-[19px]', TAG[tone]]}>
       {#if typeof tag === 'string'}{tag}{:else}{@render tag()}{/if}
     </div>
   {/if}

@@ -1,10 +1,13 @@
 <script lang="ts">
   import SectionHeader from '../ui/SectionHeader.svelte'
   import { PAINT } from '../../data/content'
+  import { coarse } from '../../lib/util'
 
   let canvas: HTMLCanvasElement
   let section: HTMLElement
   let col = $state('#f07000')
+  // on a touch screen a swipe scrolls the page unless TAG mode is on (otherwise the wall swallows every swipe)
+  let tagging = $state(false)
 
   // Spray-paint canvas: hold to build up soft paint, linger to make it drip.
   interface Drip { x: number; y: number; v: number; l: number; col: string; w: number }
@@ -16,6 +19,8 @@
 
     const size = () => {
       const r = section.getBoundingClientRect()
+      // phones fire resize as the toolbar slides, and setting width wipes the paint: only react to a real width change
+      if (canvas.width === Math.round(r.width) && canvas.height > 0) return
       canvas.width = r.width
       canvas.height = r.height
     }
@@ -64,7 +69,11 @@
         d.l -= d.v
         if (d.l <= 0) drips.splice(i, 1)
       }
-      raf = requestAnimationFrame(frame)
+      // idle: stop the loop until the next touch (it restarts in onDown)
+      raf = down || drips.length ? requestAnimationFrame(frame) : 0
+    }
+    const kick = () => {
+      if (!raf) raf = requestAnimationFrame(frame)
     }
 
     const onDown = (e: PointerEvent) => {
@@ -74,6 +83,7 @@
       ly = py
       dwell = 0
       canvas.setPointerCapture(e.pointerId)
+      kick()
     }
     const onMove = (e: PointerEvent) => { if (down) [px, py] = pos(e) }
     const onUp = () => (down = false)
@@ -83,7 +93,7 @@
     addEventListener('pointerup', onUp)
     canvas.addEventListener('pointerdown', onDown)
     canvas.addEventListener('pointermove', onMove)
-    frame()
+    canvas.addEventListener('pointercancel', onUp)
     return () => {
       cancelAnimationFrame(raf)
       removeEventListener('resize', size)
@@ -97,20 +107,28 @@
 <section
   bind:this={section}
   id="wall"
-  class="h-[92vh] min-h-[620px] overflow-hidden bg-[url(/img/old/graffiti.jpg)] bg-cover bg-center before:absolute before:inset-0 before:bg-black/[.42] before:backdrop-grayscale-[.7] before:backdrop-contrast-[1.3] before:content-['']"
+  class="h-[92vh] min-h-[620px] overflow-hidden bg-[url(/img/graffiti-wall.jpg)] bg-cover bg-center"
 >
-  <canvas bind:this={canvas} id="spray" class="absolute inset-0 z-[2] h-full w-full touch-none"></canvas>
+  <canvas bind:this={canvas} id="spray" class={['absolute inset-0 z-[2] h-full w-full', coarse && !tagging ? 'touch-pan-y' : 'touch-none']}></canvas>
   <SectionHeader class="pointer-events-none absolute inset-x-0 top-[50px] z-[3] m-0 px-[4vw]" title="Tag the Wall" tag="hold &amp; drag · leave your mark" />
-  <div class="absolute bottom-[60px] left-1/2 z-[4] flex -translate-x-1/2 items-center gap-3 border-[3px] border-solid border-orange bg-black px-4 py-[10px] font-lcd text-[22px] font-normal tracking-[.1em] text-phos">PAINT
+  <div class="absolute bottom-[60px] left-1/2 z-[4] flex w-max max-w-[calc(100%-24px)] -translate-x-1/2 flex-wrap items-center justify-center gap-3 border-[3px] border-solid border-orange bg-black px-4 py-[10px] max-[640px]:gap-2 max-[640px]:px-3 font-lcd text-[22px] font-normal tracking-[.1em] text-phos">PAINT
     {#each PAINT as [name, hex]}
       <button
         type="button"
-        class={['h-[34px] w-[34px] rounded-full border-[3px] border-solid border-white', col === hex && 'outline-[3px] outline-offset-[3px] outline-orange']}
+        class={['size-[34px] rounded-full max-[640px]:size-[30px] border-[3px] border-solid border-white', col === hex && 'outline-[3px] outline-offset-[3px] outline-orange']}
         style="background:{hex}"
         aria-label={name}
         onclick={() => (col = hex)}
       ></button>
     {/each}
     <button type="button" class="h-[34px] border-2 border-solid border-cream px-[10px] tracking-normal [font-family:VT323] text-[20px] font-normal text-cream" onclick={clear}>CLEAR</button>
+    {#if coarse}
+      <button
+        type="button"
+        class={['h-[34px] border-2 border-solid px-[10px] tracking-normal [font-family:VT323] text-[20px] font-normal', tagging ? 'border-orange bg-orange text-black' : 'border-cream text-cream']}
+        aria-pressed={tagging}
+        onclick={() => (tagging = !tagging)}
+      >{tagging ? 'SCROLL' : 'TAG'}</button>
+    {/if}
   </div>
 </section>

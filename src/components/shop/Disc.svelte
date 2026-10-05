@@ -4,6 +4,7 @@
   import { CD_QUEUE } from '../../data/music'
   import { music, toggleMusic } from '../../lib/music.svelte'
   import { Spinner } from '../../lib/spin.svelte'
+  import { LATEST_ALBUM, LATEST_ALBUM_TRACKS } from '../../data/releases'
   import type { Product } from '../../data/products'
 
   // The CD-R: grab it and spin it, or hit play. A rainbow glint sits over the photo like the real
@@ -77,11 +78,11 @@
       <!-- sticker over the maker's logo -->
       <div class="absolute flex -rotate-2 items-center gap-[2em] bg-cream px-[2.5em] shadow-[1px_2px_0_rgba(0,0,0,.5)]" style="left:21%;top:8.5%;width:56%;height:14.5%">
         <img class="h-[88%]" src="/img/logo.png" alt="" draggable="false" />
-        <b class="font-marker text-[7em] leading-none font-normal whitespace-nowrap text-[#111]">5EB VOL.1</b>
+        <b class="font-marker text-[5.2em] leading-none font-normal whitespace-nowrap text-[#111]">{LATEST_ALBUM.title.toUpperCase()}</b>
       </div>
       <!-- marker on the writing lines -->
       <div class="absolute -rotate-[5deg] font-marker leading-[1.15] text-[#15130f]" style="left:11%;top:64%;width:78%">
-        <div class="text-[7.6em]">12 tracks · no skips</div>
+        <div class="text-[7.6em]">{LATEST_ALBUM_TRACKS.length} tracks · no skips</div>
       </div>
     </div>
     <div

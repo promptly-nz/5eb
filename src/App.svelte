@@ -23,6 +23,7 @@
   import { LATEST } from './data/releases'
   import { setSound } from './lib/audio.svelte'
   import { scrollToHash, trackSections } from './lib/hash'
+  import { pauseOffscreen } from './lib/visible'
   import { showToast } from './lib/toast.svelte'
 
   // boot: camcorder boot log -> CRT-off -> site live
@@ -49,7 +50,8 @@
 
   onMount(() => {
     if (location.hash === '#skip') start(true)
-    return trackSections()
+    const stops = [trackSections(), pauseOffscreen(document.querySelector('main')!)]
+    return () => stops.forEach(stop => stop())
   })
 </script>
 
@@ -57,7 +59,7 @@
 <Scanlines />
 <Cursor />
 <ClickPops />
-<img class="pointer-events-none fixed top-2 left-3.5 z-[950] size-16 drop-shadow-[2px_2px_0_#000]" src="/img/logo.png" alt="5EB" />
+<img class="pointer-events-none fixed top-2 left-3.5 z-[950] size-16 drop-shadow-[2px_2px_0_#000] max-[640px]:top-1.5 max-[640px]:left-2 max-[640px]:size-11" src="/img/logo.png" alt="5EB" />
 <Clock />
 <NowPlaying />
 <!-- <SmsTicker /> -->

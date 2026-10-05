@@ -2,7 +2,8 @@
   import Star from '../ui/Star.svelte'
   import Sticker from '../ui/Sticker.svelte'
   import { LATEST, R, linkOf } from '../../data/releases'
-  import { pad, reduce } from '../../lib/util'
+  import { whenVisible } from '../../lib/visible'
+  import { coarse, pad, reduce } from '../../lib/util'
 
   let hero: HTMLElement
   let timecode = $state('00:00:00:00')
@@ -10,17 +11,26 @@
   // Camcorder timecode, 25fps.
   $effect(() => {
     const t0 = performance.now()
-    const iv = setInterval(() => {
+    let iv = 0
+    const run = (on: boolean) => {
+      clearInterval(iv)
+      if (on) iv = setInterval(tick, 40)
+    }
+    const tick = () => {
       const t = (performance.now() - t0) / 1000
       const f = Math.floor((t % 1) * 25), s = Math.floor(t) % 60, m = Math.floor(t / 60) % 60, h = Math.floor(t / 3600)
       timecode = [h, m, s, f].map(v => pad(v)).join(':')
-    }, 40)
-    return () => clearInterval(iv)
+    }
+    const stop = whenVisible(hero, run)
+    return () => {
+      stop()
+      clearInterval(iv)
+    }
   })
 
   // Parallax: each .layer drifts with the pointer (data-d) and with scroll (data-s).
   $effect(() => {
-    if (reduce) return
+    if (reduce || coarse) return // on a phone the scroll lag fights the native scroll and looks like jitter
     const layers = [...hero.querySelectorAll<HTMLElement>('.layer')]
     let mx = innerWidth / 2, my = innerHeight / 2, sy = scrollY, raf = 0
     const move = (e: PointerEvent) => { mx = e.clientX; my = e.clientY }
@@ -36,8 +46,13 @@
       raf = requestAnimationFrame(loop)
     }
     addEventListener('pointermove', move)
-    loop()
+    // only run the loop while the hero is on screen
+    const stop = whenVisible(hero, on => {
+      cancelAnimationFrame(raf)
+      if (on) loop()
+    })
     return () => {
+      stop()
       removeEventListener('pointermove', move)
       cancelAnimationFrame(raf)
     }
@@ -84,8 +99,8 @@
     <i class="absolute right-[4vw] bottom-[60px] size-12 border-[3px] border-t-0 border-l-0 border-white"></i>
     <div class="absolute top-1/2 left-1/2 aspect-video w-[min(52vw,640px)] border-2 border-dashed border-[rgba(255,255,255,.35)] [transform:translate(-50%,-50%)] max-[900px]:hidden"></div>
     <div class="absolute top-[76px] left-[calc(4vw+66px)] flex items-center gap-2.5 tracking-[.1em] before:size-4 before:animate-blink before:rounded-full before:bg-rec before:shadow-[0_0_12px_var(--color-rec)] before:content-['']">REC <span>SP</span></div>
-    <div class="absolute top-[76px] right-[calc(4vw+66px)] tracking-[.1em]">{timecode}</div>
-    <div class="absolute bottom-[68px] left-[calc(4vw+66px)] tracking-[.14em]">▶ PLAY &nbsp; AUTO FOCUS &nbsp; ▮▮▮▯</div>
+    <div class="absolute top-[76px] right-[calc(4vw+66px)] tracking-[.1em] max-[640px]:top-[104px] max-[640px]:right-auto max-[640px]:left-[calc(4vw+66px)]">{timecode}</div>
+    <div class="absolute bottom-[68px] left-[calc(4vw+66px)] tracking-[.14em] max-[640px]:hidden">▶ PLAY &nbsp; AUTO FOCUS &nbsp; ▮▮▮▯</div>
     <div class="absolute right-[calc(4vw+66px)] bottom-[68px] text-right leading-[.9] text-orange">02 OCT 2004<br>16:48</div>
   </div>
   <div class="absolute bottom-14 left-1/2 z-[9] animate-[bob_1.4s_infinite] font-lcd text-[22px] tracking-[.2em] text-phos [transform:translateX(-50%)]">▼ SCROLL TO CHANGE CHANNEL ▼</div>
@@ -93,13 +108,13 @@
 
 <style>
   @keyframes -global-shake {
-    0% { margin: 0 }
-    20% { margin: 2px -3px }
-    22% { margin: 0 }
-    60% { margin: -3px 2px }
-    61% { margin: 0 }
-    85% { margin: 1px 3px }
-    86% { margin: 0 }
+    0% { transform: scale(1.1) }
+    20% { transform: scale(1.1) translate(-3px, 2px) }
+    22% { transform: scale(1.1) }
+    60% { transform: scale(1.1) translate(2px, -3px) }
+    61% { transform: scale(1.1) }
+    85% { transform: scale(1.1) translate(3px, 1px) }
+    86% { transform: scale(1.1) }
   }
   @keyframes -global-gl1 {
     0% { clip-path: inset(0 0 70% 0); transform: translate(-9px, 0) }

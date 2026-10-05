@@ -2,6 +2,27 @@
 /** Reactive sound state, drives the music tag. */
 export const audio = $state({ on: false, running: false })
 
+const VOL_KEY = '5eb-volume'
+const loadVolume = () => {
+  try {
+    const v = parseFloat(localStorage.getItem(VOL_KEY) ?? '')
+    return Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : 0.8
+  } catch {
+    return 0.8
+  }
+}
+/** The radio's volume knob, 0 to 1. It scales the static, the beeps and the music. */
+export const mix = $state({ vol: loadVolume() })
+export function setVolume(v: number) {
+  mix.vol = Math.min(1, Math.max(0, v))
+  if (ctx) master.gain.setTargetAtTime(0.9 * mix.vol, ctx.currentTime, 0.04)
+  try {
+    localStorage.setItem(VOL_KEY, String(mix.vol))
+  } catch {
+    // private mode etc: the knob still works, it just won't be remembered
+  }
+}
+
 /** What the radio dial is currently doing, fed in by the Radio section. */
 const radio = { lock: 0, presence: 0, near: false }
 /**
@@ -24,7 +45,7 @@ function audioInit() {
   const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
   ctx = new AC()
   master = ctx.createGain()
-  master.gain.value = 0.9
+  master.gain.value = 0.9 * mix.vol
   an = ctx.createAnalyser()
   an.fftSize = 128
   an.smoothingTimeConstant = 0.7

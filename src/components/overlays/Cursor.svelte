@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { coarse } from '../../lib/util'
+
   let el: HTMLDivElement
   let down = $state(false)
   // Over a link the crosshair turns into an orange pill; `data-cursor` on the link sets its label.
@@ -13,6 +15,7 @@
 
   // Smoothed crosshair that trails the real pointer.
   $effect(() => {
+    if (coarse) return
     let mx = innerWidth / 2, my = innerHeight / 2, cx = mx, cy = my, raf = 0
     const move = (e: PointerEvent) => { mx = e.clientX; my = e.clientY }
     const loop = () => {

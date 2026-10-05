@@ -1,5 +1,5 @@
 import { untrack } from 'svelte'
-import { audio, setSound, setStaticDuck } from './audio.svelte'
+import { audio, mix, setSound, setStaticDuck } from './audio.svelte'
 import { showToast } from './toast.svelte'
 import { clamp } from './util'
 
@@ -38,6 +38,8 @@ let at = 0
 let loop = false
 let volume = 100
 let seq = 0
+/** What the player is actually told: the song's level times the knob. */
+const out = (level: number) => Math.round(level * mix.vol)
 let heldBySound = false
 
 function getPlayer(): Promise<YTPlayer> {
@@ -101,7 +103,7 @@ async function start(i: number, startSeconds = 0) {
   try {
     const p = await getPlayer()
     if (tok !== seq) return
-    p.setVolume(volume)
+    p.setVolume(out(volume))
     p.loadVideoById({ videoId: queue[i].id, startSeconds })
   } catch {
     if (tok !== seq) return
@@ -150,8 +152,10 @@ export function radioBed(lock: number, presence: number, songs: Song[]) {
   if (!audio.on) return stopMusic('radio')
   const level = clamp(BED + (1 - BED) * lock * (0.35 + 0.65 * presence), 0, 1)
   if (music.src === 'radio') {
-    volume = Math.round(level * 100)
-    player?.setVolume(volume)
+    const v = Math.round(level * 100)
+    if (v === volume) return
+    volume = v
+    player?.setVolume(out(v))
   } else if (music.src === null) {
     playSongs('radio', songs, { loop: true, volume: Math.round(level * 100), start: 8 })
   }
@@ -169,6 +173,14 @@ for (const ev of ['pointerdown', 'keydown', 'touchend']) {
     { passive: true },
   )
 }
+
+// turning the knob changes the player straight away
+$effect.root(() => {
+  $effect(() => {
+    const v = mix.vol
+    untrack(() => player?.setVolume(Math.round(volume * v)))
+  })
+})
 
 // muting (the music tag) pauses songs too, and unmuting brings them back
 $effect.root(() => {

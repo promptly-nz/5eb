@@ -5,6 +5,7 @@
   import { music, toggleMusic } from '../../lib/music.svelte'
   import { Spinner } from '../../lib/spin.svelte'
   import { pad } from '../../lib/util'
+  import { R } from '../../data/releases'
   import type { Product } from '../../data/products'
 
   // The cassette: press play or drag along it to wind the reels. The two hubs are cropped straight
@@ -65,13 +66,13 @@
     <img class={HUB} style="left:24.2%;top:37.5%;transform:rotate({spin.angle}deg)" src="/img/shop/hubL.webp" alt="" draggable="false" />
     <img class={HUB} style="left:65.7%;top:36.8%;transform:rotate({spin.angle * 0.8}deg)" src="/img/shop/hubR.webp" alt="" draggable="false" />
     <!-- handwritten index line -->
-    <div class="absolute -rotate-1 font-marker text-[4.6em] leading-none text-[#15130f]" style="left:29%;top:11.5%;width:62%">5EB VOL.1 — N17 · side A</div>
+    <div class="absolute -rotate-1 font-marker text-[4.6em] leading-none text-[#15130f]" style="left:29%;top:11.5%;width:62%">{R.highbernation.title.toUpperCase()} · side A</div>
     <!-- masking tape over the maker's label -->
     <div
       class="absolute flex items-center justify-between px-[2.5em] shadow-[0_2px_0_rgba(0,0,0,.45)] [clip-path:polygon(0_6%,2%_0,98%_4%,100%_0,100%_94%,98%_100%,2%_96%,0_100%)]"
       style="left:4%;top:56.5%;width:91.5%;height:15.5%;background:{color};transform:rotate(.6deg)"
     >
-      <b class="font-marker text-[6em] leading-none font-normal text-[#111]">5EB · VOL.1</b>
+      <b class="font-marker text-[6em] leading-none font-normal text-[#111]">5EB · {R.highbernation.title.toUpperCase()}</b>
       <span class="font-marker text-[4.4em] leading-none text-[#111]">No. 073 / 100</span>
     </div>
     {#if !item.stock}

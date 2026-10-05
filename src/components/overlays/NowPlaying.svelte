@@ -16,7 +16,7 @@
 <button
   type="button"
   class={[
-    'fixed top-12 right-[18px] z-[960] flex max-w-[min(260px,70vw)] items-center gap-2 border-2 bg-black px-2.5 font-lcd text-[18px] tracking-[.08em]',
+    'fixed top-12 right-[18px] z-[960] flex max-w-[min(260px,70vw)] max-[640px]:top-2 max-[640px]:right-2 max-[640px]:max-w-[44vw] max-[640px]:text-[16px] items-center gap-2 border-2 bg-black px-2.5 font-lcd text-[18px] tracking-[.08em]',
     audio.on ? 'border-phos text-phos hover:bg-phos hover:text-black' : 'border-[#555] text-[#888] hover:border-phos hover:text-phos',
   ]}
   aria-label={!audio.on ? 'Turn the music on' : own ? 'Stop ' + music.song?.title : 'Mute the music'}

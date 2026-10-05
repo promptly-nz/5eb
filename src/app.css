@@ -45,6 +45,8 @@
     cursor: none; /* the page draws its own camcorder crosshair */
   }
   body.booting { overflow: hidden }
+  /* clip, not hidden: no scroll container, so no sideways rubber-banding on phones */
+  html, body { overflow-x: clip }
   a, button { cursor: none; color: inherit }
   @media (pointer: coarse) {
     body { cursor: auto }
@@ -68,6 +70,14 @@
   background:
     repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.28) 0 2px, transparent 2px 4px),
     radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.8));
+}
+
+/* sections that are off screen don't animate (see pauseOffscreen) */
+section[data-off],
+section[data-off] *,
+section[data-off] *::before,
+section[data-off] *::after {
+  animation-play-state: paused !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

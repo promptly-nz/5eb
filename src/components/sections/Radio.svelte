@@ -3,9 +3,11 @@
   import { LATEST, R, linkOf } from '../../data/releases'
   import { RADIO_QUEUE } from '../../data/music'
   import SectionHeader from '../ui/SectionHeader.svelte'
+  import VolumeKnob from '../ui/VolumeKnob.svelte'
   import { audio, frequencyData, setRadio, setSound } from '../../lib/audio.svelte'
   import { F0, GARBLE, STATIONS } from '../../data/content'
   import { music, radioBed } from '../../lib/music.svelte'
+  import { whenVisible } from '../../lib/visible'
   import { clamp } from '../../lib/util'
 
   // [release, left %, top %, tilt deg]
@@ -39,7 +41,9 @@
   function onscroll() {
     const r = section.getBoundingClientRect()
     const c = r.top + r.height / 2 - innerHeight / 2
-    presence = clamp(1 - Math.abs(c) / (innerHeight * 0.9), 0, 1)
+    const p = Math.round(clamp(1 - Math.abs(c) / (innerHeight * 0.9), 0, 1) * 20) / 20
+    if (p === presence) return
+    presence = p
     setRadio({ presence })
   }
 
@@ -60,8 +64,11 @@
   // LED-bar spectrum: real FFT of the static when sound is on, a faked wobble when a song is playing (YouTube audio can't be analysed).
   $effect(() => {
     const vx = viz.getContext('2d')!
-    let raf = 0
-    const draw = () => {
+    let raf = 0, last = 0
+    const draw = (now: number) => {
+      raf = requestAnimationFrame(draw)
+      if (now - last < 33) return // 30fps is plenty for LED bars
+      last = now
       const w = viz.width, h = viz.height, n = 32, bw = w / n
       vx.clearRect(0, 0, w, h)
       const data = music.playing ? null : frequencyData()
@@ -76,10 +83,16 @@
           vx.fillRect(i * bw + 1, h - (s + 1) * 6, bw - 3, 4)
         }
       }
-      raf = requestAnimationFrame(draw)
     }
-    raf = requestAnimationFrame(draw)
-    return () => cancelAnimationFrame(raf)
+    // only while the radio is on screen
+    const stop = whenVisible(viz, on => {
+      cancelAnimationFrame(raf)
+      if (on) raf = requestAnimationFrame(draw)
+    })
+    return () => {
+      stop()
+      cancelAnimationFrame(raf)
+    }
   })
 </script>
 
@@ -94,7 +107,9 @@
   <div class="relative grid grid-cols-[1.25fr_1fr] items-center gap-[5vw] max-[900px]:grid-cols-1">
     <div class="relative rounded-[26px] border-[5px] border-solid border-black bg-[linear-gradient(#2c2926,#0f0e0d)] p-[26px] text-cream shadow-[12px_12px_0_#000]">
       <div class="grid grid-cols-[150px_1fr] gap-[22px] max-[900px]:grid-cols-1">
-        <div class="min-h-[150px] rounded-[14px] shadow-[inset_0_0_12px_#000] [background:radial-gradient(#000_35%,transparent_38%)_0_0/12px_12px,#3a3632] max-[900px]:min-h-[50px]"></div>
+        <div class="relative min-h-[150px] rounded-[14px] shadow-[inset_0_0_12px_#000] [background:radial-gradient(#000_35%,transparent_38%)_0_0/12px_12px,#3a3632] max-[900px]:min-h-[104px]">
+          <VolumeKnob class="absolute inset-0 [--r:60px] max-[900px]:[--r:42px]" />
+        </div>
         <div class="relative overflow-hidden rounded-lg border-4 border-solid border-black bg-[#0c150a] px-[14px] py-[10px] shadow-[inset_0_0_20px_#000,0_0_0_2px_#555]">
           <div
             class={[
@@ -113,7 +128,7 @@
           <span
             class={[
               "absolute top-0 -translate-x-1/2 font-lcd text-[17px] font-normal tracking-[.06em] whitespace-nowrap after:absolute after:top-[18px] after:left-1/2 after:h-[14px] after:w-px after:bg-[#aaa] after:content-['']",
-              freq === F0 ? 'text-orange' : 'text-[#aaa]',
+              freq === F0 ? 'text-orange' : 'text-[#aaa] max-[640px]:hidden',
             ]}
             style="left:{((freq - 87.5) / 20.5) * 100}%">{name}</span>
         {/each}

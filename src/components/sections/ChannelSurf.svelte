@@ -10,6 +10,7 @@
   interface Strip { y: number; h: number; dx: number; ch: Channel }
 
   let surf: HTMLElement
+  let stage: HTMLElement
   let scr: HTMLElement
   let ch = $state(-1)
   let isStatic = $state(false)
@@ -67,8 +68,9 @@
   }
 
   function onscroll() {
+    // measured against the pinned stage, not innerHeight (which changes as a phone's toolbar slides)
     const r = surf.getBoundingClientRect()
-    const p = clamp(-r.top / (r.height - innerHeight), 0, 0.999)
+    const p = clamp(-r.top / (r.height - stage.clientHeight), 0, 0.999)
     setCh(Math.floor(p * CHANNELS.length))
   }
 
@@ -78,7 +80,7 @@
 <svelte:window {onscroll} />
 
 <section class="h-[560vh] bg-[radial-gradient(circle_at_50%_30%,#241a12,#050403_70%)]" id="surf" bind:this={surf}>
-  <div class="sticky top-0 grid h-screen place-items-center overflow-hidden">
+  <div bind:this={stage} class="sticky top-0 grid h-screen h-svh place-items-center overflow-hidden">
     <SectionHeader class="absolute inset-x-0 top-[70px] m-0 px-[4vw]" title="Channel Surf" />
     <div class="absolute top-1/2 left-[3vw] z-[3] flex -translate-y-1/2 flex-col gap-2 font-lcd text-[22px] text-[#7a6a5a] max-[900px]:hidden">
       {#each CHANNELS as _, i}

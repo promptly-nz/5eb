@@ -1,6 +1,8 @@
 // Shop catalogue. Every product is a real photograph (cut out, see CREDITS below), not drawn art.
 // Garments are recoloured live: the photo becomes a greyscale shading map that is multiplied over a colour.
 
+import { LATEST_ALBUM, LATEST_ALBUM_TRACKS } from './releases'
+
 export type Kind = 'garment' | 'disc' | 'tape' | 'stickers'
 
 export interface Product {
@@ -24,7 +26,7 @@ export interface Product {
 
 export const PRODUCTS: Product[] = [
   {
-    id: 'tee', n: 'Estate Tapes Tee', p: 28, was: 35, stock: 24, kind: 'garment', img: 'tee.webp', ratio: 1.0075, sz: ['S', 'M', 'L', 'XL'],
+    id: 'tee', n: `${LATEST_ALBUM.title} Tee`, p: 28, was: 35, stock: 24, kind: 'garment', img: 'tee.webp', ratio: 1.0075, sz: ['S', 'M', 'L', 'XL'],
     cols: [['Midnight', '#2c2c2e'], ['Estate Orange', '#f07000'], ['Concrete', '#cbc6b8']],
     d: 'Heavyweight tee. Logo on the chest, "N17" across the back. Boxy, oversized, built to be worn to death.',
     spec: [['FABRIC', '100% combed cotton, 260gsm'], ['FIT', 'Oversized, dropped shoulder'], ['PRINT', 'Screen-printed, hand finished'], ['MADE', 'Box room, N17 · limited run']],
@@ -44,10 +46,10 @@ export const PRODUCTS: Product[] = [
     spec: [['FABRIC', 'Chunky marl knit'], ['SIZE', 'One size, stretchy'], ['PATCH', 'Woven 5EB, sewn on'], ['FIT', 'Pull it down low']],
   },
   {
-    id: 'cdr', n: 'Vol.1 CD-R', p: 8, was: 10, stock: 63, kind: 'disc', img: 'cd.webp', ratio: 0.998,
+    id: 'cdr', n: `${LATEST_ALBUM.title} CD-R`, p: 8, was: 10, stock: 63, kind: 'disc', img: 'cd.webp', ratio: 0.998,
     cols: [['Silver', '#d9d4c4'], ['Black', '#222']],
     d: "Hand-burnt, scribbled on in marker, signed. Plays in anything with a laser, including your nan's stereo.",
-    spec: [['MEDIA', 'CD-R, 80 min / 700MB'], ['BURN', 'Hand-burnt, one at a time'], ['LABEL', 'Sharpie, signed'], ['TRACKS', '12 · no skips']],
+    spec: [['MEDIA', 'CD-R, 80 min / 700MB'], ['BURN', 'Hand-burnt, one at a time'], ['LABEL', 'Sharpie, signed'], ['TRACKS', `${LATEST_ALBUM_TRACKS.length} · no skips`]],
   },
   {
     id: 'tape', n: 'Cassette', p: 12, was: 15, stock: 0, kind: 'tape', img: 'cassette.webp', ratio: 1.591,
